@@ -1,0 +1,393 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0A1628;--navy2:#111D35;--navy3:#162040;
+    --electric:#00D4FF;--electric2:#00AACC;
+    --white:#FFFFFF;--gray:#8899AA;--lightgray:#E8EEF4;
+    --accent2:#00FF88;
+  }
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
+  /* NAV */
+  nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--electric);letter-spacing:-0.5px}
+  .logo span{color:var(--white)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--gray);font-size:0.875rem;text-decoration:none;cursor:pointer;transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--white)}
+  .cart-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px;position:relative}
+  .cart-count{background:var(--electric);color:var(--navy);font-size:0.7rem;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
+  /* SECTIONS */
+  section{display:none}
+  section.active{display:block}
+  /* HERO */
+  #hero{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .hero-tag{font-size:0.75rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase}
+  .hero-title{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin-bottom:1.2rem}
+  .hero-title .accent{color:var(--electric)}
+  .hero-desc{color:var(--gray);line-height:1.7;margin-bottom:2rem;font-size:0.95rem;max-width:420px}
+  .btn-primary{background:var(--electric);color:var(--navy);font-weight:600;padding:12px 28px;border:none;border-radius:10px;cursor:pointer;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+  .btn-primary:hover{background:var(--electric2)}
+  .btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:500;padding:12px 28px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:background .2s}
+  .btn-ghost:hover{background:rgba(0,212,255,0.08)}
+  .hero-visual{display:flex;align-items:center;justify-content:center}
+  .pcb-box{width:280px;height:280px;background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
+  .pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),transparent)}
+  .pcb-icon{font-size:5rem}
+  .pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.8rem;letter-spacing:2px}
+  .stats-row{display:flex;gap:2rem;margin-top:2.5rem}
+  .stat{display:flex;flex-direction:column}
+  .stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--electric)}
+  .stat-label{font-size:0.75rem;color:var(--gray);margin-top:2px}
+  /* PRODUCTS */
+  #products{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+  .section-head{margin-bottom:2rem}
+  .section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem}
+  .section-sub{color:var(--gray);font-size:0.9rem}
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .product-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+  .product-card:hover{border-color:rgba(0,212,255,0.4)}
+  .product-img{background:var(--navy3);height:150px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .product-info{padding:1.1rem}
+  .product-name{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.3rem}
+  .product-desc{color:var(--gray);font-size:0.78rem;line-height:1.5;margin-bottom:0.8rem}
+  .product-footer{display:flex;align-items:center;justify-content:space-between}
+  .product-price{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--electric)}
+  .add-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:background .2s}
+  .add-btn:hover{background:rgba(0,212,255,0.25)}
+  /* CART OVERLAY */
+  .cart-overlay{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--navy2);border-left:1px solid rgba(0,212,255,0.15);padding:1.5rem;z-index:200;transition:right .3s;overflow-y:auto}
+  .cart-overlay.open{right:0}
+  .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .cart-header h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600}
+  .close-btn{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.3rem;line-height:1}
+  .cart-item{display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .cart-item-icon{font-size:1.8rem;width:46px;height:46px;background:var(--navy3);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .cart-item-info{flex:1}
+  .cart-item-name{font-size:0.85rem;font-weight:500;margin-bottom:3px}
+  .cart-item-price{font-size:0.8rem;color:var(--electric)}
+  .qty-ctrl{display:flex;align-items:center;gap:6px;margin-top:5px}
+  .qty-btn{background:rgba(255,255,255,0.08);border:none;color:var(--white);width:22px;height:22px;border-radius:4px;cursor:pointer;font-size:0.9rem}
+  .qty-val{font-size:0.85rem;min-width:20px;text-align:center}
+  .remove-btn{background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.95rem}
+  .cart-total{margin-top:1.2rem;padding:1rem;background:var(--navy3);border-radius:10px}
+  .cart-total-row{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--gray);margin-bottom:6px}
+  .cart-total-main{display:flex;justify-content:space-between;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1)}
+  .checkout-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+  .checkout-btn:hover{background:var(--electric2)}
+  .empty-cart{text-align:center;padding:3rem 0;color:var(--gray);font-size:0.9rem}
+  /* PAYMENT */
+  #payment{max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center}
+  .payment-box{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem}
+  .qr-placeholder{width:200px;height:200px;background:var(--white);border-radius:12px;margin:1.5rem auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem}
+  .qr-inner{width:160px;height:160px;display:flex;align-items:center;justify-content:center}
+  .qr-label{color:var(--navy);font-size:0.75rem;font-weight:600}
+  .payment-info{text-align:left;margin-top:1.5rem;font-size:0.88rem;line-height:1.9;color:var(--gray)}
+  .payment-info strong{color:var(--white)}
+  .payment-step{background:var(--navy3);border-radius:10px;padding:1rem;margin-top:1rem;text-align:left}
+  .step-row{display:flex;gap:0.8rem;align-items:flex-start;margin-bottom:0.6rem;font-size:0.85rem;color:var(--gray)}
+  .step-num{color:var(--electric);font-weight:700;font-size:0.8rem;min-width:20px}
+  /* CONTACT */
+  #contact{max-width:700px;margin:0 auto;padding:3rem 2rem}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+  .contact-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-decoration:none;transition:border-color .2s}
+  .contact-card:hover{border-color:rgba(0,212,255,0.4)}
+  .contact-icon{font-size:2rem;width:52px;height:52px;background:var(--navy3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .contact-info h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:4px}
+  .contact-info p{color:var(--gray);font-size:0.82rem}
+  .contact-form{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;margin-top:1.2rem}
+  .form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem}
+  .form-row{margin-bottom:1rem}
+  .form-row label{display:block;font-size:0.8rem;color:var(--gray);margin-bottom:6px}
+  .form-row input,.form-row textarea{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:var(--white);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+  .form-row input:focus,.form-row textarea:focus{border-color:rgba(0,212,255,0.4)}
+  .form-row textarea{height:90px;resize:vertical}
+  .send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem}
+  /* QR SVG */
+  .qr-svg rect{fill:var(--navy)}
+  .backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:199;display:none}
+  .backdrop.open{display:block}
+  .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.4);color:var(--electric);padding:10px 18px;border-radius:10px;font-size:0.85rem;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s}
+  .toast.show{transform:translateY(0);opacity:1}
+</style>
+
+<h2 class="sr-only">ElectroVN — web bán sản phẩm mạch điện tử</h2>
+
+<nav>
+  <div class="logo"><span>Electro</span>VN</div>
+  <ul class="nav-links">
+    <li><a onclick="showSection('home')" class="active" id="nav-home">Trang chủ</a></li>
+    <li><a onclick="showSection('products')" id="nav-products">Sản phẩm</a></li>
+    <li><a onclick="showSection('contact')" id="nav-contact">Liên hệ</a></li>
+  </ul>
+  <button class="cart-btn" onclick="toggleCart()">
+    <i class="ti ti-shopping-cart" style="font-size:16px" aria-hidden="true"></i>
+    Giỏ hàng
+    <span class="cart-count" id="cart-count">0</span>
+  </button>
+</nav>
+
+<section id="home" class="active">
+  <div id="hero">
+    <div>
+      <div class="hero-tag">— Mạch điện tử chất lượng cao</div>
+      <h1 class="hero-title">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
+      <p class="hero-desc">Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.</p>
+      <div>
+        <button class="btn-primary" onclick="showSection('products')">Xem sản phẩm</button>
+        <button class="btn-ghost" onclick="showSection('contact')">Liên hệ</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Sản phẩm</span></div>
+        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Khách hàng</span></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Bảo hành</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="pcb-box">
+        <div style="font-size:5rem">🔌</div>
+        <div class="pcb-label">PCB · MCU · SENSOR</div>
+        <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:6px">
+          <div style="height:3px;flex:1;background:rgba(0,212,255,0.3);border-radius:2px"></div>
+          <div style="height:3px;flex:2;background:rgba(0,212,255,0.15);border-radius:2px"></div>
+          <div style="height:3px;flex:1;background:rgba(0,212,255,0.3);border-radius:2px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products-sec">
+  <div id="products">
+    <div class="section-head">
+      <h2 class="section-title">Sản phẩm</h2>
+      <p class="section-sub">Các project mạch điện tử nổi bật</p>
+    </div>
+    <div class="product-grid" id="product-grid"></div>
+  </div>
+</section>
+
+<section id="payment-sec">
+  <div id="payment">
+    <div class="section-head" style="text-align:center;margin-bottom:1.5rem">
+      <h2 class="section-title">Thanh toán</h2>
+      <p class="section-sub">Quét mã QR để thanh toán</p>
+    </div>
+    <div class="payment-box">
+      <div id="order-summary" style="background:var(--navy3);border-radius:10px;padding:1rem;margin-bottom:0.5rem"></div>
+      <div class="qr-placeholder">
+        <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="160" fill="#fff"/>
+          <rect x="10" y="10" width="60" height="60" rx="4" fill="#0A1628"/>
+          <rect x="18" y="18" width="44" height="44" rx="2" fill="#fff"/>
+          <rect x="26" y="26" width="28" height="28" rx="1" fill="#0A1628"/>
+          <rect x="90" y="10" width="60" height="60" rx="4" fill="#0A1628"/>
+          <rect x="98" y="18" width="44" height="44" rx="2" fill="#fff"/>
+          <rect x="106" y="26" width="28" height="28" rx="1" fill="#0A1628"/>
+          <rect x="10" y="90" width="60" height="60" rx="4" fill="#0A1628"/>
+          <rect x="18" y="98" width="44" height="44" rx="2" fill="#fff"/>
+          <rect x="26" y="106" width="28" height="28" rx="1" fill="#0A1628"/>
+          <rect x="90" y="90" width="8" height="8" fill="#0A1628"/>
+          <rect x="102" y="90" width="8" height="8" fill="#0A1628"/>
+          <rect x="114" y="90" width="8" height="8" fill="#0A1628"/>
+          <rect x="126" y="90" width="8" height="8" fill="#0A1628"/>
+          <rect x="138" y="90" width="14" height="8" fill="#0A1628"/>
+          <rect x="90" y="102" width="14" height="8" fill="#0A1628"/>
+          <rect x="108" y="102" width="8" height="8" fill="#0A1628"/>
+          <rect x="120" y="102" width="32" height="8" fill="#0A1628"/>
+          <rect x="90" y="114" width="8" height="8" fill="#0A1628"/>
+          <rect x="102" y="114" width="20" height="8" fill="#0A1628"/>
+          <rect x="126" y="114" width="26" height="8" fill="#0A1628"/>
+          <rect x="90" y="126" width="20" height="8" fill="#0A1628"/>
+          <rect x="114" y="126" width="8" height="8" fill="#0A1628"/>
+          <rect x="126" y="126" width="14" height="8" fill="#0A1628"/>
+          <rect x="90" y="138" width="8" height="14" fill="#0A1628"/>
+          <rect x="102" y="138" width="26" height="14" fill="#0A1628"/>
+          <rect x="132" y="138" width="20" height="14" fill="#0A1628"/>
+        </svg>
+        <div class="qr-label">QR Thanh toán</div>
+      </div>
+      <div class="payment-info">
+        <strong>Thay QR thật của bạn vào đây.</strong><br>
+        Ngân hàng: <strong>MB Bank / Vietcombank</strong><br>
+        Tên: <strong>Nguyễn Văn A</strong>
+      </div>
+      <div class="payment-step">
+        <div class="step-row"><span class="step-num">1</span><span>Mở app ngân hàng hoặc ví điện tử</span></div>
+        <div class="step-row"><span class="step-num">2</span><span>Quét mã QR bên trên</span></div>
+        <div class="step-row"><span class="step-num">3</span><span>Nhập đúng số tiền và ghi chú mã đơn hàng</span></div>
+        <div class="step-row"><span class="step-num">4</span><span>Chụp màn hình xác nhận và gửi qua Zalo/Gmail</span></div>
+      </div>
+      <button class="checkout-btn" style="margin-top:1.2rem" onclick="showSection('contact')">Gửi xác nhận qua Zalo / Gmail</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact-sec">
+  <div id="contact">
+    <div class="section-head">
+      <h2 class="section-title">Liên hệ</h2>
+      <p class="section-sub">Hỗ trợ tư vấn và đặt hàng</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:your@gmail.com">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-info">
+          <h3>Gmail</h3>
+          <p>your@gmail.com</p>
+        </div>
+      </a>
+      <a class="contact-card" href="https://zalo.me/your_number" target="_blank">
+        <div class="contact-icon">💬</div>
+        <div class="contact-info">
+          <h3>Zalo</h3>
+          <p>Chat trực tiếp ngay</p>
+        </div>
+      </a>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">Gửi yêu cầu</div>
+      <div class="form-row"><label>Họ tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
+      <div class="form-row"><label>Email / SĐT</label><input type="text" placeholder="email@gmail.com"></div>
+      <div class="form-row"><label>Nội dung</label><textarea placeholder="Tôi muốn hỏi về sản phẩm..."></textarea></div>
+      <button class="send-btn" onclick="showToast('Gửi thành công! Sẽ phản hồi trong 24h.')">Gửi</button>
+    </div>
+  </div>
+</section>
+
+<div class="backdrop" id="backdrop" onclick="toggleCart()"></div>
+<div class="cart-overlay" id="cart">
+  <div class="cart-header">
+    <h2>Giỏ hàng</h2>
+    <button class="close-btn" onclick="toggleCart()"><i class="ti ti-x" aria-label="Đóng"></i></button>
+  </div>
+  <div id="cart-items"></div>
+  <div id="cart-footer"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  {id:1,name:'Mạch Arduino Uno R3',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B, phù hợp cho người mới bắt đầu.',price:85000,icon:'🤖'},
+  {id:2,name:'ESP32 Dev Board',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',price:120000,icon:'📡'},
+  {id:3,name:'Cảm biến DHT22',desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',price:45000,icon:'🌡️'},
+  {id:4,name:'Module L298N',desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',price:35000,icon:'⚙️'},
+  {id:5,name:'OLED 0.96" I2C',desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ thấp.',price:55000,icon:'🖥️'},
+  {id:6,name:'Kit Nguồn LM317',desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',price:70000,icon:'🔋'},
+];
+
+let cart = {};
+let cartOpen = false;
+
+function fmt(n){return n.toLocaleString('vi-VN')+'đ'}
+
+function renderProducts(){
+  const g = document.getElementById('product-grid');
+  g.innerHTML = products.map(p=>`
+    <div class="product-card">
+      <div class="product-img">${p.icon}</div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <span class="product-price">${fmt(p.price)}</span>
+          <button class="add-btn" onclick="addToCart(${p.id})">+ Thêm</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function addToCart(id){
+  cart[id] = (cart[id]||0)+1;
+  renderCart();
+  showToast('Đã thêm vào giỏ hàng!');
+}
+
+function changeQty(id,d){
+  cart[id] = Math.max(0,(cart[id]||0)+d);
+  if(cart[id]===0) delete cart[id];
+  renderCart();
+}
+
+function renderCart(){
+  const ids = Object.keys(cart);
+  const count = ids.reduce((a,id)=>a+cart[id],0);
+  document.getElementById('cart-count').textContent = count;
+  const total = ids.reduce((a,id)=>a+products.find(p=>p.id==id).price*cart[id],0);
+  const ci = document.getElementById('cart-items');
+  const cf = document.getElementById('cart-footer');
+  if(ids.length===0){
+    ci.innerHTML='<div class="empty-cart"><i class="ti ti-shopping-cart" style="font-size:2rem;color:var(--gray)" aria-hidden="true"></i><p style="margin-top:1rem">Giỏ hàng trống</p></div>';
+    cf.innerHTML='';
+    return;
+  }
+  ci.innerHTML = ids.map(id=>{
+    const p=products.find(x=>x.id==id);
+    return`<div class="cart-item">
+      <div class="cart-item-icon">${p.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${p.name}</div>
+        <div class="cart-item-price">${fmt(p.price)}</div>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(${id},-1)">−</button>
+          <span class="qty-val">${cart[id]}</span>
+          <button class="qty-btn" onclick="changeQty(${id},1)">+</button>
+        </div>
+      </div>
+      <button class="remove-btn" onclick="changeQty(${id},-${cart[id]})" aria-label="Xóa"><i class="ti ti-trash" aria-hidden="true"></i></button>
+    </div>`}).join('');
+  cf.innerHTML=`<div class="cart-total">
+    <div class="cart-total-row"><span>Tạm tính</span><span>${fmt(total)}</span></div>
+    <div class="cart-total-row"><span>Vận chuyển</span><span>Thoả thuận</span></div>
+    <div class="cart-total-main"><span>Tổng cộng</span><span style="color:var(--electric)">${fmt(total)}</span></div>
+  </div>
+  <button class="checkout-btn" onclick="checkout()">Tiến hành thanh toán</button>`;
+}
+
+function checkout(){
+  if(Object.keys(cart).length===0) return;
+  const ids=Object.keys(cart);
+  const total=ids.reduce((a,id)=>a+products.find(p=>p.id==id).price*cart[id],0);
+  const summary=ids.map(id=>{const p=products.find(x=>x.id==id);return`<div style="display:flex;justify-content:space-between;font-size:0.83rem;color:var(--gray);margin-bottom:4px"><span>${p.name} x${cart[id]}</span><span style="color:var(--white)">${fmt(p.price*cart[id])}</span></div>`;}).join('');
+  document.getElementById('order-summary').innerHTML=summary+`<div style="display:flex;justify-content:space-between;font-family:'Space Grotesk';font-weight:700;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1);margin-top:8px"><span>Tổng</span><span style="color:var(--electric)">${fmt(total)}</span></div>`;
+  toggleCart();
+  showSection('payment');
+}
+
+function toggleCart(){
+  cartOpen=!cartOpen;
+  document.getElementById('cart').classList.toggle('open',cartOpen);
+  document.getElementById('backdrop').classList.toggle('open',cartOpen);
+}
+
+function showSection(name){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  if(name==='home'){
+    document.getElementById('home').classList.add('active');
+    document.getElementById('nav-home').classList.add('active');
+  } else if(name==='products'){
+    document.getElementById('products-sec').classList.add('active');
+    document.getElementById('nav-products').classList.add('active');
+  } else if(name==='payment'){
+    document.getElementById('payment-sec').classList.add('active');
+  } else if(name==='contact'){
+    document.getElementById('contact-sec').classList.add('active');
+    document.getElementById('nav-contact').classList.add('active');
+  }
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+renderProducts();
+renderCart();
+</script>
