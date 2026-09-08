@@ -26,12 +26,12 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 .cart-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px}
 .cart-count{background:var(--electric);color:var(--navy);font-size:0.7rem;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
 
-/* SECTIONS */
-section{display:none}
-section.active{display:block}
+/* SECTIONS — mỗi section độc lập, ẩn/hiện bằng display */
+.page{display:none;min-height:calc(100vh - 60px)}
+.page.active{display:block}
 
-/* HERO */
-#home{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+/* HOME */
+.home-inner{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
 .hero-tag{font-size:0.75rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase}
 .hero-title{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin-bottom:1.2rem}
 .hero-title .accent{color:var(--electric)}
@@ -50,7 +50,7 @@ section.active{display:block}
 .stat-label{font-size:0.75rem;color:var(--gray);margin-top:2px}
 
 /* PRODUCTS */
-#products-sec{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.products-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem}
 .section-head{margin-bottom:2rem}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem}
 .section-sub{color:var(--gray);font-size:0.9rem}
@@ -96,13 +96,12 @@ section.active{display:block}
 .modal-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .modal-total-label{color:var(--gray);font-size:0.85rem}
 .modal-total-val{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--electric)}
-.modal-total-note{font-size:0.72rem;color:var(--gray);text-align:right;margin-top:2px}
 .modal-add-btn{width:100%;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
 .modal-add-btn:hover{background:var(--electric2)}
 .modal-add-btn:disabled{background:rgba(0,212,255,0.2);color:rgba(0,212,255,0.4);cursor:not-allowed}
 
 /* SERVICES */
-#services-sec{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.services-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem}
 .service-intro{color:var(--gray);font-size:0.9rem;line-height:1.7;max-width:600px;margin-bottom:2rem}
 .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
 .service-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.4rem}
@@ -134,7 +133,7 @@ section.active{display:block}
 .step-card-desc{font-size:0.75rem;color:var(--gray);line-height:1.5}
 
 /* PAYMENT */
-#payment-sec{max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center}
+.payment-inner{max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center}
 .payment-box{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem}
 .qr-placeholder{width:200px;height:200px;background:var(--white);border-radius:12px;margin:1.5rem auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem}
 .qr-label{color:var(--navy);font-size:0.75rem;font-weight:600}
@@ -147,7 +146,7 @@ section.active{display:block}
 .checkout-btn:hover{background:var(--electric2)}
 
 /* CONTACT */
-#contact-sec{max-width:700px;margin:0 auto;padding:3rem 2rem}
+.contact-inner{max-width:700px;margin:0 auto;padding:3rem 2rem}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
 .contact-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-decoration:none;transition:border-color .2s}
 .contact-card:hover{border-color:rgba(0,212,255,0.4)}
@@ -155,8 +154,8 @@ section.active{display:block}
 .contact-info h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:4px}
 .contact-info p{color:var(--gray);font-size:0.82rem}
 .contact-form{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;margin-top:1.2rem}
-.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem}
 .contact-form .form-row{margin-bottom:1rem}
+.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem}
 .send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem}
 
 /* CART */
@@ -193,10 +192,10 @@ section.active{display:block}
 <nav>
   <div class="logo"><span>Electro</span>VN</div>
   <ul class="nav-links">
-    <li><a onclick="showSection('home')" class="active" id="nav-home">Trang chủ</a></li>
-    <li><a onclick="showSection('products')" id="nav-products">Sản phẩm</a></li>
-    <li><a onclick="showSection('services')" id="nav-services">Dịch vụ</a></li>
-    <li><a onclick="showSection('contact')" id="nav-contact">Liên hệ</a></li>
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Trang chủ</a></li>
+    <li><a onclick="showPage('products')" id="nav-products">Sản phẩm</a></li>
+    <li><a onclick="showPage('services')" id="nav-services">Dịch vụ</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Liên hệ</a></li>
   </ul>
   <button class="cart-btn" onclick="toggleCart()">
     🛒 Giỏ hàng
@@ -204,16 +203,16 @@ section.active{display:block}
   </button>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="active">
-  <div style="padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+<!-- ===== HOME ===== -->
+<div class="page active" id="page-home">
+  <div class="home-inner">
     <div>
       <div class="hero-tag">— Mạch điện tử chất lượng cao</div>
       <h1 class="hero-title">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
       <p class="hero-desc">Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.</p>
       <div>
-        <button class="btn-primary" onclick="showSection('products')">Xem sản phẩm</button>
-        <button class="btn-ghost" onclick="showSection('services')">Đặt làm mạch</button>
+        <button class="btn-primary" onclick="showPage('products')">Xem sản phẩm</button>
+        <button class="btn-ghost" onclick="showPage('services')">Đặt làm mạch</button>
       </div>
       <div class="stats-row">
         <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Sản phẩm</span></div>
@@ -233,22 +232,22 @@ section.active{display:block}
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- PRODUCTS -->
-<section id="products-sec">
-  <div id="products" style="max-width:1100px;margin:0 auto;padding:3rem 2rem">
+<!-- ===== PRODUCTS ===== -->
+<div class="page" id="page-products">
+  <div class="products-inner">
     <div class="section-head">
       <h2 class="section-title">Sản phẩm</h2>
       <p class="section-sub">Nhấn vào sản phẩm để chọn tài liệu / file bạn cần</p>
     </div>
     <div class="product-grid" id="product-grid"></div>
   </div>
-</section>
+</div>
 
-<!-- SERVICES -->
-<section id="services-sec">
-  <div id="services-sec-inner" style="max-width:1100px;margin:0 auto;padding:3rem 2rem">
+<!-- ===== SERVICES ===== -->
+<div class="page" id="page-services">
+  <div class="services-inner">
     <div class="section-head">
       <h2 class="section-title">Dịch vụ sản xuất mạch</h2>
       <p class="section-sub">Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ</p>
@@ -280,40 +279,18 @@ section.active{display:block}
       <h2 class="section-title" style="font-size:1.2rem">Quy trình</h2>
     </div>
     <div class="process-steps">
-      <div class="step-card">
-        <div class="step-num-badge">1</div>
-        <div class="step-card-name">Gửi yêu cầu</div>
-        <div class="step-card-desc">Điền form bên dưới hoặc liên hệ Zalo/Gmail</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num-badge">2</div>
-        <div class="step-card-name">Báo giá</div>
-        <div class="step-card-desc">Phản hồi trong 24h với bảng giá chi tiết</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num-badge">3</div>
-        <div class="step-card-name">Đặt cọc & Thiết kế</div>
-        <div class="step-card-desc">Đặt cọc 50%, tiến hành thiết kế và gửi preview</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num-badge">4</div>
-        <div class="step-card-name">Giao hàng</div>
-        <div class="step-card-desc">Thanh toán phần còn lại, giao file + board qua bưu điện</div>
-      </div>
+      <div class="step-card"><div class="step-num-badge">1</div><div class="step-card-name">Gửi yêu cầu</div><div class="step-card-desc">Điền form bên dưới hoặc liên hệ Zalo/Gmail</div></div>
+      <div class="step-card"><div class="step-num-badge">2</div><div class="step-card-name">Báo giá</div><div class="step-card-desc">Phản hồi trong 24h với bảng giá chi tiết</div></div>
+      <div class="step-card"><div class="step-num-badge">3</div><div class="step-card-name">Đặt cọc & Thiết kế</div><div class="step-card-desc">Đặt cọc 50%, tiến hành thiết kế và gửi preview</div></div>
+      <div class="step-card"><div class="step-num-badge">4</div><div class="step-card-name">Giao hàng</div><div class="step-card-desc">Thanh toán phần còn lại, giao file + board qua bưu điện</div></div>
     </div>
 
     <div class="order-form-wrap">
       <div class="order-form-title">Gửi yêu cầu đặt làm mạch</div>
       <div class="order-form-sub">Điền thông tin bên dưới, chúng tôi sẽ báo giá trong vòng 24 giờ.</div>
       <div class="form-grid">
-        <div class="form-row">
-          <label>Họ tên</label>
-          <input type="text" placeholder="Nguyễn Văn A">
-        </div>
-        <div class="form-row">
-          <label>Email / Zalo / SĐT</label>
-          <input type="text" placeholder="email@gmail.com hoặc SĐT">
-        </div>
+        <div class="form-row"><label>Họ tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
+        <div class="form-row"><label>Email / Zalo / SĐT</label><input type="text" placeholder="email@gmail.com hoặc SĐT"></div>
         <div class="form-row">
           <label>Loại dịch vụ cần</label>
           <select>
@@ -325,10 +302,7 @@ section.active{display:block}
             <option>Trọn gói (Thiết kế + Sản xuất)</option>
           </select>
         </div>
-        <div class="form-row">
-          <label>Số lượng board cần</label>
-          <input type="text" placeholder="Ví dụ: 5 bản">
-        </div>
+        <div class="form-row"><label>Số lượng board cần</label><input type="text" placeholder="Ví dụ: 5 bản"></div>
         <div class="form-row full">
           <label>Tài liệu đầu vào (bạn có sẵn gì?)</label>
           <div class="checkbox-group">
@@ -350,11 +324,11 @@ section.active{display:block}
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- PAYMENT -->
-<section id="payment-sec">
-  <div style="max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center">
+<!-- ===== PAYMENT ===== -->
+<div class="page" id="page-payment">
+  <div class="payment-inner">
     <div class="section-head" style="text-align:center;margin-bottom:1.5rem">
       <h2 class="section-title">Thanh toán</h2>
       <p class="section-sub">Quét mã QR để thanh toán</p>
@@ -404,14 +378,14 @@ section.active{display:block}
         <div class="step-row"><span class="step-num">3</span><span>Nhập đúng số tiền và ghi chú mã đơn hàng</span></div>
         <div class="step-row"><span class="step-num">4</span><span>Chụp màn hình xác nhận và gửi qua Zalo/Gmail</span></div>
       </div>
-      <button class="checkout-btn" onclick="showSection('contact')">Gửi xác nhận qua Zalo / Gmail</button>
+      <button class="checkout-btn" onclick="showPage('contact')">Gửi xác nhận qua Zalo / Gmail</button>
     </div>
   </div>
-</section>
+</div>
 
-<!-- CONTACT -->
-<section id="contact-sec">
-  <div id="contact" style="max-width:700px;margin:0 auto;padding:3rem 2rem">
+<!-- ===== CONTACT ===== -->
+<div class="page" id="page-contact">
+  <div class="contact-inner">
     <div class="section-head">
       <h2 class="section-title">Liên hệ</h2>
       <p class="section-sub">Hỗ trợ tư vấn và đặt hàng</p>
@@ -434,7 +408,7 @@ section.active{display:block}
       <button class="send-btn" onclick="showToast('Gửi thành công! Sẽ phản hồi trong 24h.')">Gửi</button>
     </div>
   </div>
-</section>
+</div>
 
 <!-- PRODUCT MODAL -->
 <div class="modal-backdrop" id="product-modal" onclick="handleModalBackdropClick(event)">
@@ -454,9 +428,7 @@ section.active{display:block}
     <div class="modal-footer">
       <div class="modal-total-row">
         <span class="modal-total-label">Tổng tiền đã chọn</span>
-        <div>
-          <div class="modal-total-val" id="modal-total">0đ</div>
-        </div>
+        <div class="modal-total-val" id="modal-total">0đ</div>
       </div>
       <button class="modal-add-btn" id="modal-add-btn" onclick="addModalToCart()" disabled>Thêm vào giỏ hàng</button>
     </div>
@@ -478,76 +450,74 @@ section.active{display:block}
 
 <script>
 const products = [
-  {
-    id:1, name:'Mạch Arduino Uno R3', icon:'🤖',
-    desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',
-    options:[
-      {key:'schematic', label:'Mạch Schematic', hint:'File .sch / .pdf sơ đồ nguyên lý', price:30000},
-      {key:'pcb',       label:'Mạch PCB',       hint:'File Gerber + .pcb layout board', price:40000},
-      {key:'source',    label:'File Source Code',hint:'Code mẫu Arduino, thư viện',      price:25000},
-      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:20000},
-    ]
-  },
-  {
-    id:2, name:'ESP32 Dev Board', icon:'📡',
-    desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',
-    options:[
-      {key:'schematic', label:'Mạch Schematic', hint:'File .sch / .pdf sơ đồ nguyên lý', price:35000},
-      {key:'pcb',       label:'Mạch PCB',       hint:'File Gerber + .pcb layout board', price:50000},
-      {key:'source',    label:'File Source Code',hint:'Code mẫu ESP-IDF / Arduino',      price:30000},
-      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:20000},
-    ]
-  },
-  {
-    id:3, name:'Cảm biến DHT22', icon:'🌡️',
-    desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',
-    options:[
-      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ kết nối DHT22 với MCU',     price:20000},
-      {key:'pcb',       label:'Mạch PCB',       hint:'Board tích hợp sẵn pull-up, LED', price:30000},
-      {key:'source',    label:'File Source Code',hint:'Code đọc cảm biến, hiển thị LCD', price:20000},
-      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
-    ]
-  },
-  {
-    id:4, name:'Module L298N', icon:'⚙️',
-    desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',
-    options:[
-      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ nguyên lý điều khiển motor',price:20000},
-      {key:'pcb',       label:'Mạch PCB',       hint:'Layout PCB L298N full components', price:30000},
-      {key:'source',    label:'File Source Code',hint:'Code điều khiển tốc độ + chiều',  price:18000},
-      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
-    ]
-  },
-  {
-    id:5, name:'OLED 0.96" I2C', icon:'🖥️',
-    desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ điện thấp.',
-    options:[
-      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ kết nối OLED + MCU',        price:20000},
-      {key:'pcb',       label:'Mạch PCB',       hint:'Board mở rộng OLED header sẵn',   price:28000},
-      {key:'source',    label:'File Source Code',hint:'Thư viện + code hiển thị text/đồ thị',price:22000},
-      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
-    ]
-  },
-  {
-    id:6, name:'Kit Nguồn LM317', icon:'🔋',
-    desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',
-    options:[
-      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ nguồn LM317 có bảo vệ',    price:25000},
-      {key:'pcb',       label:'Mạch PCB',       hint:'Layout PCB gọn, có chân mount',   price:35000},
-      {key:'source',    label:'File Source Code',hint:'Code đo điện áp output (ADC)',    price:18000},
-      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
-    ]
-  },
+  {id:1,name:'Mạch Arduino Uno R3',icon:'🤖',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:30000},
+    {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:40000},
+    {key:'source',label:'File Source Code',hint:'Code mẫu Arduino, thư viện',price:25000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
+  ]},
+  {id:2,name:'ESP32 Dev Board',icon:'📡',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:35000},
+    {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:50000},
+    {key:'source',label:'File Source Code',hint:'Code mẫu ESP-IDF / Arduino',price:30000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
+  ]},
+  {id:3,name:'Cảm biến DHT22',icon:'🌡️',desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ kết nối DHT22 với MCU',price:20000},
+    {key:'pcb',label:'Mạch PCB',hint:'Board tích hợp sẵn pull-up, LED',price:30000},
+    {key:'source',label:'File Source Code',hint:'Code đọc cảm biến, hiển thị LCD',price:20000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+  {id:4,name:'Module L298N',icon:'⚙️',desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ nguyên lý điều khiển motor',price:20000},
+    {key:'pcb',label:'Mạch PCB',hint:'Layout PCB L298N full components',price:30000},
+    {key:'source',label:'File Source Code',hint:'Code điều khiển tốc độ + chiều',price:18000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+  {id:5,name:'OLED 0.96" I2C',icon:'🖥️',desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ điện thấp.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ kết nối OLED + MCU',price:20000},
+    {key:'pcb',label:'Mạch PCB',hint:'Board mở rộng OLED header sẵn',price:28000},
+    {key:'source',label:'File Source Code',hint:'Thư viện + code hiển thị text/đồ thị',price:22000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+  {id:6,name:'Kit Nguồn LM317',icon:'🔋',desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ nguồn LM317 có bảo vệ',price:25000},
+    {key:'pcb',label:'Mạch PCB',hint:'Layout PCB gọn, có chân mount',price:35000},
+    {key:'source',label:'File Source Code',hint:'Code đo điện áp output (ADC)',price:18000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
 ];
 
-let cart = []; // [{id, name, icon, selectedOptions:[{key,label,price}], unitPrice, qty}]
+let cart = [];
 let modalProductId = null;
 let modalSelected = new Set();
 let cartOpen = false;
 
 function fmt(n){return n.toLocaleString('vi-VN')+'đ'}
 
-/* ---- PRODUCTS ---- */
+// ---- NAVIGATION ----
+function showPage(name){
+  // Ẩn tất cả page
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Bỏ active tất cả nav link
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  // Hiện page tương ứng
+  const page = document.getElementById('page-' + name);
+  if(page) page.classList.add('active');
+
+  // Active nav link tương ứng
+  const navMap = {home:'nav-home', products:'nav-products', services:'nav-services', contact:'nav-contact'};
+  if(navMap[name]){
+    const navEl = document.getElementById(navMap[name]);
+    if(navEl) navEl.classList.add('active');
+  }
+
+  // Scroll lên đầu trang
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ---- PRODUCTS ----
 function renderProducts(){
   const g = document.getElementById('product-grid');
   g.innerHTML = products.map(p => {
@@ -570,7 +540,7 @@ function renderProducts(){
   }).join('');
 }
 
-/* ---- MODAL ---- */
+// ---- MODAL ----
 function openModal(id){
   const p = products.find(x=>x.id===id);
   modalProductId = id;
@@ -611,8 +581,6 @@ function handleModalBackdropClick(e){
 function toggleOption(key){
   if(modalSelected.has(key)) modalSelected.delete(key);
   else modalSelected.add(key);
-
-  const p = products.find(x=>x.id===modalProductId);
   const row = document.getElementById(`opt-${modalProductId}-${key}`);
   if(row) row.classList.toggle('selected', modalSelected.has(key));
   updateModalTotal();
@@ -633,22 +601,19 @@ function addModalToCart(){
   const selected = p.options.filter(o => modalSelected.has(o.key));
   const unitPrice = selected.reduce((a,o)=>a+o.price,0);
 
-  // Check if same product + same options combo already in cart
   const existing = cart.find(item =>
     item.id === p.id &&
     item.selectedOptions.map(o=>o.key).sort().join(',') === selected.map(o=>o.key).sort().join(',')
   );
   if(existing){ existing.qty++; }
-  else {
-    cart.push({id:p.id, name:p.name, icon:p.icon, selectedOptions:selected, unitPrice, qty:1});
-  }
+  else { cart.push({id:p.id, name:p.name, icon:p.icon, selectedOptions:selected, unitPrice, qty:1}); }
 
   renderCart();
   closeModal();
   showToast('Đã thêm vào giỏ hàng!');
 }
 
-/* ---- CART ---- */
+// ---- CART ----
 function renderCart(){
   const total = cart.reduce((a,item)=>a+item.unitPrice*item.qty, 0);
   const count = cart.reduce((a,item)=>a+item.qty, 0);
@@ -713,32 +678,13 @@ function checkout(){
       <span>Tổng</span><span style="color:var(--electric)">${fmt(total)}</span>
     </div>`;
   toggleCart();
-  showSection('payment');
+  showPage('payment');
 }
 
-/* ---- NAV / SECTIONS ---- */
 function toggleCart(){
   cartOpen = !cartOpen;
   document.getElementById('cart').classList.toggle('open', cartOpen);
   document.getElementById('backdrop').classList.toggle('open', cartOpen);
-}
-
-function showSection(name){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  const map = {
-    home:     {sec:'home',        nav:'nav-home'},
-    products: {sec:'products-sec',nav:'nav-products'},
-    services: {sec:'services-sec',nav:'nav-services'},
-    payment:  {sec:'payment-sec', nav:null},
-    contact:  {sec:'contact-sec', nav:'nav-contact'},
-  };
-  const m = map[name];
-  if(m){
-    document.getElementById(m.sec).classList.add('active');
-    if(m.nav) document.getElementById(m.nav).classList.add('active');
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 let toastTimer;
