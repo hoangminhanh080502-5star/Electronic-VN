@@ -1,142 +1,219 @@
-
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElectroVN — Mạch điện tử chuyên nghiệp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --navy:#0A1628;--navy2:#111D35;--navy3:#162040;
-    --electric:#00D4FF;--electric2:#00AACC;
-    --white:#FFFFFF;--gray:#8899AA;--lightgray:#E8EEF4;
-    --accent2:#00FF88;
-  }
-  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
-  /* NAV */
-  nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
-  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--electric);letter-spacing:-0.5px}
-  .logo span{color:var(--white)}
-  .nav-links{display:flex;gap:2rem;list-style:none}
-  .nav-links a{color:var(--gray);font-size:0.875rem;text-decoration:none;cursor:pointer;transition:color .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--white)}
-  .cart-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px;position:relative}
-  .cart-count{background:var(--electric);color:var(--navy);font-size:0.7rem;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
-  /* SECTIONS */
-  section{display:none}
-  section.active{display:block}
-  /* HERO */
-  #hero{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-  .hero-tag{font-size:0.75rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase}
-  .hero-title{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin-bottom:1.2rem}
-  .hero-title .accent{color:var(--electric)}
-  .hero-desc{color:var(--gray);line-height:1.7;margin-bottom:2rem;font-size:0.95rem;max-width:420px}
-  .btn-primary{background:var(--electric);color:var(--navy);font-weight:600;padding:12px 28px;border:none;border-radius:10px;cursor:pointer;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;transition:background .2s}
-  .btn-primary:hover{background:var(--electric2)}
-  .btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:500;padding:12px 28px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:background .2s}
-  .btn-ghost:hover{background:rgba(0,212,255,0.08)}
-  .hero-visual{display:flex;align-items:center;justify-content:center}
-  .pcb-box{width:280px;height:280px;background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
-  .pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),transparent)}
-  .pcb-icon{font-size:5rem}
-  .pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.8rem;letter-spacing:2px}
-  .stats-row{display:flex;gap:2rem;margin-top:2.5rem}
-  .stat{display:flex;flex-direction:column}
-  .stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--electric)}
-  .stat-label{font-size:0.75rem;color:var(--gray);margin-top:2px}
-  /* PRODUCTS */
-  #products{max-width:1100px;margin:0 auto;padding:3rem 2rem}
-  .section-head{margin-bottom:2rem}
-  .section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem}
-  .section-sub{color:var(--gray);font-size:0.9rem}
-  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-  .product-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s}
-  .product-card:hover{border-color:rgba(0,212,255,0.4)}
-  .product-img{background:var(--navy3);height:150px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
-  .product-info{padding:1.1rem}
-  .product-name{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.3rem}
-  .product-desc{color:var(--gray);font-size:0.78rem;line-height:1.5;margin-bottom:0.8rem}
-  .product-footer{display:flex;align-items:center;justify-content:space-between}
-  .product-price{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--electric)}
-  .add-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:background .2s}
-  .add-btn:hover{background:rgba(0,212,255,0.25)}
-  /* CART OVERLAY */
-  .cart-overlay{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--navy2);border-left:1px solid rgba(0,212,255,0.15);padding:1.5rem;z-index:200;transition:right .3s;overflow-y:auto}
-  .cart-overlay.open{right:0}
-  .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.08)}
-  .cart-header h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600}
-  .close-btn{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.3rem;line-height:1}
-  .cart-item{display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-  .cart-item-icon{font-size:1.8rem;width:46px;height:46px;background:var(--navy3);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .cart-item-info{flex:1}
-  .cart-item-name{font-size:0.85rem;font-weight:500;margin-bottom:3px}
-  .cart-item-price{font-size:0.8rem;color:var(--electric)}
-  .qty-ctrl{display:flex;align-items:center;gap:6px;margin-top:5px}
-  .qty-btn{background:rgba(255,255,255,0.08);border:none;color:var(--white);width:22px;height:22px;border-radius:4px;cursor:pointer;font-size:0.9rem}
-  .qty-val{font-size:0.85rem;min-width:20px;text-align:center}
-  .remove-btn{background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.95rem}
-  .cart-total{margin-top:1.2rem;padding:1rem;background:var(--navy3);border-radius:10px}
-  .cart-total-row{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--gray);margin-bottom:6px}
-  .cart-total-main{display:flex;justify-content:space-between;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1)}
-  .checkout-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
-  .checkout-btn:hover{background:var(--electric2)}
-  .empty-cart{text-align:center;padding:3rem 0;color:var(--gray);font-size:0.9rem}
-  /* PAYMENT */
-  #payment{max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center}
-  .payment-box{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem}
-  .qr-placeholder{width:200px;height:200px;background:var(--white);border-radius:12px;margin:1.5rem auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem}
-  .qr-inner{width:160px;height:160px;display:flex;align-items:center;justify-content:center}
-  .qr-label{color:var(--navy);font-size:0.75rem;font-weight:600}
-  .payment-info{text-align:left;margin-top:1.5rem;font-size:0.88rem;line-height:1.9;color:var(--gray)}
-  .payment-info strong{color:var(--white)}
-  .payment-step{background:var(--navy3);border-radius:10px;padding:1rem;margin-top:1rem;text-align:left}
-  .step-row{display:flex;gap:0.8rem;align-items:flex-start;margin-bottom:0.6rem;font-size:0.85rem;color:var(--gray)}
-  .step-num{color:var(--electric);font-weight:700;font-size:0.8rem;min-width:20px}
-  /* CONTACT */
-  #contact{max-width:700px;margin:0 auto;padding:3rem 2rem}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
-  .contact-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-decoration:none;transition:border-color .2s}
-  .contact-card:hover{border-color:rgba(0,212,255,0.4)}
-  .contact-icon{font-size:2rem;width:52px;height:52px;background:var(--navy3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .contact-info h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:4px}
-  .contact-info p{color:var(--gray);font-size:0.82rem}
-  .contact-form{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;margin-top:1.2rem}
-  .form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem}
-  .form-row{margin-bottom:1rem}
-  .form-row label{display:block;font-size:0.8rem;color:var(--gray);margin-bottom:6px}
-  .form-row input,.form-row textarea{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:var(--white);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
-  .form-row input:focus,.form-row textarea:focus{border-color:rgba(0,212,255,0.4)}
-  .form-row textarea{height:90px;resize:vertical}
-  .send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem}
-  /* QR SVG */
-  .qr-svg rect{fill:var(--navy)}
-  .backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:199;display:none}
-  .backdrop.open{display:block}
-  .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.4);color:var(--electric);padding:10px 18px;border-radius:10px;font-size:0.85rem;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s}
-  .toast.show{transform:translateY(0);opacity:1}
-</style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0A1628;--navy2:#111D35;--navy3:#162040;
+  --electric:#00D4FF;--electric2:#00AACC;
+  --white:#FFFFFF;--gray:#8899AA;
+  --accent2:#00FF88;--red:#FF4466;
+}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
 
-<h2 class="sr-only">ElectroVN — web bán sản phẩm mạch điện tử</h2>
+/* NAV */
+nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--electric);letter-spacing:-0.5px}
+.logo span{color:var(--white)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--gray);font-size:0.875rem;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.cart-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px}
+.cart-count{background:var(--electric);color:var(--navy);font-size:0.7rem;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
+
+/* SECTIONS */
+section{display:none}
+section.active{display:block}
+
+/* HERO */
+#home{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-tag{font-size:0.75rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin-bottom:1.2rem}
+.hero-title .accent{color:var(--electric)}
+.hero-desc{color:var(--gray);line-height:1.7;margin-bottom:2rem;font-size:0.95rem;max-width:420px}
+.btn-primary{background:var(--electric);color:var(--navy);font-weight:600;padding:12px 28px;border:none;border-radius:10px;cursor:pointer;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+.btn-primary:hover{background:var(--electric2)}
+.btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:500;padding:12px 28px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:background .2s}
+.btn-ghost:hover{background:rgba(0,212,255,0.08)}
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.pcb-box{width:280px;height:280px;background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
+.pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),transparent)}
+.pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.8rem;letter-spacing:2px}
+.stats-row{display:flex;gap:2rem;margin-top:2.5rem}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--electric)}
+.stat-label{font-size:0.75rem;color:var(--gray);margin-top:2px}
+
+/* PRODUCTS */
+#products-sec{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.section-head{margin-bottom:2rem}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem}
+.section-sub{color:var(--gray);font-size:0.9rem}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.product-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .15s}
+.product-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-2px)}
+.product-img{background:var(--navy3);height:150px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.product-info{padding:1.1rem}
+.product-name{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.3rem}
+.product-desc{color:var(--gray);font-size:0.78rem;line-height:1.5;margin-bottom:0.8rem}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--electric)}
+.product-price-hint{font-size:0.68rem;color:var(--gray);display:block;font-weight:400}
+.view-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:background .2s}
+.view-btn:hover{background:rgba(0,212,255,0.25)}
+
+/* PRODUCT MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:18px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative}
+.modal-header{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:flex-start;gap:1rem}
+.modal-icon{font-size:3rem;width:68px;height:68px;background:var(--navy3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-meta{flex:1}
+.modal-name{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:0.3rem}
+.modal-desc{color:var(--gray);font-size:0.82rem;line-height:1.6}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.07);border:none;color:var(--gray);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(255,255,255,0.12);color:var(--white)}
+.modal-body{padding:1.2rem 1.5rem}
+.options-title{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:1px}
+.option-row{display:flex;align-items:center;gap:1rem;padding:0.9rem 1rem;background:var(--navy3);border:1.5px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:0.6rem;cursor:pointer;transition:border-color .2s,background .2s}
+.option-row:hover{border-color:rgba(0,212,255,0.3)}
+.option-row.selected{border-color:var(--electric);background:rgba(0,212,255,0.06)}
+.option-check{width:20px;height:20px;border-radius:5px;border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.option-row.selected .option-check{background:var(--electric);border-color:var(--electric)}
+.option-check-inner{width:10px;height:10px;display:none}
+.option-row.selected .option-check-inner{display:block}
+.option-check-inner svg{width:10px;height:10px;fill:var(--navy)}
+.option-label{flex:1}
+.option-name{font-size:0.88rem;font-weight:500;margin-bottom:2px}
+.option-hint{font-size:0.75rem;color:var(--gray)}
+.option-price{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:var(--electric);white-space:nowrap}
+.modal-footer{padding:1rem 1.5rem 1.5rem;border-top:1px solid rgba(255,255,255,0.07)}
+.modal-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.modal-total-label{color:var(--gray);font-size:0.85rem}
+.modal-total-val{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--electric)}
+.modal-total-note{font-size:0.72rem;color:var(--gray);text-align:right;margin-top:2px}
+.modal-add-btn{width:100%;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+.modal-add-btn:hover{background:var(--electric2)}
+.modal-add-btn:disabled{background:rgba(0,212,255,0.2);color:rgba(0,212,255,0.4);cursor:not-allowed}
+
+/* SERVICES */
+#services-sec{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.service-intro{color:var(--gray);font-size:0.9rem;line-height:1.7;max-width:600px;margin-bottom:2rem}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
+.service-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.4rem}
+.service-icon{font-size:2rem;margin-bottom:0.8rem}
+.service-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.4rem}
+.service-desc{color:var(--gray);font-size:0.8rem;line-height:1.6;margin-bottom:1rem}
+.service-price-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:4px 10px;font-size:0.78rem;color:var(--electric);font-family:'Space Grotesk',sans-serif;font-weight:600}
+.order-form-wrap{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.8rem}
+.order-form-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:0.4rem}
+.order-form-sub{color:var(--gray);font-size:0.83rem;margin-bottom:1.5rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-row label{display:block;font-size:0.8rem;color:var(--gray);margin-bottom:6px}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:var(--white);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;appearance:none}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:rgba(0,212,255,0.4)}
+.form-row select option{background:var(--navy2)}
+.form-row textarea{height:90px;resize:vertical}
+.form-row.full{grid-column:1/-1}
+.checkbox-group{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem}
+.cb-item{display:flex;align-items:center;gap:6px;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:0.82rem;transition:border-color .2s}
+.cb-item input[type=checkbox]{accent-color:var(--electric);width:14px;height:14px}
+.cb-item:has(input:checked){border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.06)}
+.submit-row{display:flex;align-items:center;gap:1rem;margin-top:1.2rem}
+.submit-btn{background:var(--electric);color:var(--navy);border:none;padding:11px 28px;border-radius:8px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
+.submit-hint{color:var(--gray);font-size:0.78rem}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin:2rem 0}
+.step-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.1rem;text-align:center}
+.step-num-badge{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--electric);color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 0.7rem}
+.step-card-name{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem}
+.step-card-desc{font-size:0.75rem;color:var(--gray);line-height:1.5}
+
+/* PAYMENT */
+#payment-sec{max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center}
+.payment-box{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem}
+.qr-placeholder{width:200px;height:200px;background:var(--white);border-radius:12px;margin:1.5rem auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem}
+.qr-label{color:var(--navy);font-size:0.75rem;font-weight:600}
+.payment-info{text-align:left;margin-top:1.5rem;font-size:0.88rem;line-height:1.9;color:var(--gray)}
+.payment-info strong{color:var(--white)}
+.payment-step{background:var(--navy3);border-radius:10px;padding:1rem;margin-top:1rem;text-align:left}
+.step-row{display:flex;gap:0.8rem;align-items:flex-start;margin-bottom:0.6rem;font-size:0.85rem;color:var(--gray)}
+.step-num{color:var(--electric);font-weight:700;font-size:0.8rem;min-width:20px}
+.checkout-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+.checkout-btn:hover{background:var(--electric2)}
+
+/* CONTACT */
+#contact-sec{max-width:700px;margin:0 auto;padding:3rem 2rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+.contact-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-decoration:none;transition:border-color .2s}
+.contact-card:hover{border-color:rgba(0,212,255,0.4)}
+.contact-icon{font-size:2rem;width:52px;height:52px;background:var(--navy3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-info h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:4px}
+.contact-info p{color:var(--gray);font-size:0.82rem}
+.contact-form{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;margin-top:1.2rem}
+.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem}
+.contact-form .form-row{margin-bottom:1rem}
+.send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem}
+
+/* CART */
+.cart-overlay{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--navy2);border-left:1px solid rgba(0,212,255,0.15);padding:1.5rem;z-index:200;transition:right .3s;overflow-y:auto}
+.cart-overlay.open{right:0}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+.cart-header h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600}
+.close-btn{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.3rem;line-height:1}
+.cart-item{display:flex;align-items:flex-start;gap:1rem;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cart-item-icon{font-size:1.5rem;width:42px;height:42px;background:var(--navy3);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-size:0.83rem;font-weight:500;margin-bottom:2px}
+.cart-item-opts{font-size:0.72rem;color:var(--gray);margin-bottom:4px;line-height:1.4}
+.cart-item-price{font-size:0.8rem;color:var(--electric)}
+.qty-ctrl{display:flex;align-items:center;gap:6px;margin-top:5px}
+.qty-btn{background:rgba(255,255,255,0.08);border:none;color:var(--white);width:22px;height:22px;border-radius:4px;cursor:pointer;font-size:0.9rem}
+.qty-val{font-size:0.85rem;min-width:20px;text-align:center}
+.remove-btn{background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.95rem;padding-top:2px}
+.cart-total{margin-top:1.2rem;padding:1rem;background:var(--navy3);border-radius:10px}
+.cart-total-row{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--gray);margin-bottom:6px}
+.cart-total-main{display:flex;justify-content:space-between;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1)}
+.checkout-cart-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
+.empty-cart{text-align:center;padding:3rem 0;color:var(--gray);font-size:0.9rem}
+
+/* BACKDROP + TOAST */
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:199;display:none}
+.backdrop.open{display:block}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.4);color:var(--electric);padding:10px 18px;border-radius:10px;font-size:0.85rem;z-index:400;transform:translateY(80px);opacity:0;transition:all .3s}
+.toast.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
 
 <nav>
   <div class="logo"><span>Electro</span>VN</div>
   <ul class="nav-links">
     <li><a onclick="showSection('home')" class="active" id="nav-home">Trang chủ</a></li>
     <li><a onclick="showSection('products')" id="nav-products">Sản phẩm</a></li>
+    <li><a onclick="showSection('services')" id="nav-services">Dịch vụ</a></li>
     <li><a onclick="showSection('contact')" id="nav-contact">Liên hệ</a></li>
   </ul>
   <button class="cart-btn" onclick="toggleCart()">
-    <i class="ti ti-shopping-cart" style="font-size:16px" aria-hidden="true"></i>
-    Giỏ hàng
+    🛒 Giỏ hàng
     <span class="cart-count" id="cart-count">0</span>
   </button>
 </nav>
 
+<!-- HOME -->
 <section id="home" class="active">
-  <div id="hero">
+  <div style="padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
     <div>
       <div class="hero-tag">— Mạch điện tử chất lượng cao</div>
       <h1 class="hero-title">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
       <p class="hero-desc">Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.</p>
       <div>
         <button class="btn-primary" onclick="showSection('products')">Xem sản phẩm</button>
-        <button class="btn-ghost" onclick="showSection('contact')">Liên hệ</button>
+        <button class="btn-ghost" onclick="showSection('services')">Đặt làm mạch</button>
       </div>
       <div class="stats-row">
         <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Sản phẩm</span></div>
@@ -158,18 +235,126 @@
   </div>
 </section>
 
+<!-- PRODUCTS -->
 <section id="products-sec">
-  <div id="products">
+  <div id="products" style="max-width:1100px;margin:0 auto;padding:3rem 2rem">
     <div class="section-head">
       <h2 class="section-title">Sản phẩm</h2>
-      <p class="section-sub">Các project mạch điện tử nổi bật</p>
+      <p class="section-sub">Nhấn vào sản phẩm để chọn tài liệu / file bạn cần</p>
     </div>
     <div class="product-grid" id="product-grid"></div>
   </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services-sec">
+  <div id="services-sec-inner" style="max-width:1100px;margin:0 auto;padding:3rem 2rem">
+    <div class="section-head">
+      <h2 class="section-title">Dịch vụ sản xuất mạch</h2>
+      <p class="section-sub">Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ</p>
+    </div>
+    <p class="service-intro">Chúng tôi cung cấp dịch vụ thiết kế và sản xuất mạch điện tử theo yêu cầu: từ vẽ schematic, layout PCB, đến hàn linh kiện và kiểm thử. Phù hợp cho sinh viên làm đồ án, kỹ sư cần prototype, hoặc doanh nghiệp cần số lượng nhỏ.</p>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">📐</div>
+        <div class="service-name">Thiết kế Schematic</div>
+        <div class="service-desc">Vẽ sơ đồ nguyên lý theo yêu cầu, cung cấp file .sch hoặc .pdf. Hỗ trợ KiCad, Altium, Eagle.</div>
+        <div class="service-price-tag">Từ 150.000đ</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🟩</div>
+        <div class="service-name">Layout PCB</div>
+        <div class="service-desc">Thiết kế board PCB 1–4 lớp, tối ưu layout, cung cấp Gerber để sản xuất.</div>
+        <div class="service-price-tag">Từ 250.000đ</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <div class="service-name">Sản xuất & Lắp ráp</div>
+        <div class="service-desc">In board + hàn SMD/THT, kiểm thử, đóng gói. Hỗ trợ số lượng từ 1 đến 100 bản.</div>
+        <div class="service-price-tag">Báo giá theo yêu cầu</div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-bottom:1rem">
+      <h2 class="section-title" style="font-size:1.2rem">Quy trình</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step-card">
+        <div class="step-num-badge">1</div>
+        <div class="step-card-name">Gửi yêu cầu</div>
+        <div class="step-card-desc">Điền form bên dưới hoặc liên hệ Zalo/Gmail</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-badge">2</div>
+        <div class="step-card-name">Báo giá</div>
+        <div class="step-card-desc">Phản hồi trong 24h với bảng giá chi tiết</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-badge">3</div>
+        <div class="step-card-name">Đặt cọc & Thiết kế</div>
+        <div class="step-card-desc">Đặt cọc 50%, tiến hành thiết kế và gửi preview</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-badge">4</div>
+        <div class="step-card-name">Giao hàng</div>
+        <div class="step-card-desc">Thanh toán phần còn lại, giao file + board qua bưu điện</div>
+      </div>
+    </div>
+
+    <div class="order-form-wrap">
+      <div class="order-form-title">Gửi yêu cầu đặt làm mạch</div>
+      <div class="order-form-sub">Điền thông tin bên dưới, chúng tôi sẽ báo giá trong vòng 24 giờ.</div>
+      <div class="form-grid">
+        <div class="form-row">
+          <label>Họ tên</label>
+          <input type="text" placeholder="Nguyễn Văn A">
+        </div>
+        <div class="form-row">
+          <label>Email / Zalo / SĐT</label>
+          <input type="text" placeholder="email@gmail.com hoặc SĐT">
+        </div>
+        <div class="form-row">
+          <label>Loại dịch vụ cần</label>
+          <select>
+            <option>Chọn dịch vụ...</option>
+            <option>Thiết kế Schematic</option>
+            <option>Layout PCB</option>
+            <option>Schematic + PCB</option>
+            <option>Sản xuất + Lắp ráp</option>
+            <option>Trọn gói (Thiết kế + Sản xuất)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Số lượng board cần</label>
+          <input type="text" placeholder="Ví dụ: 5 bản">
+        </div>
+        <div class="form-row full">
+          <label>Tài liệu đầu vào (bạn có sẵn gì?)</label>
+          <div class="checkbox-group">
+            <label class="cb-item"><input type="checkbox"> Sơ đồ tay / ý tưởng</label>
+            <label class="cb-item"><input type="checkbox"> File Schematic (.sch)</label>
+            <label class="cb-item"><input type="checkbox"> File PCB (.pcb / .brd)</label>
+            <label class="cb-item"><input type="checkbox"> Datasheet linh kiện</label>
+            <label class="cb-item"><input type="checkbox"> Chưa có gì</label>
+          </div>
+        </div>
+        <div class="form-row full">
+          <label>Mô tả yêu cầu chi tiết</label>
+          <textarea placeholder="Mô tả chức năng mạch, linh kiện chính, kích thước yêu cầu, deadline..."></textarea>
+        </div>
+      </div>
+      <div class="submit-row">
+        <button class="submit-btn" onclick="showToast('Đã gửi yêu cầu! Sẽ phản hồi trong 24h.')">Gửi yêu cầu</button>
+        <span class="submit-hint">Hoặc nhắn thẳng qua Zalo để được tư vấn nhanh hơn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
 <section id="payment-sec">
-  <div id="payment">
+  <div style="max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center">
     <div class="section-head" style="text-align:center;margin-bottom:1.5rem">
       <h2 class="section-title">Thanh toán</h2>
       <p class="section-sub">Quét mã QR để thanh toán</p>
@@ -219,13 +404,14 @@
         <div class="step-row"><span class="step-num">3</span><span>Nhập đúng số tiền và ghi chú mã đơn hàng</span></div>
         <div class="step-row"><span class="step-num">4</span><span>Chụp màn hình xác nhận và gửi qua Zalo/Gmail</span></div>
       </div>
-      <button class="checkout-btn" style="margin-top:1.2rem" onclick="showSection('contact')">Gửi xác nhận qua Zalo / Gmail</button>
+      <button class="checkout-btn" onclick="showSection('contact')">Gửi xác nhận qua Zalo / Gmail</button>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact-sec">
-  <div id="contact">
+  <div id="contact" style="max-width:700px;margin:0 auto;padding:3rem 2rem">
     <div class="section-head">
       <h2 class="section-title">Liên hệ</h2>
       <p class="section-sub">Hỗ trợ tư vấn và đặt hàng</p>
@@ -233,17 +419,11 @@
     <div class="contact-grid">
       <a class="contact-card" href="mailto:your@gmail.com">
         <div class="contact-icon">✉️</div>
-        <div class="contact-info">
-          <h3>Gmail</h3>
-          <p>your@gmail.com</p>
-        </div>
+        <div class="contact-info"><h3>Gmail</h3><p>your@gmail.com</p></div>
       </a>
       <a class="contact-card" href="https://zalo.me/your_number" target="_blank">
         <div class="contact-icon">💬</div>
-        <div class="contact-info">
-          <h3>Zalo</h3>
-          <p>Chat trực tiếp ngay</p>
-        </div>
+        <div class="contact-info"><h3>Zalo</h3><p>Chat trực tiếp ngay</p></div>
       </a>
     </div>
     <div class="contact-form">
@@ -256,11 +436,39 @@
   </div>
 </section>
 
+<!-- PRODUCT MODAL -->
+<div class="modal-backdrop" id="product-modal" onclick="handleModalBackdropClick(event)">
+  <div class="modal" id="modal-inner">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <div class="modal-icon" id="modal-icon"></div>
+      <div class="modal-meta">
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-desc" id="modal-desc"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="options-title">Chọn tài liệu / file cần mua</div>
+      <div id="modal-options"></div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-total-row">
+        <span class="modal-total-label">Tổng tiền đã chọn</span>
+        <div>
+          <div class="modal-total-val" id="modal-total">0đ</div>
+        </div>
+      </div>
+      <button class="modal-add-btn" id="modal-add-btn" onclick="addModalToCart()" disabled>Thêm vào giỏ hàng</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
 <div class="backdrop" id="backdrop" onclick="toggleCart()"></div>
 <div class="cart-overlay" id="cart">
   <div class="cart-header">
     <h2>Giỏ hàng</h2>
-    <button class="close-btn" onclick="toggleCart()"><i class="ti ti-x" aria-label="Đóng"></i></button>
+    <button class="close-btn" onclick="toggleCart()">✕</button>
   </div>
   <div id="cart-items"></div>
   <div id="cart-footer"></div>
@@ -270,124 +478,280 @@
 
 <script>
 const products = [
-  {id:1,name:'Mạch Arduino Uno R3',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B, phù hợp cho người mới bắt đầu.',price:85000,icon:'🤖'},
-  {id:2,name:'ESP32 Dev Board',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',price:120000,icon:'📡'},
-  {id:3,name:'Cảm biến DHT22',desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',price:45000,icon:'🌡️'},
-  {id:4,name:'Module L298N',desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',price:35000,icon:'⚙️'},
-  {id:5,name:'OLED 0.96" I2C',desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ thấp.',price:55000,icon:'🖥️'},
-  {id:6,name:'Kit Nguồn LM317',desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',price:70000,icon:'🔋'},
+  {
+    id:1, name:'Mạch Arduino Uno R3', icon:'🤖',
+    desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',
+    options:[
+      {key:'schematic', label:'Mạch Schematic', hint:'File .sch / .pdf sơ đồ nguyên lý', price:30000},
+      {key:'pcb',       label:'Mạch PCB',       hint:'File Gerber + .pcb layout board', price:40000},
+      {key:'source',    label:'File Source Code',hint:'Code mẫu Arduino, thư viện',      price:25000},
+      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:20000},
+    ]
+  },
+  {
+    id:2, name:'ESP32 Dev Board', icon:'📡',
+    desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',
+    options:[
+      {key:'schematic', label:'Mạch Schematic', hint:'File .sch / .pdf sơ đồ nguyên lý', price:35000},
+      {key:'pcb',       label:'Mạch PCB',       hint:'File Gerber + .pcb layout board', price:50000},
+      {key:'source',    label:'File Source Code',hint:'Code mẫu ESP-IDF / Arduino',      price:30000},
+      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:20000},
+    ]
+  },
+  {
+    id:3, name:'Cảm biến DHT22', icon:'🌡️',
+    desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',
+    options:[
+      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ kết nối DHT22 với MCU',     price:20000},
+      {key:'pcb',       label:'Mạch PCB',       hint:'Board tích hợp sẵn pull-up, LED', price:30000},
+      {key:'source',    label:'File Source Code',hint:'Code đọc cảm biến, hiển thị LCD', price:20000},
+      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
+    ]
+  },
+  {
+    id:4, name:'Module L298N', icon:'⚙️',
+    desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',
+    options:[
+      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ nguyên lý điều khiển motor',price:20000},
+      {key:'pcb',       label:'Mạch PCB',       hint:'Layout PCB L298N full components', price:30000},
+      {key:'source',    label:'File Source Code',hint:'Code điều khiển tốc độ + chiều',  price:18000},
+      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
+    ]
+  },
+  {
+    id:5, name:'OLED 0.96" I2C', icon:'🖥️',
+    desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ điện thấp.',
+    options:[
+      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ kết nối OLED + MCU',        price:20000},
+      {key:'pcb',       label:'Mạch PCB',       hint:'Board mở rộng OLED header sẵn',   price:28000},
+      {key:'source',    label:'File Source Code',hint:'Thư viện + code hiển thị text/đồ thị',price:22000},
+      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
+    ]
+  },
+  {
+    id:6, name:'Kit Nguồn LM317', icon:'🔋',
+    desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',
+    options:[
+      {key:'schematic', label:'Mạch Schematic', hint:'Sơ đồ nguồn LM317 có bảo vệ',    price:25000},
+      {key:'pcb',       label:'Mạch PCB',       hint:'Layout PCB gọn, có chân mount',   price:35000},
+      {key:'source',    label:'File Source Code',hint:'Code đo điện áp output (ADC)',    price:18000},
+      {key:'report',    label:'File Báo cáo',   hint:'Tài liệu Word/PDF mô tả dự án',   price:15000},
+    ]
+  },
 ];
 
-let cart = {};
+let cart = []; // [{id, name, icon, selectedOptions:[{key,label,price}], unitPrice, qty}]
+let modalProductId = null;
+let modalSelected = new Set();
 let cartOpen = false;
 
 function fmt(n){return n.toLocaleString('vi-VN')+'đ'}
 
+/* ---- PRODUCTS ---- */
 function renderProducts(){
   const g = document.getElementById('product-grid');
-  g.innerHTML = products.map(p=>`
-    <div class="product-card">
+  g.innerHTML = products.map(p => {
+    const total = p.options.reduce((a,o) => a+o.price, 0);
+    return `
+    <div class="product-card" onclick="openModal(${p.id})">
       <div class="product-img">${p.icon}</div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <div class="product-desc">${p.desc}</div>
         <div class="product-footer">
-          <span class="product-price">${fmt(p.price)}</span>
-          <button class="add-btn" onclick="addToCart(${p.id})">+ Thêm</button>
+          <div>
+            <span class="product-price">${fmt(total)}</span>
+            <span class="product-price-hint">trọn bộ 4 file</span>
+          </div>
+          <button class="view-btn">Xem & Chọn →</button>
         </div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
-function addToCart(id){
-  cart[id] = (cart[id]||0)+1;
+/* ---- MODAL ---- */
+function openModal(id){
+  const p = products.find(x=>x.id===id);
+  modalProductId = id;
+  modalSelected = new Set();
+
+  document.getElementById('modal-icon').textContent = p.icon;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-desc').textContent = p.desc;
+
+  document.getElementById('modal-options').innerHTML = p.options.map(o => `
+    <div class="option-row" id="opt-${id}-${o.key}" onclick="toggleOption('${o.key}')">
+      <div class="option-check">
+        <div class="option-check-inner">
+          <svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#0A1628" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="option-label">
+        <div class="option-name">${o.label}</div>
+        <div class="option-hint">${o.hint}</div>
+      </div>
+      <div class="option-price">${fmt(o.price)}</div>
+    </div>`).join('');
+
+  updateModalTotal();
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleModalBackdropClick(e){
+  if(e.target === document.getElementById('product-modal')) closeModal();
+}
+
+function toggleOption(key){
+  if(modalSelected.has(key)) modalSelected.delete(key);
+  else modalSelected.add(key);
+
+  const p = products.find(x=>x.id===modalProductId);
+  const row = document.getElementById(`opt-${modalProductId}-${key}`);
+  if(row) row.classList.toggle('selected', modalSelected.has(key));
+  updateModalTotal();
+}
+
+function updateModalTotal(){
+  const p = products.find(x=>x.id===modalProductId);
+  const total = [...modalSelected].reduce((a,key)=>{
+    const o = p.options.find(x=>x.key===key);
+    return a + (o ? o.price : 0);
+  }, 0);
+  document.getElementById('modal-total').textContent = fmt(total);
+  document.getElementById('modal-add-btn').disabled = modalSelected.size === 0;
+}
+
+function addModalToCart(){
+  const p = products.find(x=>x.id===modalProductId);
+  const selected = p.options.filter(o => modalSelected.has(o.key));
+  const unitPrice = selected.reduce((a,o)=>a+o.price,0);
+
+  // Check if same product + same options combo already in cart
+  const existing = cart.find(item =>
+    item.id === p.id &&
+    item.selectedOptions.map(o=>o.key).sort().join(',') === selected.map(o=>o.key).sort().join(',')
+  );
+  if(existing){ existing.qty++; }
+  else {
+    cart.push({id:p.id, name:p.name, icon:p.icon, selectedOptions:selected, unitPrice, qty:1});
+  }
+
   renderCart();
+  closeModal();
   showToast('Đã thêm vào giỏ hàng!');
 }
 
-function changeQty(id,d){
-  cart[id] = Math.max(0,(cart[id]||0)+d);
-  if(cart[id]===0) delete cart[id];
+/* ---- CART ---- */
+function renderCart(){
+  const total = cart.reduce((a,item)=>a+item.unitPrice*item.qty, 0);
+  const count = cart.reduce((a,item)=>a+item.qty, 0);
+  document.getElementById('cart-count').textContent = count;
+
+  const ci = document.getElementById('cart-items');
+  const cf = document.getElementById('cart-footer');
+
+  if(cart.length === 0){
+    ci.innerHTML = '<div class="empty-cart"><div style="font-size:2rem">🛒</div><p style="margin-top:1rem">Giỏ hàng trống</p></div>';
+    cf.innerHTML = '';
+    return;
+  }
+
+  ci.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-icon">${item.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-opts">${item.selectedOptions.map(o=>o.label).join(' · ')}</div>
+        <div class="cart-item-price">${fmt(item.unitPrice)}</div>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+        </div>
+      </div>
+      <button class="remove-btn" onclick="removeItem(${idx})" title="Xóa">🗑</button>
+    </div>`).join('');
+
+  cf.innerHTML = `
+    <div class="cart-total">
+      <div class="cart-total-row"><span>Tạm tính</span><span>${fmt(total)}</span></div>
+      <div class="cart-total-row"><span>Vận chuyển file</span><span style="color:var(--accent2)">Miễn phí</span></div>
+      <div class="cart-total-main"><span>Tổng cộng</span><span style="color:var(--electric)">${fmt(total)}</span></div>
+    </div>
+    <button class="checkout-cart-btn" onclick="checkout()">Tiến hành thanh toán</button>`;
+}
+
+function changeQty(idx, d){
+  cart[idx].qty = Math.max(0, cart[idx].qty + d);
+  if(cart[idx].qty === 0) cart.splice(idx, 1);
   renderCart();
 }
 
-function renderCart(){
-  const ids = Object.keys(cart);
-  const count = ids.reduce((a,id)=>a+cart[id],0);
-  document.getElementById('cart-count').textContent = count;
-  const total = ids.reduce((a,id)=>a+products.find(p=>p.id==id).price*cart[id],0);
-  const ci = document.getElementById('cart-items');
-  const cf = document.getElementById('cart-footer');
-  if(ids.length===0){
-    ci.innerHTML='<div class="empty-cart"><i class="ti ti-shopping-cart" style="font-size:2rem;color:var(--gray)" aria-hidden="true"></i><p style="margin-top:1rem">Giỏ hàng trống</p></div>';
-    cf.innerHTML='';
-    return;
-  }
-  ci.innerHTML = ids.map(id=>{
-    const p=products.find(x=>x.id==id);
-    return`<div class="cart-item">
-      <div class="cart-item-icon">${p.icon}</div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${p.name}</div>
-        <div class="cart-item-price">${fmt(p.price)}</div>
-        <div class="qty-ctrl">
-          <button class="qty-btn" onclick="changeQty(${id},-1)">−</button>
-          <span class="qty-val">${cart[id]}</span>
-          <button class="qty-btn" onclick="changeQty(${id},1)">+</button>
-        </div>
-      </div>
-      <button class="remove-btn" onclick="changeQty(${id},-${cart[id]})" aria-label="Xóa"><i class="ti ti-trash" aria-hidden="true"></i></button>
-    </div>`}).join('');
-  cf.innerHTML=`<div class="cart-total">
-    <div class="cart-total-row"><span>Tạm tính</span><span>${fmt(total)}</span></div>
-    <div class="cart-total-row"><span>Vận chuyển</span><span>Thoả thuận</span></div>
-    <div class="cart-total-main"><span>Tổng cộng</span><span style="color:var(--electric)">${fmt(total)}</span></div>
-  </div>
-  <button class="checkout-btn" onclick="checkout()">Tiến hành thanh toán</button>`;
+function removeItem(idx){
+  cart.splice(idx, 1);
+  renderCart();
 }
 
 function checkout(){
-  if(Object.keys(cart).length===0) return;
-  const ids=Object.keys(cart);
-  const total=ids.reduce((a,id)=>a+products.find(p=>p.id==id).price*cart[id],0);
-  const summary=ids.map(id=>{const p=products.find(x=>x.id==id);return`<div style="display:flex;justify-content:space-between;font-size:0.83rem;color:var(--gray);margin-bottom:4px"><span>${p.name} x${cart[id]}</span><span style="color:var(--white)">${fmt(p.price*cart[id])}</span></div>`;}).join('');
-  document.getElementById('order-summary').innerHTML=summary+`<div style="display:flex;justify-content:space-between;font-family:'Space Grotesk';font-weight:700;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1);margin-top:8px"><span>Tổng</span><span style="color:var(--electric)">${fmt(total)}</span></div>`;
+  if(cart.length === 0) return;
+  const total = cart.reduce((a,item)=>a+item.unitPrice*item.qty, 0);
+  const rows = cart.map(item =>
+    `<div style="display:flex;justify-content:space-between;font-size:0.82rem;color:var(--gray);margin-bottom:6px">
+      <span>${item.name} (${item.selectedOptions.map(o=>o.label).join(', ')}) x${item.qty}</span>
+      <span style="color:var(--white)">${fmt(item.unitPrice*item.qty)}</span>
+    </div>`
+  ).join('');
+  document.getElementById('order-summary').innerHTML = rows +
+    `<div style="display:flex;justify-content:space-between;font-family:'Space Grotesk';font-weight:700;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1);margin-top:8px">
+      <span>Tổng</span><span style="color:var(--electric)">${fmt(total)}</span>
+    </div>`;
   toggleCart();
   showSection('payment');
 }
 
+/* ---- NAV / SECTIONS ---- */
 function toggleCart(){
-  cartOpen=!cartOpen;
-  document.getElementById('cart').classList.toggle('open',cartOpen);
-  document.getElementById('backdrop').classList.toggle('open',cartOpen);
+  cartOpen = !cartOpen;
+  document.getElementById('cart').classList.toggle('open', cartOpen);
+  document.getElementById('backdrop').classList.toggle('open', cartOpen);
 }
 
 function showSection(name){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  if(name==='home'){
-    document.getElementById('home').classList.add('active');
-    document.getElementById('nav-home').classList.add('active');
-  } else if(name==='products'){
-    document.getElementById('products-sec').classList.add('active');
-    document.getElementById('nav-products').classList.add('active');
-  } else if(name==='payment'){
-    document.getElementById('payment-sec').classList.add('active');
-  } else if(name==='contact'){
-    document.getElementById('contact-sec').classList.add('active');
-    document.getElementById('nav-contact').classList.add('active');
+  const map = {
+    home:     {sec:'home',        nav:'nav-home'},
+    products: {sec:'products-sec',nav:'nav-products'},
+    services: {sec:'services-sec',nav:'nav-services'},
+    payment:  {sec:'payment-sec', nav:null},
+    contact:  {sec:'contact-sec', nav:'nav-contact'},
+  };
+  const m = map[name];
+  if(m){
+    document.getElementById(m.sec).classList.add('active');
+    if(m.nav) document.getElementById(m.nav).classList.add('active');
   }
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 let toastTimer;
 function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
+  const t = document.getElementById('toast');
+  t.textContent = msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2500);
 }
 
 renderProducts();
 renderCart();
 </script>
+</body>
+</html>
