@@ -1,93 +1,126 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="notranslate" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ElectroVN — Mạch điện tử chuyên nghiệp</title>
+<meta name="google" content="notranslate">
+<title>ElectroVN — Mạch điện tử & IoT Chuyên Nghiệp</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0A1628;--navy2:#111D35;--navy3:#162040;
-  --electric:#00D4FF;--electric2:#00AACC;
-  --white:#FFFFFF;--gray:#8899AA;
-  --accent2:#00FF88;--red:#FF4466;
+  --navy:#060d19;--navy2:#0e1726;--navy3:#142238;
+  --electric:#00d4ff;--electric2:#00aacc;
+  --white:#ffffff;--gray:#8899aa;
+  --accent2:#00ff88;--red:#ff4466;
+  --circuit-glow:rgba(0, 212, 255, 0.15);
 }
-body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;top:0 !important}
 
-/* NAV */
-nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--electric);letter-spacing:-0.5px}
-.logo span{color:var(--white)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--gray);font-size:0.875rem;text-decoration:none;cursor:pointer;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--white)}
-.nav-right{display:flex;align-items:center;gap:1rem}
+/* NỀN CÔNG NGHỆ IoT, HARDWARE & MẠCH ĐIỆN TỬ */
+body{
+  font-family:'Inter',sans-serif;
+  background-color: var(--navy);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(10, 22, 40, 0.5) 0%, var(--navy) 100%),
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+  color:var(--white);
+  min-height:100vh;
+  top:0 !important;
+}
 
-/* VI | EN SWITCH BUTTON (DESIGN GIỐNG ẢNH) */
-.lang-switch-custom{display:flex;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:3px;font-size:0.8rem;font-weight:600}
-.lang-btn{padding:4px 12px;border-radius:16px;cursor:pointer;color:var(--gray);transition:all .2s;user-select:none}
-.lang-btn.active{background:var(--electric);color:var(--navy)}
-
-/* ẨN WIDGET GOOGLE TRANSLATE MẶC ĐỊNH */
-#google_translate_element { display: none !important; }
+/* KHẮC PHỤC LỖI GOOGLE TRANSLATE ĐÈ GIAO DIỆN */
 .goog-te-banner-frame { display: none !important; }
 body { top: 0px !important; }
 .skiptranslate iframe { display: none !important; }
+#google_translate_element { display: none !important; }
+#goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
 
-/* ACCOUNT & CART BTN */
-.nav-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px;transition:background .2s}
-.nav-btn:hover{background:rgba(0,212,255,0.2)}
-.cart-count{background:var(--electric);color:var(--navy);font-size:0.7rem;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
+/* NAV */
+nav{
+  background:rgba(14, 23, 38, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid rgba(0,212,255,0.2);
+  padding:0 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:65px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;color:var(--electric);letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--white)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--gray);font-size:0.9rem;font-weight:500;text-decoration:none;cursor:pointer;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--electric);text-shadow: 0 0 8px rgba(0,212,255,0.4)}
+.nav-right{display:flex;align-items:center;gap:1rem}
 
-/* SECTIONS — mỗi section độc lập, ẩn/hiện bằng display */
-.page{display:none;min-height:calc(100vh - 60px)}
+/* VI | EN SWITCH BUTTON KHÔNG BỊ DỊCH LỖI */
+.lang-switch-custom{display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(0,212,255,0.3);border-radius:20px;padding:3px;font-size:0.8rem;font-weight:700}
+.lang-btn{padding:4px 12px;border-radius:16px;cursor:pointer;color:var(--gray);transition:all .2s;user-select:none}
+.lang-btn.active{background:var(--electric);color:var(--navy);box-shadow:0 0 10px rgba(0,212,255,0.5)}
+
+/* BUTTONS */
+.nav-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px;transition:all .2s;font-weight:500}
+.nav-btn:hover{background:rgba(0,212,255,0.25);box-shadow: 0 0 12px rgba(0,212,255,0.3)}
+.cart-count{background:var(--electric);color:var(--navy);font-size:0.75rem;font-weight:700;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center}
+
+/* SECTIONS */
+.page{display:none;min-height:calc(100vh - 65px)}
 .page.active{display:block}
 
-/* CĂN GIỮA TIÊU ĐỀ BẢNG THÔNG TIN SẢN PHẨM & DỊCH VỤ */
-.section-head{margin-bottom:2rem;text-align:center}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem;text-align:center}
-.section-sub{color:var(--gray);font-size:0.9rem;text-align:center}
+/* CĂN GIỮA TIÊU ĐỀ */
+.section-head{margin-bottom:2.5rem;text-align:center}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:0.5rem;text-align:center;background:linear-gradient(90deg, #ffffff, var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-sub{color:var(--gray);font-size:0.95rem;text-align:center}
 
 /* HOME */
-.home-inner{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.hero-tag{font-size:0.75rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase}
-.hero-title{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin-bottom:1.2rem}
-.hero-title .accent{color:var(--electric)}
-.hero-desc{color:var(--gray);line-height:1.7;margin-bottom:2rem;font-size:0.95rem;max-width:420px}
-.btn-primary{background:var(--electric);color:var(--navy);font-weight:600;padding:12px 28px;border:none;border-radius:10px;cursor:pointer;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;transition:background .2s}
-.btn-primary:hover{background:var(--electric2)}
-.btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:500;padding:12px 28px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:background .2s}
-.btn-ghost:hover{background:rgba(0,212,255,0.08)}
+.home-inner{padding:4rem 2rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:center}
+.hero-tag{font-size:0.8rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase;font-weight:600;display:inline-block;padding:4px 12px;background:rgba(0,212,255,0.1);border-radius:20px;border:1px solid rgba(0,212,255,0.2)}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:3.2rem;font-weight:700;line-height:1.15;margin-bottom:1.2rem}
+.hero-title .accent{color:var(--electric);text-shadow: 0 0 15px rgba(0,212,255,0.4)}
+.hero-desc{color:var(--gray);line-height:1.7;margin-bottom:2rem;font-size:1rem;max-width:480px}
+.btn-primary{background:var(--electric);color:var(--navy);font-weight:700;padding:12px 30px;border:none;border-radius:10px;cursor:pointer;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;transition:all .2s;box-shadow: 0 0 15px rgba(0,212,255,0.3)}
+.btn-primary:hover{background:var(--electric2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:600;padding:12px 30px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:all .2s}
+.btn-ghost:hover{background:rgba(0,212,255,0.1);border-color:var(--electric)}
 .hero-visual{display:flex;align-items:center;justify-content:center}
-.pcb-box{width:280px;height:280px;background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
-.pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),transparent)}
-.pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.8rem;letter-spacing:2px}
-.stats-row{display:flex;gap:2rem;margin-top:2.5rem}
+.pcb-box{width:320px;height:320px;background:rgba(14, 23, 38, 0.8);border:1px solid rgba(0,212,255,0.4);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;position:relative;overflow:hidden;box-shadow: 0 0 30px rgba(0,212,255,0.15)}
+.pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),var(--accent2),transparent)}
+.pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;letter-spacing:3px;font-weight:700}
+.stats-row{display:flex;gap:2.5rem;margin-top:2.5rem}
 .stat{display:flex;flex-direction:column}
-.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--electric)}
-.stat-label{font-size:0.75rem;color:var(--gray);margin-top:2px}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--electric)}
+.stat-label{font-size:0.8rem;color:var(--gray);margin-top:2px}
 
 /* PRODUCTS */
 .products-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.product-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .15s}
-.product-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-2px)}
-.product-img{background:var(--navy3);height:150px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
-.product-info{padding:1.1rem}
-.product-name{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.3rem}
-.product-desc{color:var(--gray);font-size:0.78rem;line-height:1.5;margin-bottom:0.8rem}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.product-card{background:rgba(14, 23, 38, 0.7);border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .25s;backdrop-filter: blur(5px)}
+.product-card:hover{border-color:rgba(0,212,255,0.5);transform:translateY(-4px);box-shadow: 0 8px 25px rgba(0,212,255,0.15)}
+.product-img{background:rgba(20, 34, 56, 0.6);height:160px;display:flex;align-items:center;justify-content:center;font-size:3.8rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.product-info{padding:1.2rem}
+.product-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.4rem}
+.product-desc{color:var(--gray);font-size:0.8rem;line-height:1.5;margin-bottom:1rem}
 .product-footer{display:flex;align-items:center;justify-content:space-between}
-.product-price{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--electric)}
-.product-price-hint{font-size:0.68rem;color:var(--gray);display:block;font-weight:400}
-.view-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:background .2s}
-.view-btn:hover{background:rgba(0,212,255,0.25)}
+.product-price{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;color:var(--electric)}
+.product-price-hint{font-size:0.7rem;color:var(--gray);display:block;font-weight:400}
+.view-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:7px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:all .2s;font-weight:600}
+.view-btn:hover{background:var(--electric);color:var(--navy)}
 
-/* PRODUCT MODAL & ACCOUNT MODAL */
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-backdrop.open{display:flex}
-.modal{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:18px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative}
+.modal{background:var(--navy2);border:1px solid rgba(0,212,255,0.3);border-radius:18px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 0 30px rgba(0,212,255,0.2)}
 .modal-header{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:flex-start;gap:1rem}
 .modal-icon{font-size:3rem;width:68px;height:68px;background:var(--navy3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .modal-meta{flex:1}
@@ -97,9 +130,9 @@ body { top: 0px !important; }
 .modal-close:hover{background:rgba(255,255,255,0.12);color:var(--white)}
 .modal-body{padding:1.2rem 1.5rem}
 .options-title{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:1px}
-.option-row{display:flex;align-items:center;gap:1rem;padding:0.9rem 1rem;background:var(--navy3);border:1.5px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:0.6rem;cursor:pointer;transition:border-color .2s,background .2s}
-.option-row:hover{border-color:rgba(0,212,255,0.3)}
-.option-row.selected{border-color:var(--electric);background:rgba(0,212,255,0.06)}
+.option-row{display:flex;align-items:center;gap:1rem;padding:0.9rem 1rem;background:var(--navy3);border:1.5px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:0.6rem;cursor:pointer;transition:all .2s}
+.option-row:hover{border-color:rgba(0,212,255,0.4)}
+.option-row.selected{border-color:var(--electric);background:rgba(0,212,255,0.08)}
 .option-check{width:20px;height:20px;border-radius:5px;border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
 .option-row.selected .option-check{background:var(--electric);border-color:var(--electric)}
 .option-check-inner{width:10px;height:10px;display:none}
@@ -113,75 +146,76 @@ body { top: 0px !important; }
 .modal-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .modal-total-label{color:var(--gray);font-size:0.85rem}
 .modal-total-val{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--electric)}
-.modal-add-btn{width:100%;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+.modal-add-btn{width:100%;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:all .2s}
 .modal-add-btn:hover{background:var(--electric2)}
 .modal-add-btn:disabled{background:rgba(0,212,255,0.2);color:rgba(0,212,255,0.4);cursor:not-allowed}
 
-/* ACCOUNT FORM IN MODAL */
+/* ACCOUNT TAB FORM */
 .auth-tabs{display:flex;gap:1rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.1)}
 .auth-tab{padding:8px 0;color:var(--gray);cursor:pointer;font-weight:600;font-size:0.9rem;border-bottom:2px solid transparent;transition:all .2s}
 .auth-tab.active{color:var(--electric);border-bottom-color:var(--electric)}
 
 /* SERVICES */
 .services-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem}
-.service-intro{color:var(--gray);font-size:0.9rem;line-height:1.7;max-width:700px;margin:0 auto 2rem;text-align:center}
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
-.service-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.4rem;text-align:center}
-.service-icon{font-size:2rem;margin-bottom:0.8rem}
-.service-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.4rem}
-.service-desc{color:var(--gray);font-size:0.8rem;line-height:1.6;margin-bottom:1rem}
-.service-price-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:4px 10px;font-size:0.78rem;color:var(--electric);font-family:'Space Grotesk',sans-serif;font-weight:600}
-.order-form-wrap{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.8rem}
-.order-form-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:0.4rem;text-align:center}
-.order-form-sub{color:var(--gray);font-size:0.83rem;margin-bottom:1.5rem;text-align:center}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.service-intro{color:var(--gray);font-size:0.95rem;line-height:1.7;max-width:700px;margin:0 auto 2.5rem;text-align:center}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
+.service-card{background:rgba(14, 23, 38, 0.7);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.6rem;text-align:center;backdrop-filter: blur(5px);transition:all .25s}
+.service-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-4px)}
+.service-icon{font-size:2.2rem;margin-bottom:0.8rem}
+.service-name{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:0.4rem}
+.service-desc{color:var(--gray);font-size:0.82rem;line-height:1.6;margin-bottom:1.2rem}
+.service-price-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:5px 12px;font-size:0.8rem;color:var(--electric);font-family:'Space Grotesk',sans-serif;font-weight:600}
+.order-form-wrap{background:rgba(14, 23, 38, 0.8);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem;box-shadow: 0 10px 30px rgba(0,0,0,0.3)}
+.order-form-title{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:0.4rem;text-align:center}
+.order-form-sub{color:var(--gray);font-size:0.85rem;margin-bottom:1.5rem;text-align:center}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1rem}
 .form-row label{display:block;font-size:0.8rem;color:var(--gray);margin-bottom:6px}
-.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:var(--white);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;appearance:none}
-.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:rgba(0,212,255,0.4)}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:11px 14px;color:var(--white);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:rgba(0,212,255,0.5)}
 .form-row select option{background:var(--navy2)}
 .form-row textarea{height:90px;resize:vertical}
 .form-row.full{grid-column:1/-1}
-.checkbox-group{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem}
-.cb-item{display:flex;align-items:center;gap:6px;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:0.82rem;transition:border-color .2s}
+.checkbox-group{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.5rem}
+.cb-item{display:flex;align-items:center;gap:6px;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:0.82rem;transition:border-color .2s}
 .cb-item input[type=checkbox]{accent-color:var(--electric);width:14px;height:14px}
-.cb-item:has(input:checked){border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.06)}
-.submit-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.2rem}
-.submit-btn{background:var(--electric);color:var(--navy);border:none;padding:11px 28px;border-radius:8px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
-.submit-hint{color:var(--gray);font-size:0.78rem}
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin:2rem 0}
-.step-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.1rem;text-align:center}
-.step-num-badge{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--electric);color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 0.7rem}
-.step-card-name{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem}
-.step-card-desc{font-size:0.75rem;color:var(--gray);line-height:1.5}
+.cb-item:has(input:checked){border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.08)}
+.submit-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem}
+.submit-btn{background:var(--electric);color:var(--navy);border:none;padding:12px 32px;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
+.submit-hint{color:var(--gray);font-size:0.8rem}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2.5rem 0}
+.step-card{background:rgba(14, 23, 38, 0.7);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.2rem;text-align:center}
+.step-num-badge{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--electric);color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 0.8rem;box-shadow: 0 0 10px rgba(0,212,255,0.2)}
+.step-card-name{font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:600;margin-bottom:0.3rem}
+.step-card-desc{font-size:0.78rem;color:var(--gray);line-height:1.5}
 
 /* PAYMENT */
 .payment-inner{max-width:600px;margin:0 auto;padding:3rem 2rem;text-align:center}
-.payment-box{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem}
+.payment-box{background:rgba(14, 23, 38, 0.85);border:1px solid rgba(0,212,255,0.3);border-radius:18px;padding:2rem;box-shadow: 0 10px 30px rgba(0,0,0,0.4)}
 .qr-placeholder{width:200px;height:200px;background:var(--white);border-radius:12px;margin:1.5rem auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem}
-.qr-label{color:var(--navy);font-size:0.75rem;font-weight:600}
-.payment-info{text-align:center;margin-top:1.5rem;font-size:0.88rem;line-height:1.9;color:var(--gray)}
+.qr-label{color:var(--navy);font-size:0.75rem;font-weight:700}
+.payment-info{text-align:center;margin-top:1.5rem;font-size:0.9rem;line-height:1.9;color:var(--gray)}
 .payment-info strong{color:var(--white)}
-.payment-step{background:var(--navy3);border-radius:10px;padding:1rem;margin-top:1rem;text-align:left}
+.payment-step{background:var(--navy3);border-radius:10px;padding:1.2rem;margin-top:1.2rem;text-align:left}
 .step-row{display:flex;gap:0.8rem;align-items:flex-start;margin-bottom:0.6rem;font-size:0.85rem;color:var(--gray)}
-.step-num{color:var(--electric);font-weight:700;font-size:0.8rem;min-width:20px}
-.checkout-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:background .2s}
+.step-num{color:var(--electric);font-weight:700;font-size:0.85rem;min-width:20px}
+.checkout-btn{width:100%;margin-top:1.2rem;background:var(--electric);color:var(--navy);border:none;padding:14px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:all .2s}
 .checkout-btn:hover{background:var(--electric2)}
 
 /* CONTACT */
 .contact-inner{max-width:700px;margin:0 auto;padding:3rem 2rem}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
-.contact-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-decoration:none;transition:border-color .2s}
-.contact-card:hover{border-color:rgba(0,212,255,0.4)}
+.contact-card{background:rgba(14, 23, 38, 0.7);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-decoration:none;transition:all .2s}
+.contact-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-2px)}
 .contact-icon{font-size:2rem;width:52px;height:52px;background:var(--navy3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .contact-info h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:4px}
 .contact-info p{color:var(--gray);font-size:0.82rem}
-.contact-form{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;margin-top:1.2rem}
-.contact-form .form-row{margin-bottom:1rem}
-.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem;text-align:center}
-.send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem;display:block;margin:0 auto}
+.contact-form{background:rgba(14, 23, 38, 0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;margin-top:1.5rem}
+.contact-form .form-row{margin-bottom:1.2rem}
+.form-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:1.2rem;text-align:center}
+.send-btn{background:var(--electric);color:var(--navy);border:none;padding:11px 28px;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem;display:block;margin:0 auto}
 
-/* CART */
-.cart-overlay{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--navy2);border-left:1px solid rgba(0,212,255,0.15);padding:1.5rem;z-index:200;transition:right .3s;overflow-y:auto}
+/* CART SIDEBAR */
+.cart-overlay{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--navy2);border-left:1px solid rgba(0,212,255,0.2);padding:1.5rem;z-index:200;transition:right .3s;overflow-y:auto;box-shadow:-5px 0 25px rgba(0,0,0,0.5)}
 .cart-overlay.open{right:0}
 .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.08)}
 .cart-header h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600}
@@ -202,10 +236,10 @@ body { top: 0px !important; }
 .checkout-cart-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
 .empty-cart{text-align:center;padding:3rem 0;color:var(--gray);font-size:0.9rem}
 
-/* BACKDROP + TOAST */
-.backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:199;display:none}
+/* BACKDROP & TOAST */
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(3px);z-index:199;display:none}
 .backdrop.open{display:block}
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.4);color:var(--electric);padding:10px 18px;border-radius:10px;font-size:0.85rem;z-index:400;transform:translateY(80px);opacity:0;transition:all .3s}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.5);color:var(--electric);padding:12px 22px;border-radius:10px;font-size:0.88rem;z-index:400;transform:translateY(80px);opacity:0;transition:all .3s;box-shadow: 0 5px 20px rgba(0,212,255,0.2)}
 .toast.show{transform:translateY(0);opacity:1}
 </style>
 </head>
@@ -220,10 +254,10 @@ body { top: 0px !important; }
     <li><a onclick="showPage('contact')" id="nav-contact">Liên hệ</a></li>
   </ul>
   <div class="nav-right">
-    <!-- NÚT CHUYỂN NGÔN NGỮ VI | EN DÙNG GG TRANSLATE -->
-    <div class="lang-switch-custom">
-      <span class="lang-btn active" id="btn-vi" onclick="translateLanguage('vi')">VI</span>
-      <span class="lang-btn" id="btn-en" onclick="translateLanguage('en')">EN</span>
+    <!-- NÚT CHUYỂN NGÔN NGỮ VI | EN (KHÔNG BỊ DỊCH LỖI) -->
+    <div class="lang-switch-custom notranslate" translate="no">
+      <span class="lang-btn active notranslate" id="btn-vi" translate="no" onclick="translateLanguage('vi')">VI</span>
+      <span class="lang-btn notranslate" id="btn-en" translate="no" onclick="translateLanguage('en')">EN</span>
     </div>
 
     <!-- TÀI KHOẢN -->
@@ -239,16 +273,16 @@ body { top: 0px !important; }
   </div>
 </nav>
 
-<!-- PHẦN ẨN CHỨA GOOGLE TRANSLATE -->
+<!-- KHU VỰC CHỨA KHUNG GOOGLE TRANSLATE MẶC ĐỊNH (ĐÃ ẨN) -->
 <div id="google_translate_element"></div>
 
 <!-- ===== HOME ===== -->
 <div class="page active" id="page-home">
   <div class="home-inner">
     <div>
-      <div class="hero-tag">— Mạch điện tử chất lượng cao</div>
+      <div class="hero-tag">— Mạch điện tử, IoT, Hardware & Embedded Software</div>
       <h1 class="hero-title">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
-      <p class="hero-desc">Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.</p>
+      <p class="hero-desc">Chuyên thiết kế sơ đồ nguyên lý, Layout PCB, lập trình vi điều khiển, nhúng Firmware và phát triển giải pháp IoT cho sinh viên, kỹ sư & doanh nghiệp.</p>
       <div>
         <button class="btn-primary" onclick="showPage('products')">Xem sản phẩm</button>
         <button class="btn-ghost" onclick="showPage('services')">Đặt làm mạch</button>
@@ -262,11 +296,11 @@ body { top: 0px !important; }
     <div class="hero-visual">
       <div class="pcb-box">
         <div style="font-size:5rem">🔌</div>
-        <div class="pcb-label">PCB · MCU · SENSOR</div>
+        <div class="pcb-label">IoT · MCU · EMBEDDED</div>
         <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:6px">
-          <div style="height:3px;flex:1;background:rgba(0,212,255,0.3);border-radius:2px"></div>
-          <div style="height:3px;flex:2;background:rgba(0,212,255,0.15);border-radius:2px"></div>
-          <div style="height:3px;flex:1;background:rgba(0,212,255,0.3);border-radius:2px"></div>
+          <div style="height:3px;flex:1;background:rgba(0,212,255,0.4);border-radius:2px"></div>
+          <div style="height:3px;flex:2;background:rgba(0,255,136,0.3);border-radius:2px"></div>
+          <div style="height:3px;flex:1;background:rgba(0,212,255,0.4);border-radius:2px"></div>
         </div>
       </div>
     </div>
@@ -277,7 +311,7 @@ body { top: 0px !important; }
 <div class="page" id="page-products">
   <div class="products-inner">
     <div class="section-head">
-      <h2 class="section-title">Sản phẩm</h2>
+      <h2 class="section-title">Sản phẩm & Dự án</h2>
       <p class="section-sub">Nhấn vào sản phẩm để chọn tài liệu / file bạn cần</p>
     </div>
     <div class="product-grid" id="product-grid"></div>
@@ -288,44 +322,44 @@ body { top: 0px !important; }
 <div class="page" id="page-services">
   <div class="services-inner">
     <div class="section-head">
-      <h2 class="section-title">Dịch vụ sản xuất mạch</h2>
+      <h2 class="section-title">Dịch vụ thiết kế mạch & Phần mềm nhúng</h2>
       <p class="section-sub">Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ</p>
     </div>
-    <p class="service-intro">Chúng tôi cung cấp dịch vụ thiết kế và sản xuất mạch điện tử theo yêu cầu: từ vẽ schematic, layout PCB, đến hàn linh kiện và kiểm thử. Phù hợp cho sinh viên làm đồ án, kỹ sư cần prototype, hoặc doanh nghiệp cần số lượng nhỏ.</p>
+    <p class="service-intro">Chúng tôi cung cấp dịch vụ trọn gói từ phần cứng (Hardware) đến phần mềm (Embedded Software & App IoT): Thiết kế schematic, Layout PCB đa lớp, gia công hàn lắp ráp và viết Firmware vi điều khiển.</p>
 
     <div class="service-grid">
       <div class="service-card">
         <div class="service-icon">📐</div>
-        <div class="service-name">Thiết kế Schematic</div>
-        <div class="service-desc">Vẽ sơ đồ nguyên lý theo yêu cầu, cung cấp file .sch hoặc .pdf. Hỗ trợ KiCad, Altium, Eagle.</div>
-        <div class="service-price-tag">Từ 150.000đ</div>
+        <div class="service-name">Thiết kế Schematic & PCB</div>
+        <div class="service-desc">Vẽ sơ đồ nguyên lý và layout PCB 1–4 lớp tối ưu trên Altium, KiCad, Eagle. Xuất đầy đủ file Gerber.</div>
+        <div class="service-price-tag">Từ 200.000đ</div>
       </div>
       <div class="service-card">
-        <div class="service-icon">🟩</div>
-        <div class="service-name">Layout PCB</div>
-        <div class="service-desc">Thiết kế board PCB 1–4 lớp, tối ưu layout, cung cấp Gerber để sản xuất.</div>
-        <div class="service-price-tag">Từ 250.000đ</div>
+        <div class="service-icon">💻</div>
+        <div class="service-name">Lập trình Nhúng & IoT</div>
+        <div class="service-desc">Lập trình Firmware cho ESP32, STM32, Arduino, Raspberry Pi. Kết nối Server MQTT, Blynk, App di động.</div>
+        <div class="service-price-tag">Từ 300.000đ</div>
       </div>
       <div class="service-card">
         <div class="service-icon">🔧</div>
-        <div class="service-name">Sản xuất & Lắp ráp</div>
-        <div class="service-desc">In board + hàn SMD/THT, kiểm thử, đóng gói. Hỗ trợ số lượng từ 1 đến 100 bản.</div>
+        <div class="service-name">Gia công & Hàn Lắp ráp</div>
+        <div class="service-desc">In board PCB, hàn linh kiện dán SMD / cắm THT, kiểm thử hoạt động trước khi giao hàng.</div>
         <div class="service-price-tag">Báo giá theo yêu cầu</div>
       </div>
     </div>
 
     <div class="section-head" style="margin-bottom:1rem">
-      <h2 class="section-title" style="font-size:1.2rem">Quy trình</h2>
+      <h2 class="section-title" style="font-size:1.3rem">Quy trình thực hiện</h2>
     </div>
     <div class="process-steps">
-      <div class="step-card"><div class="step-num-badge">1</div><div class="step-card-name">Gửi yêu cầu</div><div class="step-card-desc">Điền form bên dưới hoặc liên hệ Zalo/Gmail</div></div>
-      <div class="step-card"><div class="step-num-badge">2</div><div class="step-card-name">Báo giá</div><div class="step-card-desc">Phản hồi trong 24h với bảng giá chi tiết</div></div>
-      <div class="step-card"><div class="step-num-badge">3</div><div class="step-card-name">Đặt cọc & Thiết kế</div><div class="step-card-desc">Đặt cọc 50%, tiến hành thiết kế và gửi preview</div></div>
-      <div class="step-card"><div class="step-num-badge">4</div><div class="step-card-name">Giao hàng</div><div class="step-card-desc">Thanh toán phần còn lại, giao file + board qua bưu điện</div></div>
+      <div class="step-card"><div class="step-num-badge">1</div><div class="step-card-name">Gửi yêu cầu</div><div class="step-card-desc">Điền form bên dưới hoặc nhắn trực tiếp qua Zalo/Gmail</div></div>
+      <div class="step-card"><div class="step-num-badge">2</div><div class="step-card-name">Báo giá</div><div class="step-card-desc">Phản hồi giải pháp & chi phí chi tiết trong 24h</div></div>
+      <div class="step-card"><div class="step-num-badge">3</div><div class="step-card-name">Thiết kế & Lập trình</div><div class="step-card-desc">Đặt cọc 50%, tiến hành vẽ mạch, viết code và gửi video demo</div></div>
+      <div class="step-card"><div class="step-num-badge">4</div><div class="step-card-name">Giao hàng</div><div class="step-card-desc">Thanh toán phần còn lại, bàn giao toàn bộ File dự án + Mạch thật</div></div>
     </div>
 
     <div class="order-form-wrap">
-      <div class="order-form-title">Gửi yêu cầu đặt làm mạch</div>
+      <div class="order-form-title">Gửi yêu cầu đặt làm mạch / Đồ án</div>
       <div class="order-form-sub">Điền thông tin bên dưới, chúng tôi sẽ báo giá trong vòng 24 giờ.</div>
       <div class="form-grid">
         <div class="form-row"><label>Họ tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
@@ -334,11 +368,10 @@ body { top: 0px !important; }
           <label>Loại dịch vụ cần</label>
           <select>
             <option>Chọn dịch vụ...</option>
-            <option>Thiết kế Schematic</option>
-            <option>Layout PCB</option>
-            <option>Schematic + PCB</option>
-            <option>Sản xuất + Lắp ráp</option>
-            <option>Trọn gói (Thiết kế + Sản xuất)</option>
+            <option>Thiết kế Schematic & PCB</option>
+            <option>Lập trình Nhúng / Firmware</option>
+            <option>Dự án IoT Trọn gói (Mạch + Code + App)</option>
+            <option>Gia công & Hàn lắp ráp board</option>
           </select>
         </div>
         <div class="form-row"><label>Số lượng board cần</label><input type="text" placeholder="Ví dụ: 5 bản"></div>
@@ -354,7 +387,7 @@ body { top: 0px !important; }
         </div>
         <div class="form-row full">
           <label>Mô tả yêu cầu chi tiết</label>
-          <textarea placeholder="Mô tả chức năng mạch, linh kiện chính, kích thước yêu cầu, deadline..."></textarea>
+          <textarea placeholder="Mô tả chức năng mạch, vi điều khiển sử dụng, kích thước yêu cầu, deadline..."></textarea>
         </div>
       </div>
       <div class="submit-row">
@@ -368,9 +401,9 @@ body { top: 0px !important; }
 <!-- ===== PAYMENT ===== -->
 <div class="page" id="page-payment">
   <div class="payment-inner">
-    <div class="section-head" style="text-align:center;margin-bottom:1.5rem">
-      <h2 class="section-title">Thanh toán</h2>
-      <p class="section-sub">Quét mã QR để thanh toán</p>
+    <div class="section-head">
+      <h2 class="section-title">Thanh toán chuyển khoản</h2>
+      <p class="section-sub">Quét mã QR để hoàn tất thanh toán đơn hàng</p>
     </div>
     <div class="payment-box">
       <div id="order-summary" style="background:var(--navy3);border-radius:10px;padding:1rem;margin-bottom:0.5rem"></div>
@@ -426,8 +459,8 @@ body { top: 0px !important; }
 <div class="page" id="page-contact">
   <div class="contact-inner">
     <div class="section-head">
-      <h2 class="section-title">Liên hệ</h2>
-      <p class="section-sub">Hỗ trợ tư vấn và đặt hàng</p>
+      <h2 class="section-title">Liên hệ trực tiếp</h2>
+      <p class="section-sub">Tư vấn giải pháp phần cứng & phần mềm 24/7</p>
     </div>
     <div class="contact-grid">
       <a class="contact-card" href="mailto:your@gmail.com">
@@ -440,11 +473,11 @@ body { top: 0px !important; }
       </a>
     </div>
     <div class="contact-form">
-      <div class="form-title">Gửi yêu cầu</div>
+      <div class="form-title">Gửi tin nhắn tư vấn</div>
       <div class="form-row"><label>Họ tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
       <div class="form-row"><label>Email / SĐT</label><input type="text" placeholder="email@gmail.com"></div>
-      <div class="form-row"><label>Nội dung</label><textarea placeholder="Tôi muốn hỏi về sản phẩm..."></textarea></div>
-      <button class="send-btn" onclick="showToast('Gửi thành công! Sẽ phản hồi trong 24h.')">Gửi</button>
+      <div class="form-row"><label>Nội dung</label><textarea placeholder="Tôi muốn tư vấn làm đồ án / sản phẩm..."></textarea></div>
+      <button class="send-btn" onclick="showToast('Gửi thành công! Sẽ phản hồi trong 24h.')">Gửi tin nhắn</button>
     </div>
   </div>
 </div>
@@ -483,7 +516,6 @@ body { top: 0px !important; }
       <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Đăng ký</div>
     </div>
 
-    <!-- FORM ĐĂNG NHẬP -->
     <div id="auth-login-form">
       <div class="form-row" style="margin-bottom:1rem">
         <label>Email</label>
@@ -496,7 +528,6 @@ body { top: 0px !important; }
       <button class="modal-add-btn" onclick="login()">Đăng nhập</button>
     </div>
 
-    <!-- FORM ĐĂNG KÝ -->
     <div id="auth-register-form" style="display:none">
       <div class="form-row" style="margin-bottom:1rem">
         <label>Họ và tên</label>
@@ -528,7 +559,7 @@ body { top: 0px !important; }
 
 <div class="toast" id="toast"></div>
 
-<!-- GOOGLE TRANSLATE SCRIPT -->
+<!-- SCRIPT KẾT NỐI GOOGLE TRANSLATE CHUẨN XÁC KHÔNG LỖI -->
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
@@ -538,7 +569,6 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 
-// HÀM CHUYỂN NGÔN NGỮ BẰNG NÚT VI | EN
 function translateLanguage(lang) {
   document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -560,7 +590,7 @@ const products = [
     {key:'source',label:'File Source Code',hint:'Code mẫu Arduino, thư viện',price:25000},
     {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
   ]},
-  {id:2,name:'ESP32 Dev Board',icon:'📡',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',options:[
+  {id:2,name:'ESP32 Dev Board IoT',icon:'📡',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',options:[
     {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:35000},
     {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:50000},
     {key:'source',label:'File Source Code',hint:'Code mẫu ESP-IDF / Arduino',price:30000},
@@ -600,7 +630,6 @@ let cartOpen = false;
 
 function fmt(n){return n.toLocaleString('vi-VN')+'đ'}
 
-// ---- TÀI KHOẢN ----
 function handleAccountClick() {
   if (currentUser) {
     if (confirm('Bạn có muốn đăng xuất?')) {
@@ -649,7 +678,6 @@ function register() {
   showToast('Đăng ký thành công!');
 }
 
-// ---- NAVIGATION ----
 function showPage(name){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -666,7 +694,6 @@ function showPage(name){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-// ---- PRODUCTS ----
 function renderProducts(){
   const g = document.getElementById('product-grid');
   g.innerHTML = products.map(p => {
@@ -689,7 +716,6 @@ function renderProducts(){
   }).join('');
 }
 
-// ---- MODAL SẢN PHẨM ----
 function openModal(id){
   const p = products.find(x=>x.id===id);
   modalProductId = id;
@@ -762,7 +788,6 @@ function addModalToCart(){
   showToast('Đã thêm vào giỏ hàng!');
 }
 
-// ---- CART ----
 function renderCart(){
   const total = cart.reduce((a,item)=>a+item.unitPrice*item.qty, 0);
   const count = cart.reduce((a,item)=>a+item.qty, 0);
