@@ -20,15 +20,7 @@
 /* NỀN CÔNG NGHỆ IoT, HARDWARE & MẠCH ĐIỆN TỬ */
 body{
   font-family:'Inter',sans-serif;
-  background-color: var(--navy);
-  background-image: 
-    radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(10, 22, 40, 0.5) 0%, var(--navy) 100%),
-    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-  background-attachment: fixed;
+  background-color:var(--navy);
   color:var(--white);
   min-height:100vh;
   top:0 !important;
@@ -82,6 +74,164 @@ nav{
 .section-head{margin-bottom:2.5rem;text-align:center}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:0.5rem;text-align:center;background:linear-gradient(90deg, #ffffff, var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .section-sub{color:var(--gray);font-size:0.95rem;text-align:center}
+
+/* ============================================================
+   FUTURISTIC IoT HOME BACKGROUND
+   Ảnh: assets/iot-background.png
+   ============================================================ */
+
+#page-home{
+  position:relative;
+  min-height:calc(100vh - 65px);
+  overflow:hidden;
+
+  background-color:#06101f;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(4,10,20,0.96) 0%,
+      rgba(4,10,20,0.88) 22%,
+      rgba(4,10,20,0.62) 48%,
+      rgba(4,10,20,0.28) 75%,
+      rgba(4,10,20,0.18) 100%
+    ),
+    url("assets/iot-background.png");
+
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+
+/* Lớp ánh sáng xanh nhẹ */
+#page-home::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+
+  background:
+    radial-gradient(
+      circle at 72% 45%,
+      rgba(0,212,255,0.12) 0%,
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0.00) 45%,
+      rgba(2,8,18,0.55) 100%
+    );
+}
+
+/* Làm tối nhẹ chân trang chủ để chữ/thống kê rõ hơn */
+#page-home::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:180px;
+  pointer-events:none;
+  z-index:0;
+
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(2,8,18,0.72)
+  );
+}
+
+/* Nội dung nằm trên background */
+#page-home .home-inner{
+  position:relative;
+  z-index:2;
+  min-height:calc(100vh - 65px);
+}
+
+/* Hero chữ dễ đọc trên ảnh */
+#page-home .hero-tag{
+  background:rgba(3,15,30,0.72);
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 20px rgba(0,212,255,0.08);
+}
+
+#page-home .hero-title{
+  text-shadow:0 4px 30px rgba(0,0,0,0.65);
+}
+
+#page-home .hero-desc{
+  color:#c2d0df;
+  text-shadow:0 2px 12px rgba(0,0,0,0.75);
+}
+
+#page-home .stats-row{
+  background:rgba(3,12,24,0.52);
+  border:1px solid rgba(0,212,255,0.14);
+  backdrop-filter:blur(8px);
+  border-radius:14px;
+  padding:14px 18px;
+  width:max-content;
+}
+
+#page-home .hero-visual{
+  position:relative;
+}
+
+/* Làm ô PCB hiện tại hòa vào background */
+#page-home .pcb-box{
+  background:rgba(5,15,30,0.58);
+  backdrop-filter:blur(8px);
+  box-shadow:
+    0 0 35px rgba(0,212,255,0.16),
+    inset 0 0 30px rgba(0,212,255,0.04);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  #page-home{
+    background-position:60% center;
+  }
+
+  .home-inner{
+    grid-template-columns:1fr !important;
+    min-height:calc(100vh - 65px);
+  }
+
+  #page-home .hero-visual{
+    display:none;
+  }
+
+  #page-home .hero-desc{
+    max-width:650px;
+  }
+}
+
+@media(max-width:600px){
+  #page-home{
+    background-position:64% center;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(4,10,20,0.95),
+        rgba(4,10,20,0.72)
+      ),
+      url("assets/iot-background.png");
+  }
+
+  #page-home .home-inner{
+    padding:3rem 1.25rem;
+  }
+
+  #page-home .hero-title{
+    font-size:2.4rem;
+  }
+
+  #page-home .stats-row{
+    width:100%;
+    gap:1.2rem;
+    justify-content:space-between;
+  }
+}
 
 /* HOME */
 .home-inner{padding:4rem 2rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:center}
