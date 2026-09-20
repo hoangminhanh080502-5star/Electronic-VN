@@ -20,7 +20,15 @@
 /* NỀN CÔNG NGHỆ IoT, HARDWARE & MẠCH ĐIỆN TỬ */
 body{
   font-family:'Inter',sans-serif;
-  background-color:var(--navy);
+  background-color: var(--navy);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(10, 22, 40, 0.5) 0%, var(--navy) 100%),
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
   color:var(--white);
   min-height:100vh;
   top:0 !important;
@@ -74,164 +82,6 @@ nav{
 .section-head{margin-bottom:2.5rem;text-align:center}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:0.5rem;text-align:center;background:linear-gradient(90deg, #ffffff, var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .section-sub{color:var(--gray);font-size:0.95rem;text-align:center}
-
-/* ============================================================
-   FUTURISTIC IoT HOME BACKGROUND
-   Ảnh: assets/iot-background.png
-   ============================================================ */
-
-#page-home{
-  position:relative;
-  min-height:calc(100vh - 65px);
-  overflow:hidden;
-
-  background-color:#06101f;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(4,10,20,0.96) 0%,
-      rgba(4,10,20,0.88) 22%,
-      rgba(4,10,20,0.62) 48%,
-      rgba(4,10,20,0.28) 75%,
-      rgba(4,10,20,0.18) 100%
-    ),
-    url("assets/iot-background.png");
-
-  background-size:cover;
-  background-position:center center;
-  background-repeat:no-repeat;
-}
-
-/* Lớp ánh sáng xanh nhẹ */
-#page-home::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-
-  background:
-    radial-gradient(
-      circle at 72% 45%,
-      rgba(0,212,255,0.12) 0%,
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,0.00) 45%,
-      rgba(2,8,18,0.55) 100%
-    );
-}
-
-/* Làm tối nhẹ chân trang chủ để chữ/thống kê rõ hơn */
-#page-home::after{
-  content:'';
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:180px;
-  pointer-events:none;
-  z-index:0;
-
-  background:linear-gradient(
-    180deg,
-    transparent,
-    rgba(2,8,18,0.72)
-  );
-}
-
-/* Nội dung nằm trên background */
-#page-home .home-inner{
-  position:relative;
-  z-index:2;
-  min-height:calc(100vh - 65px);
-}
-
-/* Hero chữ dễ đọc trên ảnh */
-#page-home .hero-tag{
-  background:rgba(3,15,30,0.72);
-  backdrop-filter:blur(8px);
-  box-shadow:0 0 20px rgba(0,212,255,0.08);
-}
-
-#page-home .hero-title{
-  text-shadow:0 4px 30px rgba(0,0,0,0.65);
-}
-
-#page-home .hero-desc{
-  color:#c2d0df;
-  text-shadow:0 2px 12px rgba(0,0,0,0.75);
-}
-
-#page-home .stats-row{
-  background:rgba(3,12,24,0.52);
-  border:1px solid rgba(0,212,255,0.14);
-  backdrop-filter:blur(8px);
-  border-radius:14px;
-  padding:14px 18px;
-  width:max-content;
-}
-
-#page-home .hero-visual{
-  position:relative;
-}
-
-/* Làm ô PCB hiện tại hòa vào background */
-#page-home .pcb-box{
-  background:rgba(5,15,30,0.58);
-  backdrop-filter:blur(8px);
-  box-shadow:
-    0 0 35px rgba(0,212,255,0.16),
-    inset 0 0 30px rgba(0,212,255,0.04);
-}
-
-/* Responsive */
-@media(max-width:900px){
-  #page-home{
-    background-position:60% center;
-  }
-
-  .home-inner{
-    grid-template-columns:1fr !important;
-    min-height:calc(100vh - 65px);
-  }
-
-  #page-home .hero-visual{
-    display:none;
-  }
-
-  #page-home .hero-desc{
-    max-width:650px;
-  }
-}
-
-@media(max-width:600px){
-  #page-home{
-    background-position:64% center;
-    background-image:
-      linear-gradient(
-        90deg,
-        rgba(4,10,20,0.95),
-        rgba(4,10,20,0.72)
-      ),
-      url("assets/iot-background.png");
-  }
-
-  #page-home .home-inner{
-    padding:3rem 1.25rem;
-  }
-
-  #page-home .hero-title{
-    font-size:2.4rem;
-  }
-
-  #page-home .stats-row{
-    width:100%;
-    gap:1.2rem;
-    justify-content:space-between;
-  }
-}
 
 /* HOME */
 .home-inner{padding:4rem 2rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:center}
@@ -391,12 +241,193 @@ nav{
 .backdrop.open{display:block}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.5);color:var(--electric);padding:12px 22px;border-radius:10px;font-size:0.88rem;z-index:400;transform:translateY(80px);opacity:0;transition:all .3s;box-shadow: 0 5px 20px rgba(0,212,255,0.2)}
 .toast.show{transform:translateY(0);opacity:1}
+
+/* ============================================================
+   ELECTRO VN — FINAL HOMEPAGE VISUAL UPDATE
+   - Cân bằng độ sáng toàn ảnh nền
+   - Không làm tối mạnh khu vực bên trái
+   - Logo mạch điện tử dạng SVG
+   ============================================================ */
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:1.25rem;
+  letter-spacing:-0.5px;
+  color:var(--white);
+}
+
+.logo-mark{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 34px;
+  filter:drop-shadow(0 0 8px rgba(0,212,255,.25));
+}
+
+.logo-mark svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.logo-word{
+  color:var(--white);
+  white-space:nowrap;
+}
+
+.logo-word > span{
+  color:var(--white);
+}
+
+.logo-word::first-letter{
+  color:var(--white);
+}
+
+.logo:hover .logo-mark{
+  filter:drop-shadow(0 0 12px rgba(0,212,255,.55));
+}
+
+/* Background Home: sáng đều hơn, đặc biệt phía trái */
+#page-home{
+  position:relative;
+  min-height:calc(100vh - 65px);
+  overflow:hidden;
+  background-color:#071426;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(4,12,26,.48) 0%,
+      rgba(4,12,26,.34) 28%,
+      rgba(4,12,26,.22) 55%,
+      rgba(4,12,26,.18) 100%
+    ),
+    url("assets/iot-background.png");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+
+/* Ánh sáng xanh rất nhẹ để các vùng ảnh hòa với giao diện */
+#page-home::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 38%, rgba(0,212,255,.12), transparent 30%),
+    radial-gradient(circle at 78% 45%, rgba(0,212,255,.10), transparent 34%),
+    linear-gradient(180deg, rgba(2,8,18,.02) 0%, rgba(2,8,18,.12) 100%);
+}
+
+/* Chỉ tạo một lớp tối nhẹ ở đáy, không phủ đen toàn bộ ảnh */
+#page-home::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:110px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(180deg, transparent, rgba(2,8,18,.38));
+}
+
+#page-home .home-inner{
+  position:relative;
+  z-index:2;
+  min-height:calc(100vh - 65px);
+}
+
+/* Khối chữ có nền kính rất nhẹ để ảnh vẫn nhìn thấy phía sau */
+#page-home .home-inner > div:first-child{
+  max-width:680px;
+}
+
+#page-home .hero-tag{
+  background:rgba(4,17,31,.52);
+  border-color:rgba(0,212,255,.42);
+  box-shadow:0 0 18px rgba(0,212,255,.08);
+  backdrop-filter:blur(7px);
+}
+
+#page-home .hero-title{
+  text-shadow:0 3px 22px rgba(0,0,0,.42);
+}
+
+#page-home .hero-desc{
+  color:#d0dbe7;
+  text-shadow:0 2px 10px rgba(0,0,0,.55);
+}
+
+#page-home .stats-row{
+  width:max-content;
+  padding:13px 18px;
+  border-radius:14px;
+  background:rgba(4,15,29,.50);
+  border:1px solid rgba(0,212,255,.22);
+  backdrop-filter:blur(8px);
+  box-shadow:0 10px 28px rgba(0,0,0,.16);
+}
+
+#page-home .stat-label{
+  color:#b7c5d3;
+}
+
+#page-home .pcb-box{
+  background:rgba(8,22,39,.50);
+  backdrop-filter:blur(7px);
+  box-shadow:0 0 35px rgba(0,212,255,.14);
+}
+
+@media(max-width:900px){
+  #page-home{
+    background-position:58% center;
+  }
+  #page-home .home-inner{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  #page-home{
+    background-position:62% center;
+    background-image:
+      linear-gradient(90deg, rgba(4,12,26,.52), rgba(4,12,26,.24)),
+      url("assets/iot-background.png");
+  }
+  .logo-mark{width:31px;height:31px;flex-basis:31px}
+  .logo{font-size:1.12rem}
+}
+
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo"><span>Electro</span>VN</div>
+  <div class="logo" aria-label="Electro VN">
+  <span class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 48 48" role="img">
+      <defs>
+        <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00d4ff"/>
+          <stop offset="100%" stop-color="#00ff88"/>
+        </linearGradient>
+      </defs>
+      <rect x="5" y="5" width="38" height="38" rx="10" fill="rgba(0,212,255,.08)" stroke="url(#logoGrad)" stroke-width="2"/>
+      <path d="M14 25h7l3-9 4 17 3-8h3" fill="none" stroke="url(#logoGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="14" cy="25" r="2.2" fill="#00d4ff"/>
+      <circle cx="34" cy="25" r="2.2" fill="#00ff88"/>
+    </svg>
+  </span>
+  <span class="logo-word"><span>Electro</span> VN</span>
+</div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" id="nav-home" class="active">Trang chủ</a></li>
     <li><a onclick="showPage('products')" id="nav-products">Sản phẩm</a></li>
