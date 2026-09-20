@@ -377,71 +377,219 @@ nav{
 }
 
 #page-home 
+
+/* Home: bỏ khung PCB/plug cũ, chỉ giữ background IoT */
+#page-home .hero-visual{
+  display:none;
+}
+
+#page-home .home-inner{
+  grid-template-columns:1fr;
+}
+
+#page-home .hero-desc{
+  max-width:680px;
+}
+
 /* ============================================================
-   CLEAN WHITE PAGES — PRODUCTS / SERVICES / CONTACT
+   WHITE BACKGROUND FOR PRODUCTS / SERVICES / CONTACT
+   Nền trắng áp dụng cho TOÀN BỘ TRANG, không phải từng item.
    ============================================================ */
+
 .page:not(#page-home){
   background:#ffffff;
   color:#142238;
+  min-height:calc(100vh - 65px);
 }
+
+/* Tiêu đề chính nằm giữa giống Trang chủ */
+#page-products .section-head,
+#page-services .section-head,
+#page-contact .section-head{
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .page:not(#page-home) .section-title{
   color:#142238;
   background:none;
   -webkit-text-fill-color:#142238;
   text-shadow:none;
+  text-align:center;
 }
-.page:not(#page-home) .section-sub{color:#68788a;}
 
+.page:not(#page-home) .section-sub{
+  color:#68788a;
+  text-align:center;
+}
+
+/* Khu vực nội dung */
 .products-inner,
 .services-inner,
-.contact-inner{margin-left:auto;margin-right:auto;}
-
-.products-inner{max-width:1120px;padding:4rem 2rem 5rem;}
-.product-grid{max-width:1040px;margin:0 auto;justify-content:center;}
-.product-card{
-  background:#fff;
-  border:1px solid #dce5ee;
-  box-shadow:0 8px 24px rgba(20,34,56,.08);
-  backdrop-filter:none;
+.contact-inner{
+  margin-left:auto;
+  margin-right:auto;
 }
-.product-card:hover{border-color:rgba(0,170,204,.45);box-shadow:0 12px 30px rgba(0,170,204,.14);}
-.product-img{background:#f1f6fa;border-bottom:1px solid #e2e9ef;}
-.product-name{color:#142238;}
-.product-desc{color:#68788a;}
-.product-price-hint{color:#7a8998;}
 
-.services-inner{max-width:1120px;padding:4rem 2rem 5rem;}
-.service-intro{color:#68788a;}
-.service-grid{max-width:1040px;margin:0 auto 3rem;justify-content:center;}
-.service-card{
-  background:#fff;
+/* ===== SẢN PHẨM ===== */
+.products-inner{
+  max-width:1120px;
+  padding:4rem 2rem 5rem;
+}
+
+.product-grid{
+  max-width:1040px;
+  margin:2.2rem auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.5rem;
+  justify-content:center;
+}
+
+/* Item có nền riêng nhẹ để phân biệt với nền trắng */
+.product-card{
+  background:#f7fafc;
+  color:#142238;
   border:1px solid #dce5ee;
   box-shadow:0 8px 24px rgba(20,34,56,.07);
   backdrop-filter:none;
 }
+
+.product-card:hover{
+  border-color:rgba(0,170,204,.45);
+  box-shadow:0 12px 30px rgba(0,170,204,.14);
+  transform:translateY(-3px);
+}
+
+.product-img{
+  background:#eef5f9;
+  border-bottom:1px solid #e2e9ef;
+}
+
+.product-name{color:#142238;}
+.product-desc{color:#68788a;}
+.product-price-hint{color:#7a8998;}
+
+/* ===== DỊCH VỤ ===== */
+.services-inner{
+  max-width:1120px;
+  padding:4rem 2rem 5rem;
+}
+
+.service-intro{
+  color:#68788a;
+  text-align:center;
+}
+
+.service-grid{
+  max-width:1040px;
+  margin:2.2rem auto 3rem;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.5rem;
+  justify-content:center;
+}
+
+.service-card{
+  background:#f7fafc;
+  color:#142238;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.07);
+  backdrop-filter:none;
+}
+
+.service-card:hover{
+  border-color:rgba(0,170,204,.45);
+  box-shadow:0 12px 30px rgba(0,170,204,.14);
+  transform:translateY(-3px);
+}
+
 .service-name{color:#142238;}
 .service-desc{color:#68788a;}
-.process-steps{max-width:1040px;margin-left:auto;margin-right:auto;}
-.step-card{background:#fff;border:1px solid #dce5ee;box-shadow:0 6px 18px rgba(20,34,56,.06);}
+
+/* ===== QUY TRÌNH ===== */
+.process-steps{
+  max-width:1040px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.step-card{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 6px 18px rgba(20,34,56,.06);
+}
+
 .step-card-name{color:#142238;}
 .step-card-desc{color:#68788a;}
-.order-form-wrap{background:#fff;border:1px solid #dce5ee;box-shadow:0 10px 30px rgba(20,34,56,.08);}
+
+.order-form-wrap{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 10px 30px rgba(20,34,56,.08);
+}
+
 .order-form-title{color:#142238;}
 .order-form-sub{color:#68788a;}
 
-.contact-inner{max-width:800px;padding:4rem 2rem 5rem;}
-.contact-grid{max-width:720px;margin:2rem auto 0;}
-.contact-card{background:#fff;border:1px solid #dce5ee;box-shadow:0 8px 22px rgba(20,34,56,.07);}
+/* ===== LIÊN HỆ ===== */
+.contact-inner{
+  max-width:800px;
+  padding:4rem 2rem 5rem;
+}
+
+.contact-grid{
+  max-width:720px;
+  margin:2rem auto 0;
+}
+
+.contact-card{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 22px rgba(20,34,56,.07);
+}
+
+.contact-card:hover{
+  border-color:rgba(0,170,204,.45);
+  box-shadow:0 12px 28px rgba(0,170,204,.12);
+}
+
 .contact-info h3{color:#142238;}
 .contact-info p{color:#68788a;}
-.contact-icon{background:#edf5fa;}
-.contact-form{background:#fff;border:1px solid #dce5ee;box-shadow:0 8px 24px rgba(20,34,56,.07);}
+.contact-icon{background:#eaf3f8;}
+
+.contact-form{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.07);
+}
+
 .form-title{color:#142238;}
 
-/* Tất cả tiêu đề/khu vực chính nằm cân giữa */
-#page-products .section-head,
-#page-services .section-head,
-#page-contact .section-head{text-align:center;}
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .product-grid,
+  .service-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px){
+  .product-grid,
+  .service-grid,
+  .contact-grid,
+  .process-steps{
+    grid-template-columns:1fr;
+  }
+
+  .products-inner,
+  .services-inner,
+  .contact-inner{
+    padding-left:1.25rem;
+    padding-right:1.25rem;
+  }
+}
 
 @media(max-width:900px){
   .product-grid,.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
