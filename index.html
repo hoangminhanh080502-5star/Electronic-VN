@@ -75,6 +75,11 @@ nav{
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:0.5rem;text-align:center;background:linear-gradient(90deg, #ffffff, var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .section-sub{color:var(--gray);font-size:0.95rem;text-align:center}
 
+/* Nền trắng cho Sản phẩm / Dịch vụ / Liên hệ */
+.page:not(#page-home){background:#fff;color:#142238}
+.page:not(#page-home) .section-title{background:none;-webkit-text-fill-color:#142238;color:#142238}
+.page:not(#page-home) .section-sub,.page:not(#page-home) .service-intro{color:#68788a}
+
 /* ============================================================
    FUTURISTIC IoT HOME BACKGROUND
    Ảnh: assets/iot-background.png
@@ -186,6 +191,11 @@ nav{
     inset 0 0 30px rgba(0,212,255,0.04);
 }
 
+/* Ẩn khung PCB minh hoạ cũ ở Home, giữ lại background IoT */
+#page-home .hero-visual{display:none}
+#page-home .home-inner{grid-template-columns:1fr}
+#page-home .hero-desc{max-width:680px}
+
 /* Responsive */
 @media(max-width:900px){
   #page-home{
@@ -264,8 +274,12 @@ nav{
 .product-footer{display:flex;align-items:center;justify-content:space-between}
 .product-price{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;color:var(--electric)}
 .product-price-hint{font-size:0.7rem;color:var(--gray);display:block;font-weight:400}
-.view-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:7px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:all .2s;font-weight:600}
-.view-btn:hover{background:var(--electric);color:var(--navy)}
+.product-actions{display:flex;flex-direction:column;gap:7px;align-items:stretch;min-width:122px}
+.product-actions button{width:100%;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:0.78rem;transition:all .2s;font-weight:600;font-family:'Inter',sans-serif}
+.detail-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.2);color:var(--white)}
+.detail-btn:hover{background:rgba(255,255,255,0.12);border-color:rgba(0,212,255,0.5);color:var(--electric)}
+.select-btn{background:rgba(0,212,255,0.12);border:1px solid rgba(0,212,255,0.35);color:var(--electric)}
+.select-btn:hover{background:var(--electric);color:var(--navy)}
 
 /* MODAL */
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
@@ -386,62 +400,37 @@ nav{
 .checkout-cart-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
 .empty-cart{text-align:center;padding:3rem 0;color:var(--gray);font-size:0.9rem}
 
+/* PRODUCT DETAIL MODAL */
+.detail-modal{max-width:920px;max-height:92vh;background:#f8fbfd;color:#142238;border:1px solid #cfe1eb;box-shadow:0 18px 60px rgba(10,35,55,.25)}
+.detail-modal .modal-header{border-bottom:1px solid #dce8ef}
+.detail-modal .modal-icon{background:#eaf4f8}
+.detail-modal .modal-name{color:#142238}
+.detail-modal .modal-desc{color:#68788a}
+.detail-body{padding:1.25rem 1.5rem 1.5rem}
+.detail-overview{color:#516477;line-height:1.7;margin-bottom:1.2rem}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.detail-card{background:#fff;border:1px solid #d9e5ec;border-radius:12px;padding:14px;box-shadow:0 5px 18px rgba(20,34,56,.05)}
+.detail-card h4{margin:0 0 6px;color:#142238;font-family:'Space Grotesk',sans-serif;font-size:.95rem}
+.detail-card p{margin:0;color:#68788a;font-size:.82rem;line-height:1.55}
+.detail-card .detail-num{display:inline-flex;width:24px;height:24px;border-radius:7px;background:#e8f6fb;color:#00a9d0;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;margin-right:7px}
+.report-preview{margin-top:1.3rem;border-top:1px solid #dce8ef;padding-top:1.2rem}
+.report-preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.report-preview-title{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#142238}
+.report-preview-note{font-size:.75rem;color:#7a8a98}
+.pdf-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-height:600px;overflow:auto;padding:4px}
+.pdf-page{background:#fff;border:1px solid #dce5eb;border-radius:8px;padding:6px;box-shadow:0 4px 14px rgba(20,34,56,.06)}
+.pdf-page canvas{display:block;width:100%;height:auto}
+.pdf-page-label{text-align:center;font-size:.72rem;color:#7a8996;padding:5px 0 2px}
+.pdf-empty{padding:30px 16px;text-align:center;background:#fff;border:1px dashed #c9d8e2;border-radius:10px;color:#718191;font-size:.84rem;line-height:1.6}
+.detail-footer{padding:0 1.5rem 1.4rem;display:flex;justify-content:flex-end}
+.detail-close-btn{background:#142238;color:#fff;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-weight:600}
+@media(max-width:700px){.detail-grid,.pdf-pages{grid-template-columns:1fr}.detail-modal{max-height:94vh}.product-actions{min-width:105px}}
+
 /* BACKDROP & TOAST */
 .backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(3px);z-index:199;display:none}
 .backdrop.open{display:block}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.5);color:var(--electric);padding:12px 22px;border-radius:10px;font-size:0.88rem;z-index:400;transform:translateY(80px);opacity:0;transition:all .3s;box-shadow: 0 5px 20px rgba(0,212,255,0.2)}
 .toast.show{transform:translateY(0);opacity:1}
-
-/* ============================================================
-   PRODUCT ACTIONS + DETAIL VIEW
-   ============================================================ */
-.product-card{cursor:default;}
-.product-footer{align-items:flex-end;gap:1rem;}
-.product-actions{display:flex;flex-direction:column;gap:7px;min-width:120px;}
-.product-actions button{width:100%;font-family:'Inter',sans-serif;font-weight:700;cursor:pointer;border-radius:8px;padding:8px 10px;font-size:.78rem;transition:all .2s;}
-.detail-btn{background:#fff;border:1px solid #b8cbd8;color:#23435a;}
-.detail-btn:hover{background:#edf8fc;border-color:var(--electric);color:#008db0;}
-.choose-btn{background:var(--electric);border:1px solid var(--electric);color:#062033;}
-.choose-btn:hover{filter:brightness(.95);box-shadow:0 5px 16px rgba(0,212,255,.25);}
-
-.detail-modal{background:#fff;color:#142238;border:1px solid #d7e4ec;border-radius:18px;width:100%;max-width:920px;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 18px 60px rgba(10,35,55,.25);}
-.detail-header{padding:1.6rem 1.6rem 1.2rem;border-bottom:1px solid #e3ebf0;display:flex;gap:1rem;align-items:center;}
-.detail-icon{width:72px;height:72px;border-radius:14px;background:#eef7fb;display:flex;align-items:center;justify-content:center;font-size:2.8rem;flex-shrink:0;}
-.detail-title{font-family:'Space Grotesk',sans-serif;font-size:1.45rem;font-weight:700;margin-bottom:.35rem;color:#142238;}
-.detail-desc{font-size:.86rem;line-height:1.6;color:#66798a;max-width:720px;}
-.detail-overview{padding:1.4rem 1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.detail-section{background:#f7fafc;border:1px solid #dce6ed;border-radius:12px;padding:1rem;}
-.detail-section.report-section{grid-column:1 / -1;}
-.detail-section-title{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#142238;margin-bottom:.6rem;display:flex;align-items:center;gap:.55rem;}
-.detail-section-title span{font-size:.7rem;color:#00aacc;background:#e8f8fc;padding:4px 7px;border-radius:6px;}
-.detail-section-text{font-size:.82rem;line-height:1.7;color:#66798a;}
-.detail-section-text strong{color:#20384b;}
-.detail-section-text span{display:block;margin-top:2px;}
-.pdf-preview-head{display:flex;justify-content:space-between;align-items:center;margin:1rem 0 .7rem;padding-top:.8rem;border-top:1px solid #dce6ed;color:#20384b;font-size:.82rem;}
-.pdf-preview-head span{color:#00aacc;font-weight:700;}
-.pdf-preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-height:560px;overflow:auto;padding:.25rem;}
-.pdf-page{background:#fff;border:1px solid #d8e2e8;border-radius:8px;padding:.5rem;box-shadow:0 4px 14px rgba(20,34,56,.07);}
-.pdf-page-label{font-size:.68rem;color:#708292;font-weight:700;margin-bottom:.35rem;}
-.pdf-page canvas{display:block;width:100%;height:auto;background:#fff;}
-.pdf-empty{min-height:180px;border:1px dashed #b9ccd8;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem;color:#687c8c;background:#fbfdfe;grid-column:1 / -1;}
-.pdf-empty-icon{font-size:2rem;margin-bottom:.5rem;}
-.pdf-empty strong{color:#20384b;margin-bottom:.4rem;}
-.pdf-empty code{background:#eef5f8;padding:7px 10px;border-radius:6px;color:#008aaa;font-size:.75rem;}
-.pdf-empty-note{font-size:.72rem;margin-top:.6rem;color:#8797a3;}
-.detail-footer{display:flex;justify-content:flex-end;gap:.7rem;padding:1rem 1.6rem 1.4rem;border-top:1px solid #e3ebf0;position:sticky;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);}
-.detail-close-btn,.detail-choose-btn{border-radius:9px;padding:10px 16px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;}
-.detail-close-btn{background:#fff;border:1px solid #cbd9e1;color:#516778;}
-.detail-choose-btn{background:var(--electric);border:1px solid var(--electric);color:#062033;}
-
-@media(max-width:700px){
-  .product-footer{align-items:stretch;flex-direction:column;}
-  .product-actions{width:100%;min-width:0;}
-  .detail-overview{grid-template-columns:1fr;}
-  .detail-section.report-section{grid-column:auto;}
-  .pdf-preview{grid-template-columns:1fr;}
-  .detail-header{padding-right:3.5rem;}
-}
-
 </style>
 </head>
 <body>
@@ -513,7 +502,7 @@ nav{
   <div class="products-inner">
     <div class="section-head">
       <h2 class="section-title">Sản phẩm & Dự án</h2>
-      <p class="section-sub">Xem tổng quan dự án hoặc chọn từng tài liệu / file bạn cần</p>
+      <p class="section-sub">Nhấn vào sản phẩm để chọn tài liệu / file bạn cần</p>
     </div>
     <div class="product-grid" id="product-grid"></div>
   </div>
@@ -685,43 +674,28 @@ nav{
 
 <!-- PRODUCT DETAIL MODAL -->
 <div class="modal-backdrop" id="product-detail-modal" onclick="handleDetailBackdropClick(event)">
-  <div class="detail-modal" id="detail-modal-inner">
+  <div class="modal detail-modal" id="detail-modal-inner">
     <button class="modal-close" onclick="closeDetailModal()">✕</button>
-    <div class="detail-header">
-      <div class="detail-icon" id="detail-icon"></div>
-      <div>
-        <div class="detail-title" id="detail-name"></div>
-        <div class="detail-desc" id="detail-desc"></div>
+    <div class="modal-header">
+      <div class="modal-icon" id="detail-icon"></div>
+      <div class="modal-meta">
+        <div class="modal-name" id="detail-name"></div>
+        <div class="modal-desc" id="detail-short-desc"></div>
       </div>
     </div>
-
-    <div class="detail-overview">
-      <div class="detail-section">
-        <div class="detail-section-title"><span>01</span> Schematic</div>
-        <div class="detail-section-text" id="detail-schematic"></div>
-      </div>
-      <div class="detail-section">
-        <div class="detail-section-title"><span>02</span> PCB</div>
-        <div class="detail-section-text" id="detail-pcb"></div>
-      </div>
-      <div class="detail-section">
-        <div class="detail-section-title"><span>03</span> Source Code</div>
-        <div class="detail-section-text" id="detail-source"></div>
-      </div>
-      <div class="detail-section report-section">
-        <div class="detail-section-title"><span>04</span> File Báo cáo PDF</div>
-        <div class="detail-section-text" id="detail-report"></div>
-        <div class="pdf-preview-head">
-          <strong>Xem trước 10 trang đầu</strong>
-          <span id="pdf-status">Đang chuẩn bị...</span>
+    <div class="detail-body">
+      <div class="detail-overview" id="detail-overview"></div>
+      <div class="detail-grid" id="detail-grid"></div>
+      <div class="report-preview">
+        <div class="report-preview-head">
+          <div class="report-preview-title">04 · File báo cáo PDF</div>
+          <div class="report-preview-note">Xem trước tối đa 10 trang đầu</div>
         </div>
-        <div class="pdf-preview" id="pdf-preview"></div>
+        <div class="pdf-pages" id="pdf-pages"></div>
       </div>
     </div>
-
     <div class="detail-footer">
       <button class="detail-close-btn" onclick="closeDetailModal()">Đóng</button>
-      <button class="detail-choose-btn" id="detail-choose-btn">Chọn tài liệu →</button>
     </div>
   </div>
 </div>
@@ -826,7 +800,12 @@ function translateLanguage(lang) {
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script type="module">
+  import * as pdfjsLibModule from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs';
+  pdfjsLibModule.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
+  window.pdfjsLib = pdfjsLibModule;
+</script>
+
 <script>
 const products = [
   {id:1,name:'Mạch Arduino Uno R3',icon:'🤖',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',options:[
@@ -866,6 +845,16 @@ const products = [
     {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
   ]},
 ];
+
+products.forEach(p => {
+  p.overview = `Dự án ${p.name} cung cấp bộ tài liệu tách riêng theo từng hạng mục để bạn có thể mua đúng phần cần sử dụng: schematic, PCB, source code và báo cáo PDF.`;
+  p.details = {
+    schematic: 'Sơ đồ nguyên lý đầy đủ, tên linh kiện, kết nối nguồn/tín hiệu, chân giao tiếp và các điểm cần lưu ý khi lắp ráp.',
+    pcb: 'Thông tin layout board, bố trí linh kiện, đường mạch, kích thước PCB và dữ liệu cần thiết để kiểm tra/gia công board.',
+    source: 'Mã nguồn mẫu tương ứng với dự án, thư viện sử dụng, cấu trúc chương trình và hướng dẫn cơ bản để build/nạp code.'
+  };
+  p.report = `assets/reports/product-${p.id}.pdf`;
+});
 
 let currentUser = null;
 let cart = [];
@@ -956,12 +945,102 @@ function renderProducts(){
           </div>
           <div class="product-actions">
             <button class="detail-btn" onclick="openDetailModal(${p.id})">Xem chi tiết</button>
-            <button class="choose-btn" onclick="openModal(${p.id})">Chọn</button>
+            <button class="select-btn" onclick="openModal(${p.id})">Chọn</button>
           </div>
         </div>
       </div>
     </div>`;
   }).join('');
+}
+
+function openDetailModal(id){
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+
+  document.getElementById('detail-icon').textContent = p.icon;
+  document.getElementById('detail-name').textContent = p.name;
+  document.getElementById('detail-short-desc').textContent = p.desc;
+  document.getElementById('detail-overview').textContent = p.overview || 'Tổng quan dự án và các tài liệu có thể lựa chọn.';
+
+  const labels = {
+    schematic: {num:'01', title:'Schematic', text:p.details?.schematic || 'Sơ đồ nguyên lý, kết nối linh kiện và các thông số chính của mạch.'},
+    pcb: {num:'02', title:'PCB', text:p.details?.pcb || 'Layout PCB, kích thước board, vị trí linh kiện và thông tin sản xuất.'},
+    source: {num:'03', title:'Source Code', text:p.details?.source || 'Mã nguồn, thư viện và hướng dẫn build/chạy chương trình.'}
+  };
+
+  document.getElementById('detail-grid').innerHTML = Object.values(labels).map(d => `
+    <div class="detail-card">
+      <h4><span class="detail-num">${d.num}</span>${d.title}</h4>
+      <p>${d.text}</p>
+    </div>`).join('');
+
+  document.getElementById('pdf-pages').innerHTML = '';
+  document.getElementById('product-detail-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  renderPdfPreview(p.report || `assets/reports/product-${p.id}.pdf`);
+}
+
+function closeDetailModal(){
+  document.getElementById('product-detail-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleDetailBackdropClick(e){
+  if(e.target === document.getElementById('product-detail-modal')) closeDetailModal();
+}
+
+async function renderPdfPreview(url){
+  const container = document.getElementById('pdf-pages');
+  container.innerHTML = '<div class="pdf-empty">Đang tải bản xem trước PDF...</div>';
+
+  if(typeof pdfjsLib === 'undefined'){
+    container.innerHTML = '<div class="pdf-empty">Chưa tải được PDF viewer. Hãy kiểm tra kết nối Internet hoặc thư viện PDF.js.</div>';
+    return;
+  }
+
+  try{
+    const loadingTask = pdfjsLib.getDocument(url);
+    const pdf = await loadingTask.promise;
+    const count = Math.min(pdf.numPages, 10);
+    container.innerHTML = '';
+
+    for(let pageNo = 1; pageNo <= count; pageNo++){
+      const page = await pdf.getPage(pageNo);
+      const baseViewport = page.getViewport({scale:1});
+      const targetWidth = 410;
+      const scale = Math.min(1.35, targetWidth / baseViewport.width);
+      const viewport = page.getViewport({scale});
+
+      const wrap = document.createElement('div');
+      wrap.className = 'pdf-page';
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(viewport.width * dpr);
+      canvas.height = Math.floor(viewport.height * dpr);
+      canvas.style.width = `${viewport.width}px`;
+      canvas.style.height = `${viewport.height}px`;
+
+      await page.render({canvasContext:ctx, viewport, transform:dpr !== 1 ? [dpr,0,0,dpr,0,0] : null}).promise;
+
+      const label = document.createElement('div');
+      label.className = 'pdf-page-label';
+      label.textContent = `Trang ${pageNo}`;
+
+      wrap.appendChild(canvas);
+      wrap.appendChild(label);
+      container.appendChild(wrap);
+    }
+
+    if(pdf.numPages === 0){
+      container.innerHTML = '<div class="pdf-empty">File PDF không có trang để hiển thị.</div>';
+    }
+  }catch(err){
+    console.error(err);
+    container.innerHTML = `<div class="pdf-empty">Chưa có file PDF hoặc không thể đọc file.<br><br><strong>${url}</strong><br><br>Hãy đặt file báo cáo đúng đường dẫn này.</div>`;
+  }
 }
 
 function openModal(id){
@@ -1007,104 +1086,6 @@ function toggleOption(key){
   const row = document.getElementById(`opt-${modalProductId}-${key}`);
   if(row) row.classList.toggle('selected', modalSelected.has(key));
   updateModalTotal();
-}
-
-async function openDetailModal(id){
-  const p = products.find(x=>x.id===id);
-  if(!p) return;
-
-  document.getElementById('detail-icon').textContent = p.icon;
-  document.getElementById('detail-name').textContent = p.name;
-  document.getElementById('detail-desc').textContent = p.desc;
-
-  const getHint = key => {
-    const o = p.options.find(x=>x.key===key);
-    return o ? o.hint : 'Thông tin đang được cập nhật.';
-  };
-
-  document.getElementById('detail-schematic').innerHTML =
-    `<strong>Gồm:</strong> ${getHint('schematic')}<br><span>• Sơ đồ nguyên lý và các kết nối chính của dự án.</span><br><span>• Dùng để kiểm tra linh kiện, nguồn, tín hiệu và kết nối MCU.</span>`;
-
-  document.getElementById('detail-pcb').innerHTML =
-    `<strong>Gồm:</strong> ${getHint('pcb')}<br><span>• Layout PCB, vị trí linh kiện và đường mạch.</span><br><span>• Bộ file phục vụ xem thiết kế và gia công PCB theo sản phẩm.</span>`;
-
-  document.getElementById('detail-source').innerHTML =
-    `<strong>Gồm:</strong> ${getHint('source')}<br><span>• Mã nguồn, thư viện và phần cấu hình liên quan.</span><br><span>• Phù hợp để mở rộng, chỉnh sửa và nạp cho hệ thống.</span>`;
-
-  document.getElementById('detail-report').innerHTML =
-    `<strong>Gồm:</strong> ${getHint('report')}<br><span>• Báo cáo PDF mô tả dự án, cấu trúc, nguyên lý và hướng dẫn sử dụng.</span>`;
-
-  document.getElementById('detail-choose-btn').onclick = () => {
-    closeDetailModal();
-    openModal(id);
-  };
-
-  document.getElementById('pdf-preview').innerHTML = '';
-  document.getElementById('pdf-status').textContent = 'Đang tải PDF...';
-  document.getElementById('product-detail-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  await renderPdfPreview(`assets/reports/product-${id}.pdf`);
-}
-
-function closeDetailModal(){
-  document.getElementById('product-detail-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleDetailBackdropClick(e){
-  if(e.target === document.getElementById('product-detail-modal')) closeDetailModal();
-}
-
-async function renderPdfPreview(pdfUrl){
-  const container = document.getElementById('pdf-preview');
-  const status = document.getElementById('pdf-status');
-  container.innerHTML = '';
-
-  if(!window.pdfjsLib){
-    status.textContent = 'PDF.js chưa được tải';
-    container.innerHTML = '<div class="pdf-empty">Không thể tải trình xem PDF.</div>';
-    return;
-  }
-
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-  try{
-    const loadingTask = pdfjsLib.getDocument(pdfUrl);
-    const pdf = await loadingTask.promise;
-    const pageCount = Math.min(pdf.numPages, 10);
-
-    status.textContent = `${pageCount} / ${pdf.numPages} trang đầu`;
-
-    for(let pageNo=1; pageNo<=pageCount; pageNo++){
-      const page = await pdf.getPage(pageNo);
-      const viewport = page.getViewport({scale:1.05});
-
-      const pageWrap = document.createElement('div');
-      pageWrap.className = 'pdf-page';
-      pageWrap.innerHTML = `<div class="pdf-page-label">Trang ${pageNo}</div>`;
-
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-      pageWrap.appendChild(canvas);
-      container.appendChild(pageWrap);
-
-      await page.render({canvasContext:ctx, viewport}).promise;
-    }
-  }catch(err){
-    status.textContent = 'Chưa có file PDF';
-    container.innerHTML = `
-      <div class="pdf-empty">
-        <div class="pdf-empty-icon">📄</div>
-        <strong>Chưa tìm thấy file báo cáo PDF</strong>
-        <p>Đặt file báo cáo của sản phẩm vào:</p>
-        <code>assets/reports/product-${pdfUrl.match(/product-(\d+)\.pdf/)?.[1] || 'ID'}.pdf</code>
-        <p class="pdf-empty-note">Khi có file PDF, website sẽ tự hiển thị tối đa 10 trang đầu tại đây.</p>
-      </div>`;
-  }
 }
 
 function updateModalTotal(){
