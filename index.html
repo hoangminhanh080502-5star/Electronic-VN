@@ -20,7 +20,15 @@
 /* NỀN CÔNG NGHỆ IoT, HARDWARE & MẠCH ĐIỆN TỬ */
 body{
   font-family:'Inter',sans-serif;
-  background-color:var(--navy);
+  background-color: var(--navy);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(10, 22, 40, 0.5) 0%, var(--navy) 100%),
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
   color:var(--white);
   min-height:100vh;
   top:0 !important;
@@ -75,174 +83,6 @@ nav{
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:0.5rem;text-align:center;background:linear-gradient(90deg, #ffffff, var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .section-sub{color:var(--gray);font-size:0.95rem;text-align:center}
 
-/* Nền trắng cho Sản phẩm / Dịch vụ / Liên hệ */
-.page:not(#page-home){background:#fff;color:#142238}
-.page:not(#page-home) .section-title{background:none;-webkit-text-fill-color:#142238;color:#142238}
-.page:not(#page-home) .section-sub,.page:not(#page-home) .service-intro{color:#68788a}
-
-/* ============================================================
-   FUTURISTIC IoT HOME BACKGROUND
-   Ảnh: assets/iot-background.png
-   ============================================================ */
-
-#page-home{
-  position:relative;
-  min-height:calc(100vh - 65px);
-  overflow:hidden;
-
-  background-color:#06101f;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(4,10,20,0.96) 0%,
-      rgba(4,10,20,0.88) 22%,
-      rgba(4,10,20,0.62) 48%,
-      rgba(4,10,20,0.28) 75%,
-      rgba(4,10,20,0.18) 100%
-    ),
-    url("assets/iot-background.png");
-
-  background-size:cover;
-  background-position:center center;
-  background-repeat:no-repeat;
-}
-
-/* Lớp ánh sáng xanh nhẹ */
-#page-home::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-
-  background:
-    radial-gradient(
-      circle at 72% 45%,
-      rgba(0,212,255,0.12) 0%,
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,0.00) 45%,
-      rgba(2,8,18,0.55) 100%
-    );
-}
-
-/* Làm tối nhẹ chân trang chủ để chữ/thống kê rõ hơn */
-#page-home::after{
-  content:'';
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:180px;
-  pointer-events:none;
-  z-index:0;
-
-  background:linear-gradient(
-    180deg,
-    transparent,
-    rgba(2,8,18,0.72)
-  );
-}
-
-/* Nội dung nằm trên background */
-#page-home .home-inner{
-  position:relative;
-  z-index:2;
-  min-height:calc(100vh - 65px);
-}
-
-/* Hero chữ dễ đọc trên ảnh */
-#page-home .hero-tag{
-  background:rgba(3,15,30,0.72);
-  backdrop-filter:blur(8px);
-  box-shadow:0 0 20px rgba(0,212,255,0.08);
-}
-
-#page-home .hero-title{
-  text-shadow:0 4px 30px rgba(0,0,0,0.65);
-}
-
-#page-home .hero-desc{
-  color:#c2d0df;
-  text-shadow:0 2px 12px rgba(0,0,0,0.75);
-}
-
-#page-home .stats-row{
-  background:rgba(3,12,24,0.52);
-  border:1px solid rgba(0,212,255,0.14);
-  backdrop-filter:blur(8px);
-  border-radius:14px;
-  padding:14px 18px;
-  width:max-content;
-}
-
-#page-home .hero-visual{
-  position:relative;
-}
-
-/* Làm ô PCB hiện tại hòa vào background */
-#page-home .pcb-box{
-  background:rgba(5,15,30,0.58);
-  backdrop-filter:blur(8px);
-  box-shadow:
-    0 0 35px rgba(0,212,255,0.16),
-    inset 0 0 30px rgba(0,212,255,0.04);
-}
-
-/* Ẩn khung PCB minh hoạ cũ ở Home, giữ lại background IoT */
-#page-home .hero-visual{display:none}
-#page-home .home-inner{grid-template-columns:1fr}
-#page-home .hero-desc{max-width:680px}
-
-/* Responsive */
-@media(max-width:900px){
-  #page-home{
-    background-position:60% center;
-  }
-
-  .home-inner{
-    grid-template-columns:1fr !important;
-    min-height:calc(100vh - 65px);
-  }
-
-  #page-home .hero-visual{
-    display:none;
-  }
-
-  #page-home .hero-desc{
-    max-width:650px;
-  }
-}
-
-@media(max-width:600px){
-  #page-home{
-    background-position:64% center;
-    background-image:
-      linear-gradient(
-        90deg,
-        rgba(4,10,20,0.95),
-        rgba(4,10,20,0.72)
-      ),
-      url("assets/iot-background.png");
-  }
-
-  #page-home .home-inner{
-    padding:3rem 1.25rem;
-  }
-
-  #page-home .hero-title{
-    font-size:2.4rem;
-  }
-
-  #page-home .stats-row{
-    width:100%;
-    gap:1.2rem;
-    justify-content:space-between;
-  }
-}
-
 /* HOME */
 .home-inner{padding:4rem 2rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:center}
 .hero-tag{font-size:0.8rem;letter-spacing:2px;color:var(--electric);margin-bottom:1rem;text-transform:uppercase;font-weight:600;display:inline-block;padding:4px 12px;background:rgba(0,212,255,0.1);border-radius:20px;border:1px solid rgba(0,212,255,0.2)}
@@ -253,10 +93,6 @@ nav{
 .btn-primary:hover{background:var(--electric2);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:600;padding:12px 30px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:all .2s}
 .btn-ghost:hover{background:rgba(0,212,255,0.1);border-color:var(--electric)}
-.hero-visual{display:flex;align-items:center;justify-content:center}
-.pcb-box{width:320px;height:320px;background:rgba(14, 23, 38, 0.8);border:1px solid rgba(0,212,255,0.4);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;position:relative;overflow:hidden;box-shadow: 0 0 30px rgba(0,212,255,0.15)}
-.pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),var(--accent2),transparent)}
-.pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;letter-spacing:3px;font-weight:700}
 .stats-row{display:flex;gap:2.5rem;margin-top:2.5rem}
 .stat{display:flex;flex-direction:column}
 .stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--electric)}
@@ -274,12 +110,8 @@ nav{
 .product-footer{display:flex;align-items:center;justify-content:space-between}
 .product-price{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;color:var(--electric)}
 .product-price-hint{font-size:0.7rem;color:var(--gray);display:block;font-weight:400}
-.product-actions{display:flex;flex-direction:column;gap:7px;align-items:stretch;min-width:122px}
-.product-actions button{width:100%;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:0.78rem;transition:all .2s;font-weight:600;font-family:'Inter',sans-serif}
-.detail-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.2);color:var(--white)}
-.detail-btn:hover{background:rgba(255,255,255,0.12);border-color:rgba(0,212,255,0.5);color:var(--electric)}
-.select-btn{background:rgba(0,212,255,0.12);border:1px solid rgba(0,212,255,0.35);color:var(--electric)}
-.select-btn:hover{background:var(--electric);color:var(--navy)}
+.view-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:7px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:all .2s;font-weight:600}
+.view-btn:hover{background:var(--electric);color:var(--navy)}
 
 /* MODAL */
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
@@ -400,43 +232,415 @@ nav{
 .checkout-cart-btn{width:100%;margin-top:1rem;background:var(--electric);color:var(--navy);border:none;padding:13px;border-radius:10px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
 .empty-cart{text-align:center;padding:3rem 0;color:var(--gray);font-size:0.9rem}
 
-/* PRODUCT DETAIL MODAL */
-.detail-modal{max-width:920px;max-height:92vh;background:#f8fbfd;color:#142238;border:1px solid #cfe1eb;box-shadow:0 18px 60px rgba(10,35,55,.25)}
-.detail-modal .modal-header{border-bottom:1px solid #dce8ef}
-.detail-modal .modal-icon{background:#eaf4f8}
-.detail-modal .modal-name{color:#142238}
-.detail-modal .modal-desc{color:#68788a}
-.detail-body{padding:1.25rem 1.5rem 1.5rem}
-.detail-overview{color:#516477;line-height:1.7;margin-bottom:1.2rem}
-.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.detail-card{background:#fff;border:1px solid #d9e5ec;border-radius:12px;padding:14px;box-shadow:0 5px 18px rgba(20,34,56,.05)}
-.detail-card h4{margin:0 0 6px;color:#142238;font-family:'Space Grotesk',sans-serif;font-size:.95rem}
-.detail-card p{margin:0;color:#68788a;font-size:.82rem;line-height:1.55}
-.detail-card .detail-num{display:inline-flex;width:24px;height:24px;border-radius:7px;background:#e8f6fb;color:#00a9d0;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;margin-right:7px}
-.report-preview{margin-top:1.3rem;border-top:1px solid #dce8ef;padding-top:1.2rem}
-.report-preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-.report-preview-title{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#142238}
-.report-preview-note{font-size:.75rem;color:#7a8a98}
-.pdf-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-height:600px;overflow:auto;padding:4px}
-.pdf-page{background:#fff;border:1px solid #dce5eb;border-radius:8px;padding:6px;box-shadow:0 4px 14px rgba(20,34,56,.06)}
-.pdf-page canvas{display:block;width:100%;height:auto}
-.pdf-page-label{text-align:center;font-size:.72rem;color:#7a8996;padding:5px 0 2px}
-.pdf-empty{padding:30px 16px;text-align:center;background:#fff;border:1px dashed #c9d8e2;border-radius:10px;color:#718191;font-size:.84rem;line-height:1.6}
-.detail-footer{padding:0 1.5rem 1.4rem;display:flex;justify-content:flex-end}
-.detail-close-btn{background:#142238;color:#fff;border:none;border-radius:9px;padding:9px 18px;cursor:pointer;font-weight:600}
-@media(max-width:700px){.detail-grid,.pdf-pages{grid-template-columns:1fr}.detail-modal{max-height:94vh}.product-actions{min-width:105px}}
-
 /* BACKDROP & TOAST */
 .backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(3px);z-index:199;display:none}
 .backdrop.open{display:block}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy2);border:1px solid rgba(0,212,255,0.5);color:var(--electric);padding:12px 22px;border-radius:10px;font-size:0.88rem;z-index:400;transform:translateY(80px);opacity:0;transition:all .3s;box-shadow: 0 5px 20px rgba(0,212,255,0.2)}
 .toast.show{transform:translateY(0);opacity:1}
+
+/* ============================================================
+   ELECTRO VN — FINAL HOMEPAGE VISUAL UPDATE
+   - Cân bằng độ sáng toàn ảnh nền
+   - Không làm tối mạnh khu vực bên trái
+   - Logo mạch điện tử dạng SVG
+   ============================================================ */
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:1.25rem;
+  letter-spacing:-0.5px;
+  color:var(--white);
+}
+
+.logo-mark{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 34px;
+  filter:drop-shadow(0 0 8px rgba(0,212,255,.25));
+}
+
+.logo-mark svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.logo-word{
+  color:var(--white);
+  white-space:nowrap;
+}
+
+.logo-word > span{
+  color:var(--white);
+}
+
+.logo-word::first-letter{
+  color:var(--white);
+}
+
+.logo:hover .logo-mark{
+  filter:drop-shadow(0 0 12px rgba(0,212,255,.55));
+}
+
+/* Background Home: sáng đều hơn, đặc biệt phía trái */
+#page-home{
+  position:relative;
+  min-height:calc(100vh - 65px);
+  overflow:hidden;
+  background-color:#071426;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(4,12,26,.48) 0%,
+      rgba(4,12,26,.34) 28%,
+      rgba(4,12,26,.22) 55%,
+      rgba(4,12,26,.18) 100%
+    ),
+    url("assets/iot-background.png");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+
+/* Ánh sáng xanh rất nhẹ để các vùng ảnh hòa với giao diện */
+#page-home::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 38%, rgba(0,212,255,.12), transparent 30%),
+    radial-gradient(circle at 78% 45%, rgba(0,212,255,.10), transparent 34%),
+    linear-gradient(180deg, rgba(2,8,18,.02) 0%, rgba(2,8,18,.12) 100%);
+}
+
+/* Chỉ tạo một lớp tối nhẹ ở đáy, không phủ đen toàn bộ ảnh */
+#page-home::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:110px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(180deg, transparent, rgba(2,8,18,.38));
+}
+
+#page-home .home-inner{
+  position:relative;
+  z-index:2;
+  min-height:calc(100vh - 65px);
+}
+
+/* Khối chữ có nền kính rất nhẹ để ảnh vẫn nhìn thấy phía sau */
+#page-home .home-inner > div:first-child{
+  max-width:680px;
+}
+
+#page-home .hero-tag{
+  background:rgba(4,17,31,.52);
+  border-color:rgba(0,212,255,.42);
+  box-shadow:0 0 18px rgba(0,212,255,.08);
+  backdrop-filter:blur(7px);
+}
+
+#page-home .hero-title{
+  text-shadow:0 3px 22px rgba(0,0,0,.42);
+}
+
+#page-home .hero-desc{
+  color:#d0dbe7;
+  text-shadow:0 2px 10px rgba(0,0,0,.55);
+}
+
+#page-home .stats-row{
+  width:max-content;
+  padding:13px 18px;
+  border-radius:14px;
+  background:rgba(4,15,29,.50);
+  border:1px solid rgba(0,212,255,.22);
+  backdrop-filter:blur(8px);
+  box-shadow:0 10px 28px rgba(0,0,0,.16);
+}
+
+#page-home .stat-label{
+  color:#b7c5d3;
+}
+
+#page-home 
+
+/* Home: bỏ khung PCB/plug cũ, chỉ giữ background IoT */
+#page-home .hero-visual{
+  display:none;
+}
+
+#page-home .home-inner{
+  grid-template-columns:1fr;
+}
+
+#page-home .hero-desc{
+  max-width:680px;
+}
+
+/* ============================================================
+   WHITE BACKGROUND FOR PRODUCTS / SERVICES / CONTACT
+   Nền trắng áp dụng cho TOÀN BỘ TRANG, không phải từng item.
+   ============================================================ */
+
+.page:not(#page-home){
+  background:#ffffff;
+  color:#142238;
+  min-height:calc(100vh - 65px);
+}
+
+/* Tiêu đề chính nằm giữa giống Trang chủ */
+#page-products .section-head,
+#page-services .section-head,
+#page-contact .section-head{
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.page:not(#page-home) .section-title{
+  color:#142238;
+  background:none;
+  -webkit-text-fill-color:#142238;
+  text-shadow:none;
+  text-align:center;
+}
+
+.page:not(#page-home) .section-sub{
+  color:#68788a;
+  text-align:center;
+}
+
+/* Khu vực nội dung */
+.products-inner,
+.services-inner,
+.contact-inner{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* ===== SẢN PHẨM ===== */
+.products-inner{
+  max-width:1120px;
+  padding:4rem 2rem 5rem;
+}
+
+.product-grid{
+  max-width:1040px;
+  margin:2.2rem auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.5rem;
+  justify-content:center;
+}
+
+/* Item có nền riêng nhẹ để phân biệt với nền trắng */
+.product-card{
+  background:#f7fafc;
+  color:#142238;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.07);
+  backdrop-filter:none;
+}
+
+.product-card:hover{
+  border-color:rgba(0,170,204,.45);
+  box-shadow:0 12px 30px rgba(0,170,204,.14);
+  transform:translateY(-3px);
+}
+
+.product-img{
+  background:#eef5f9;
+  border-bottom:1px solid #e2e9ef;
+}
+
+.product-name{color:#142238;}
+.product-desc{color:#68788a;}
+.product-price-hint{color:#7a8998;}
+
+/* ===== DỊCH VỤ ===== */
+.services-inner{
+  max-width:1120px;
+  padding:4rem 2rem 5rem;
+}
+
+.service-intro{
+  color:#68788a;
+  text-align:center;
+}
+
+.service-grid{
+  max-width:1040px;
+  margin:2.2rem auto 3rem;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.5rem;
+  justify-content:center;
+}
+
+.service-card{
+  background:#f7fafc;
+  color:#142238;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.07);
+  backdrop-filter:none;
+}
+
+.service-card:hover{
+  border-color:rgba(0,170,204,.45);
+  box-shadow:0 12px 30px rgba(0,170,204,.14);
+  transform:translateY(-3px);
+}
+
+.service-name{color:#142238;}
+.service-desc{color:#68788a;}
+
+/* ===== QUY TRÌNH ===== */
+.process-steps{
+  max-width:1040px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.step-card{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 6px 18px rgba(20,34,56,.06);
+}
+
+.step-card-name{color:#142238;}
+.step-card-desc{color:#68788a;}
+
+.order-form-wrap{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 10px 30px rgba(20,34,56,.08);
+}
+
+.order-form-title{color:#142238;}
+.order-form-sub{color:#68788a;}
+
+/* ===== LIÊN HỆ ===== */
+.contact-inner{
+  max-width:800px;
+  padding:4rem 2rem 5rem;
+}
+
+.contact-grid{
+  max-width:720px;
+  margin:2rem auto 0;
+}
+
+.contact-card{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 22px rgba(20,34,56,.07);
+}
+
+.contact-card:hover{
+  border-color:rgba(0,170,204,.45);
+  box-shadow:0 12px 28px rgba(0,170,204,.12);
+}
+
+.contact-info h3{color:#142238;}
+.contact-info p{color:#68788a;}
+.contact-icon{background:#eaf3f8;}
+
+.contact-form{
+  background:#f7fafc;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.07);
+}
+
+.form-title{color:#142238;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .product-grid,
+  .service-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px){
+  .product-grid,
+  .service-grid,
+  .contact-grid,
+  .process-steps{
+    grid-template-columns:1fr;
+  }
+
+  .products-inner,
+  .services-inner,
+  .contact-inner{
+    padding-left:1.25rem;
+    padding-right:1.25rem;
+  }
+}
+
+@media(max-width:900px){
+  .product-grid,.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:600px){
+  .product-grid,.service-grid,.contact-grid,.process-steps{grid-template-columns:1fr;}
+  .products-inner,.services-inner,.contact-inner{padding-left:1.25rem;padding-right:1.25rem;}
+}
+
+@media(max-width:900px){
+  #page-home{
+    background-position:58% center;
+  }
+  #page-home .home-inner{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  #page-home{
+    background-position:62% center;
+    background-image:
+      linear-gradient(90deg, rgba(4,12,26,.52), rgba(4,12,26,.24)),
+      url("assets/iot-background.png");
+  }
+  .logo-mark{width:31px;height:31px;flex-basis:31px}
+  .logo{font-size:1.12rem}
+}
+
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo"><span>Electro</span>VN</div>
+  <div class="logo" aria-label="Electro VN">
+  <span class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 48 48" role="img">
+      <defs>
+        <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00d4ff"/>
+          <stop offset="100%" stop-color="#00ff88"/>
+        </linearGradient>
+      </defs>
+      <rect x="5" y="5" width="38" height="38" rx="10" fill="rgba(0,212,255,.08)" stroke="url(#logoGrad)" stroke-width="2"/>
+      <path d="M14 25h7l3-9 4 17 3-8h3" fill="none" stroke="url(#logoGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="14" cy="25" r="2.2" fill="#00d4ff"/>
+      <circle cx="34" cy="25" r="2.2" fill="#00ff88"/>
+    </svg>
+  </span>
+  <span class="logo-word"><span>Electro</span> VN</span>
+</div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" id="nav-home" class="active">Trang chủ</a></li>
     <li><a onclick="showPage('products')" id="nav-products">Sản phẩm</a></li>
@@ -450,15 +654,15 @@ nav{
       <span class="lang-btn notranslate" id="btn-en" translate="no" onclick="translateLanguage('en')">EN</span>
     </div>
 
+    <!-- TÀI KHOẢN -->
+    <button class="nav-btn" id="account-btn" onclick="handleAccountClick()">
+      👤 <span id="account-label">Tài khoản</span>
+    </button>
+
     <!-- GIỎ HÀNG -->
     <button class="nav-btn" onclick="toggleCart()">
       🛒 <span>Giỏ hàng</span>
       <span class="cart-count" id="cart-count">0</span>
-    </button>
-
-    <!-- TÀI KHOẢN -->
-    <button class="nav-btn" id="account-btn" onclick="handleAccountClick()">
-      👤 <span id="account-label">Tài khoản</span>
     </button>
   </div>
 </nav>
@@ -471,7 +675,7 @@ nav{
   <div class="home-inner">
     <div>
       <div class="hero-tag">— Mạch điện tử, IoT, Hardware & Embedded Software</div>
-      <h1 class="hero-title">Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
+      <h1 class="hero-title">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
       <p class="hero-desc">Chuyên thiết kế sơ đồ nguyên lý, Layout PCB, lập trình vi điều khiển, nhúng Firmware và phát triển giải pháp IoT cho sinh viên, kỹ sư & doanh nghiệp.</p>
       <div>
         <button class="btn-primary" onclick="showPage('products')">Xem sản phẩm</button>
@@ -481,17 +685,6 @@ nav{
         <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Sản phẩm</span></div>
         <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Khách hàng</span></div>
         <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Bảo hành</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="pcb-box">
-        <div style="font-size:5rem">🔌</div>
-        <div class="pcb-label">IoT · MCU · EMBEDDED</div>
-        <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:6px">
-          <div style="height:3px;flex:1;background:rgba(0,212,255,0.4);border-radius:2px"></div>
-          <div style="height:3px;flex:2;background:rgba(0,255,136,0.3);border-radius:2px"></div>
-          <div style="height:3px;flex:1;background:rgba(0,212,255,0.4);border-radius:2px"></div>
-        </div>
       </div>
     </div>
   </div>
@@ -672,34 +865,6 @@ nav{
   </div>
 </div>
 
-<!-- PRODUCT DETAIL MODAL -->
-<div class="modal-backdrop" id="product-detail-modal" onclick="handleDetailBackdropClick(event)">
-  <div class="modal detail-modal" id="detail-modal-inner">
-    <button class="modal-close" onclick="closeDetailModal()">✕</button>
-    <div class="modal-header">
-      <div class="modal-icon" id="detail-icon"></div>
-      <div class="modal-meta">
-        <div class="modal-name" id="detail-name"></div>
-        <div class="modal-desc" id="detail-short-desc"></div>
-      </div>
-    </div>
-    <div class="detail-body">
-      <div class="detail-overview" id="detail-overview"></div>
-      <div class="detail-grid" id="detail-grid"></div>
-      <div class="report-preview">
-        <div class="report-preview-head">
-          <div class="report-preview-title">04 · File báo cáo PDF</div>
-          <div class="report-preview-note">Xem trước tối đa 10 trang đầu</div>
-        </div>
-        <div class="pdf-pages" id="pdf-pages"></div>
-      </div>
-    </div>
-    <div class="detail-footer">
-      <button class="detail-close-btn" onclick="closeDetailModal()">Đóng</button>
-    </div>
-  </div>
-</div>
-
 <!-- PRODUCT MODAL -->
 <div class="modal-backdrop" id="product-modal" onclick="handleModalBackdropClick(event)">
   <div class="modal" id="modal-inner">
@@ -800,12 +965,6 @@ function translateLanguage(lang) {
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script type="module">
-  import * as pdfjsLibModule from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs';
-  pdfjsLibModule.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
-  window.pdfjsLib = pdfjsLibModule;
-</script>
-
 <script>
 const products = [
   {id:1,name:'Mạch Arduino Uno R3',icon:'🤖',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',options:[
@@ -845,16 +1004,6 @@ const products = [
     {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
   ]},
 ];
-
-products.forEach(p => {
-  p.overview = `Dự án ${p.name} cung cấp bộ tài liệu tách riêng theo từng hạng mục để bạn có thể mua đúng phần cần sử dụng: schematic, PCB, source code và báo cáo PDF.`;
-  p.details = {
-    schematic: 'Sơ đồ nguyên lý đầy đủ, tên linh kiện, kết nối nguồn/tín hiệu, chân giao tiếp và các điểm cần lưu ý khi lắp ráp.',
-    pcb: 'Thông tin layout board, bố trí linh kiện, đường mạch, kích thước PCB và dữ liệu cần thiết để kiểm tra/gia công board.',
-    source: 'Mã nguồn mẫu tương ứng với dự án, thư viện sử dụng, cấu trúc chương trình và hướng dẫn cơ bản để build/nạp code.'
-  };
-  p.report = `assets/reports/product-${p.id}.pdf`;
-});
 
 let currentUser = null;
 let cart = [];
@@ -933,7 +1082,7 @@ function renderProducts(){
   g.innerHTML = products.map(p => {
     const total = p.options.reduce((a,o) => a+o.price, 0);
     return `
-    <div class="product-card">
+    <div class="product-card" onclick="openModal(${p.id})">
       <div class="product-img">${p.icon}</div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
@@ -943,104 +1092,11 @@ function renderProducts(){
             <span class="product-price">${fmt(total)}</span>
             <span class="product-price-hint">trọn bộ 4 file</span>
           </div>
-          <div class="product-actions">
-            <button class="detail-btn" onclick="openDetailModal(${p.id})">Xem chi tiết</button>
-            <button class="select-btn" onclick="openModal(${p.id})">Chọn</button>
-          </div>
+          <button class="view-btn">Xem & Chọn →</button>
         </div>
       </div>
     </div>`;
   }).join('');
-}
-
-function openDetailModal(id){
-  const p = products.find(x => x.id === id);
-  if(!p) return;
-
-  document.getElementById('detail-icon').textContent = p.icon;
-  document.getElementById('detail-name').textContent = p.name;
-  document.getElementById('detail-short-desc').textContent = p.desc;
-  document.getElementById('detail-overview').textContent = p.overview || 'Tổng quan dự án và các tài liệu có thể lựa chọn.';
-
-  const labels = {
-    schematic: {num:'01', title:'Schematic', text:p.details?.schematic || 'Sơ đồ nguyên lý, kết nối linh kiện và các thông số chính của mạch.'},
-    pcb: {num:'02', title:'PCB', text:p.details?.pcb || 'Layout PCB, kích thước board, vị trí linh kiện và thông tin sản xuất.'},
-    source: {num:'03', title:'Source Code', text:p.details?.source || 'Mã nguồn, thư viện và hướng dẫn build/chạy chương trình.'}
-  };
-
-  document.getElementById('detail-grid').innerHTML = Object.values(labels).map(d => `
-    <div class="detail-card">
-      <h4><span class="detail-num">${d.num}</span>${d.title}</h4>
-      <p>${d.text}</p>
-    </div>`).join('');
-
-  document.getElementById('pdf-pages').innerHTML = '';
-  document.getElementById('product-detail-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  renderPdfPreview(p.report || `assets/reports/product-${p.id}.pdf`);
-}
-
-function closeDetailModal(){
-  document.getElementById('product-detail-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleDetailBackdropClick(e){
-  if(e.target === document.getElementById('product-detail-modal')) closeDetailModal();
-}
-
-async function renderPdfPreview(url){
-  const container = document.getElementById('pdf-pages');
-  container.innerHTML = '<div class="pdf-empty">Đang tải bản xem trước PDF...</div>';
-
-  if(typeof pdfjsLib === 'undefined'){
-    container.innerHTML = '<div class="pdf-empty">Chưa tải được PDF viewer. Hãy kiểm tra kết nối Internet hoặc thư viện PDF.js.</div>';
-    return;
-  }
-
-  try{
-    const loadingTask = pdfjsLib.getDocument(url);
-    const pdf = await loadingTask.promise;
-    const count = Math.min(pdf.numPages, 10);
-    container.innerHTML = '';
-
-    for(let pageNo = 1; pageNo <= count; pageNo++){
-      const page = await pdf.getPage(pageNo);
-      const baseViewport = page.getViewport({scale:1});
-      const targetWidth = 410;
-      const scale = Math.min(1.35, targetWidth / baseViewport.width);
-      const viewport = page.getViewport({scale});
-
-      const wrap = document.createElement('div');
-      wrap.className = 'pdf-page';
-
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = Math.floor(viewport.width * dpr);
-      canvas.height = Math.floor(viewport.height * dpr);
-      canvas.style.width = `${viewport.width}px`;
-      canvas.style.height = `${viewport.height}px`;
-
-      await page.render({canvasContext:ctx, viewport, transform:dpr !== 1 ? [dpr,0,0,dpr,0,0] : null}).promise;
-
-      const label = document.createElement('div');
-      label.className = 'pdf-page-label';
-      label.textContent = `Trang ${pageNo}`;
-
-      wrap.appendChild(canvas);
-      wrap.appendChild(label);
-      container.appendChild(wrap);
-    }
-
-    if(pdf.numPages === 0){
-      container.innerHTML = '<div class="pdf-empty">File PDF không có trang để hiển thị.</div>';
-    }
-  }catch(err){
-    console.error(err);
-    container.innerHTML = `<div class="pdf-empty">Chưa có file PDF hoặc không thể đọc file.<br><br><strong>${url}</strong><br><br>Hãy đặt file báo cáo đúng đường dẫn này.</div>`;
-  }
 }
 
 function openModal(id){
