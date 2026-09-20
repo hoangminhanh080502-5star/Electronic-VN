@@ -25,27 +25,13 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
 .nav-right{display:flex;align-items:center;gap:1rem}
 
-/* TÙY CHỈNH GOOGLE TRANSLATE WIDGET */
-#google_translate_element {
-  display: flex;
-  align-items: center;
-}
-.goog-te-gadget {
-  font-family: 'Inter', sans-serif !important;
-  color: transparent !important;
-  font-size: 0 !important;
-}
-.goog-te-gadget .goog-te-combo {
-  background: var(--navy3) !important;
-  color: var(--white) !important;
-  border: 1px solid rgba(0,212,255,0.3) !important;
-  border-radius: 8px !important;
-  padding: 5px 8px !important;
-  font-size: 0.8rem !important;
-  outline: none !important;
-  cursor: pointer;
-}
-/* Ẩn banner mặc định của Google Translate khi dịch */
+/* VI | EN SWITCH BUTTON (DESIGN GIỐNG ẢNH) */
+.lang-switch-custom{display:flex;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:3px;font-size:0.8rem;font-weight:600}
+.lang-btn{padding:4px 12px;border-radius:16px;cursor:pointer;color:var(--gray);transition:all .2s;user-select:none}
+.lang-btn.active{background:var(--electric);color:var(--navy)}
+
+/* ẨN WIDGET GOOGLE TRANSLATE MẶC ĐỊNH */
+#google_translate_element { display: none !important; }
 .goog-te-banner-frame { display: none !important; }
 body { top: 0px !important; }
 .skiptranslate iframe { display: none !important; }
@@ -58,6 +44,11 @@ body { top: 0px !important; }
 /* SECTIONS — mỗi section độc lập, ẩn/hiện bằng display */
 .page{display:none;min-height:calc(100vh - 60px)}
 .page.active{display:block}
+
+/* CĂN GIỮA TIÊU ĐỀ BẢNG THÔNG TIN SẢN PHẨM & DỊCH VỤ */
+.section-head{margin-bottom:2rem;text-align:center}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem;text-align:center}
+.section-sub{color:var(--gray);font-size:0.9rem;text-align:center}
 
 /* HOME */
 .home-inner{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
@@ -80,9 +71,6 @@ body { top: 0px !important; }
 
 /* PRODUCTS */
 .products-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem}
-.section-head{margin-bottom:2rem}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem}
-.section-sub{color:var(--gray);font-size:0.9rem}
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .product-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .15s}
 .product-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-2px)}
@@ -136,16 +124,16 @@ body { top: 0px !important; }
 
 /* SERVICES */
 .services-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem}
-.service-intro{color:var(--gray);font-size:0.9rem;line-height:1.7;max-width:600px;margin-bottom:2rem}
+.service-intro{color:var(--gray);font-size:0.9rem;line-height:1.7;max-width:700px;margin:0 auto 2rem;text-align:center}
 .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
-.service-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.4rem}
+.service-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.4rem;text-align:center}
 .service-icon{font-size:2rem;margin-bottom:0.8rem}
 .service-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.4rem}
 .service-desc{color:var(--gray);font-size:0.8rem;line-height:1.6;margin-bottom:1rem}
 .service-price-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:4px 10px;font-size:0.78rem;color:var(--electric);font-family:'Space Grotesk',sans-serif;font-weight:600}
 .order-form-wrap{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.8rem}
-.order-form-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:0.4rem}
-.order-form-sub{color:var(--gray);font-size:0.83rem;margin-bottom:1.5rem}
+.order-form-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:0.4rem;text-align:center}
+.order-form-sub{color:var(--gray);font-size:0.83rem;margin-bottom:1.5rem;text-align:center}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 .form-row label{display:block;font-size:0.8rem;color:var(--gray);margin-bottom:6px}
 .form-row input,.form-row textarea,.form-row select{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:var(--white);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;appearance:none}
@@ -157,7 +145,7 @@ body { top: 0px !important; }
 .cb-item{display:flex;align-items:center;gap:6px;background:var(--navy3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:0.82rem;transition:border-color .2s}
 .cb-item input[type=checkbox]{accent-color:var(--electric);width:14px;height:14px}
 .cb-item:has(input:checked){border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.06)}
-.submit-row{display:flex;align-items:center;gap:1rem;margin-top:1.2rem}
+.submit-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.2rem}
 .submit-btn{background:var(--electric);color:var(--navy);border:none;padding:11px 28px;border-radius:8px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:'Space Grotesk',sans-serif}
 .submit-hint{color:var(--gray);font-size:0.78rem}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin:2rem 0}
@@ -171,7 +159,7 @@ body { top: 0px !important; }
 .payment-box{background:var(--navy2);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:2rem}
 .qr-placeholder{width:200px;height:200px;background:var(--white);border-radius:12px;margin:1.5rem auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem}
 .qr-label{color:var(--navy);font-size:0.75rem;font-weight:600}
-.payment-info{text-align:left;margin-top:1.5rem;font-size:0.88rem;line-height:1.9;color:var(--gray)}
+.payment-info{text-align:center;margin-top:1.5rem;font-size:0.88rem;line-height:1.9;color:var(--gray)}
 .payment-info strong{color:var(--white)}
 .payment-step{background:var(--navy3);border-radius:10px;padding:1rem;margin-top:1rem;text-align:left}
 .step-row{display:flex;gap:0.8rem;align-items:flex-start;margin-bottom:0.6rem;font-size:0.85rem;color:var(--gray)}
@@ -189,8 +177,8 @@ body { top: 0px !important; }
 .contact-info p{color:var(--gray);font-size:0.82rem}
 .contact-form{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;margin-top:1.2rem}
 .contact-form .form-row{margin-bottom:1rem}
-.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem}
-.send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem}
+.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.2rem;text-align:center}
+.send-btn{background:var(--electric);color:var(--navy);border:none;padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.88rem;display:block;margin:0 auto}
 
 /* CART */
 .cart-overlay{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--navy2);border-left:1px solid rgba(0,212,255,0.15);padding:1.5rem;z-index:200;transition:right .3s;overflow-y:auto}
@@ -232,8 +220,11 @@ body { top: 0px !important; }
     <li><a onclick="showPage('contact')" id="nav-contact">Liên hệ</a></li>
   </ul>
   <div class="nav-right">
-    <!-- WIDGET DỊCH NGÔN NGỮ GOOGLE TRANSLATE -->
-    <div id="google_translate_element"></div>
+    <!-- NÚT CHUYỂN NGÔN NGỮ VI | EN DÙNG GG TRANSLATE -->
+    <div class="lang-switch-custom">
+      <span class="lang-btn active" id="btn-vi" onclick="translateLanguage('vi')">VI</span>
+      <span class="lang-btn" id="btn-en" onclick="translateLanguage('en')">EN</span>
+    </div>
 
     <!-- TÀI KHOẢN -->
     <button class="nav-btn" id="account-btn" onclick="handleAccountClick()">
@@ -247,6 +238,9 @@ body { top: 0px !important; }
     </button>
   </div>
 </nav>
+
+<!-- PHẦN ẨN CHỨA GOOGLE TRANSLATE -->
+<div id="google_translate_element"></div>
 
 <!-- ===== HOME ===== -->
 <div class="page active" id="page-home">
@@ -539,8 +533,21 @@ body { top: 0px !important; }
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: 'vi',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    includedLanguages: 'vi,en',
+    autoDisplay: false
   }, 'google_translate_element');
+}
+
+// HÀM CHUYỂN NGÔN NGỮ BẰNG NÚT VI | EN
+function translateLanguage(lang) {
+  document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  var select = document.querySelector('.goog-te-combo');
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+  }
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
