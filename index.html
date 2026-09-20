@@ -93,10 +93,6 @@ nav{
 .btn-primary:hover{background:var(--electric2);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--electric);border:1px solid rgba(0,212,255,0.4);font-weight:600;padding:12px 30px;border-radius:10px;cursor:pointer;font-size:0.95rem;margin-left:1rem;transition:all .2s}
 .btn-ghost:hover{background:rgba(0,212,255,0.1);border-color:var(--electric)}
-.hero-visual{display:flex;align-items:center;justify-content:center}
-.pcb-box{width:320px;height:320px;background:rgba(14, 23, 38, 0.8);border:1px solid rgba(0,212,255,0.4);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;position:relative;overflow:hidden;box-shadow: 0 0 30px rgba(0,212,255,0.15)}
-.pcb-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--electric),var(--accent2),transparent)}
-.pcb-label{color:var(--electric);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;letter-spacing:3px;font-weight:700}
 .stats-row{display:flex;gap:2.5rem;margin-top:2.5rem}
 .stat{display:flex;flex-direction:column}
 .stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--electric)}
@@ -380,10 +376,79 @@ nav{
   color:#b7c5d3;
 }
 
-#page-home .pcb-box{
-  background:rgba(8,22,39,.50);
-  backdrop-filter:blur(7px);
-  box-shadow:0 0 35px rgba(0,212,255,.14);
+#page-home 
+/* ============================================================
+   CLEAN WHITE PAGES — PRODUCTS / SERVICES / CONTACT
+   ============================================================ */
+.page:not(#page-home){
+  background:#ffffff;
+  color:#142238;
+}
+.page:not(#page-home) .section-title{
+  color:#142238;
+  background:none;
+  -webkit-text-fill-color:#142238;
+  text-shadow:none;
+}
+.page:not(#page-home) .section-sub{color:#68788a;}
+
+.products-inner,
+.services-inner,
+.contact-inner{margin-left:auto;margin-right:auto;}
+
+.products-inner{max-width:1120px;padding:4rem 2rem 5rem;}
+.product-grid{max-width:1040px;margin:0 auto;justify-content:center;}
+.product-card{
+  background:#fff;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.08);
+  backdrop-filter:none;
+}
+.product-card:hover{border-color:rgba(0,170,204,.45);box-shadow:0 12px 30px rgba(0,170,204,.14);}
+.product-img{background:#f1f6fa;border-bottom:1px solid #e2e9ef;}
+.product-name{color:#142238;}
+.product-desc{color:#68788a;}
+.product-price-hint{color:#7a8998;}
+
+.services-inner{max-width:1120px;padding:4rem 2rem 5rem;}
+.service-intro{color:#68788a;}
+.service-grid{max-width:1040px;margin:0 auto 3rem;justify-content:center;}
+.service-card{
+  background:#fff;
+  border:1px solid #dce5ee;
+  box-shadow:0 8px 24px rgba(20,34,56,.07);
+  backdrop-filter:none;
+}
+.service-name{color:#142238;}
+.service-desc{color:#68788a;}
+.process-steps{max-width:1040px;margin-left:auto;margin-right:auto;}
+.step-card{background:#fff;border:1px solid #dce5ee;box-shadow:0 6px 18px rgba(20,34,56,.06);}
+.step-card-name{color:#142238;}
+.step-card-desc{color:#68788a;}
+.order-form-wrap{background:#fff;border:1px solid #dce5ee;box-shadow:0 10px 30px rgba(20,34,56,.08);}
+.order-form-title{color:#142238;}
+.order-form-sub{color:#68788a;}
+
+.contact-inner{max-width:800px;padding:4rem 2rem 5rem;}
+.contact-grid{max-width:720px;margin:2rem auto 0;}
+.contact-card{background:#fff;border:1px solid #dce5ee;box-shadow:0 8px 22px rgba(20,34,56,.07);}
+.contact-info h3{color:#142238;}
+.contact-info p{color:#68788a;}
+.contact-icon{background:#edf5fa;}
+.contact-form{background:#fff;border:1px solid #dce5ee;box-shadow:0 8px 24px rgba(20,34,56,.07);}
+.form-title{color:#142238;}
+
+/* Tất cả tiêu đề/khu vực chính nằm cân giữa */
+#page-products .section-head,
+#page-services .section-head,
+#page-contact .section-head{text-align:center;}
+
+@media(max-width:900px){
+  .product-grid,.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:600px){
+  .product-grid,.service-grid,.contact-grid,.process-steps{grid-template-columns:1fr;}
+  .products-inner,.services-inner,.contact-inner{padding-left:1.25rem;padding-right:1.25rem;}
 }
 
 @media(max-width:900px){
@@ -472,17 +537,6 @@ nav{
         <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Sản phẩm</span></div>
         <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Khách hàng</span></div>
         <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Bảo hành</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="pcb-box">
-        <div style="font-size:5rem">🔌</div>
-        <div class="pcb-label">IoT · MCU · EMBEDDED</div>
-        <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:6px">
-          <div style="height:3px;flex:1;background:rgba(0,212,255,0.4);border-radius:2px"></div>
-          <div style="height:3px;flex:2;background:rgba(0,255,136,0.3);border-radius:2px"></div>
-          <div style="height:3px;flex:1;background:rgba(0,212,255,0.4);border-radius:2px"></div>
-        </div>
       </div>
     </div>
   </div>
