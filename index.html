@@ -65,7 +65,7 @@ nav{
 .nav-right{display:flex;align-items:center;gap:1rem}
 
 /* VI | EN SWITCH BUTTON KHÔNG BỊ DỊCH LỖI */
-.lang-switch-custom{display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(0,212,255,0.3);border-radius:20px;padding:3px;font-size:0.8rem;font-weight:700}
+.lang-switch-custom{display:flex;background:rgba(255,255,255,0.08);border:1px solid rgba(0,212,255,0.38);border-radius:20px;padding:3px;font-size:0.8rem;font-weight:700;box-shadow:0 0 14px rgba(0,212,255,.08)}
 .lang-btn{padding:4px 12px;border-radius:16px;cursor:pointer;color:var(--gray);transition:all .2s;user-select:none}
 .lang-btn.active{background:var(--electric);color:var(--navy);box-shadow:0 0 10px rgba(0,212,255,0.5)}
 
@@ -397,7 +397,11 @@ nav{
    ============================================================ */
 
 .page:not(#page-home){
-  background:#ffffff;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(0,212,255,.07), transparent 24%),
+    radial-gradient(circle at 92% 18%, rgba(120,90,255,.055), transparent 25%),
+    radial-gradient(circle at 50% 100%, rgba(0,255,136,.045), transparent 28%),
+    #ffffff;
   color:#142238;
   min-height:calc(100vh - 65px);
 }
@@ -449,12 +453,64 @@ nav{
 
 /* Item có nền riêng nhẹ để phân biệt với nền trắng */
 .product-card{
-  background:#f7fafc;
+  position:relative;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(0,212,255,.16), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #f4f9fc 52%, #eef7fb 100%);
   color:#142238;
-  border:1px solid #dce5ee;
-  box-shadow:0 8px 24px rgba(20,34,56,.07);
+  border:1px solid rgba(0,170,204,.18);
+  box-shadow:0 8px 24px rgba(20,34,56,.08);
   backdrop-filter:none;
+  isolation:isolate;
 }
+.product-card::before{
+  content:'';
+  position:absolute;
+  width:120px;
+  height:120px;
+  right:-45px;
+  bottom:-55px;
+  border-radius:50%;
+  background:rgba(0,255,136,.10);
+  filter:blur(4px);
+  z-index:-1;
+  pointer-events:none;
+}
+.product-card:nth-child(2){
+  background:
+    radial-gradient(circle at 12% 12%, rgba(120,90,255,.16), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #f7f5ff 52%, #f0efff 100%);
+  border-color:rgba(120,90,255,.18);
+}
+.product-card:nth-child(2)::before{background:rgba(120,90,255,.12)}
+.product-card:nth-child(3){
+  background:
+    radial-gradient(circle at 88% 10%, rgba(0,200,150,.16), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #f2fbf8 52%, #ebf9f5 100%);
+  border-color:rgba(0,180,140,.18);
+}
+.product-card:nth-child(3)::before{background:rgba(0,200,150,.12)}
+.product-card:nth-child(4){
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255,166,0,.17), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #fff9ee 52%, #fff4df 100%);
+  border-color:rgba(240,160,0,.20);
+}
+.product-card:nth-child(4)::before{background:rgba(255,166,0,.12)}
+.product-card:nth-child(5){
+  background:
+    radial-gradient(circle at 88% 10%, rgba(255,80,150,.14), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #fff5fa 52%, #fff0f6 100%);
+  border-color:rgba(230,80,140,.18);
+}
+.product-card:nth-child(5)::before{background:rgba(255,80,150,.10)}
+.product-card:nth-child(6){
+  background:
+    radial-gradient(circle at 12% 10%, rgba(60,130,255,.16), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #f3f7ff 52%, #edf3ff 100%);
+  border-color:rgba(60,130,255,.18);
+}
+.product-card:nth-child(6)::before{background:rgba(60,130,255,.11)}
 
 .product-card:hover{
   border-color:rgba(0,170,204,.45);
@@ -463,9 +519,15 @@ nav{
 }
 
 .product-img{
-  background:#eef5f9;
-  border-bottom:1px solid #e2e9ef;
+  position:relative;
+  background:linear-gradient(135deg, rgba(255,255,255,.82), rgba(232,244,250,.72));
+  border-bottom:1px solid rgba(20,34,56,.07);
 }
+.product-card:nth-child(2) .product-img{background:linear-gradient(135deg,#ffffff,#f0edff)}
+.product-card:nth-child(3) .product-img{background:linear-gradient(135deg,#ffffff,#e9faf5)}
+.product-card:nth-child(4) .product-img{background:linear-gradient(135deg,#ffffff,#fff3dc)}
+.product-card:nth-child(5) .product-img{background:linear-gradient(135deg,#ffffff,#fff0f6)}
+.product-card:nth-child(6) .product-img{background:linear-gradient(135deg,#ffffff,#edf3ff)}
 
 .product-name{color:#142238;}
 .product-desc{color:#68788a;}
