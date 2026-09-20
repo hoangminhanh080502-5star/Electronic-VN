@@ -1004,28 +1004,132 @@ nav{
 
 <div class="toast" id="toast"></div>
 
-<!-- SCRIPT KẾT NỐI GOOGLE TRANSLATE CHUẨN XÁC KHÔNG LỖI -->
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'vi',
-    includedLanguages: 'vi,en',
-    autoDisplay: false
-  }, 'google_translate_element');
+<!-- VI / EN LOCAL LANGUAGE SYSTEM -->
+<script>
+let currentLang = localStorage.getItem('siteLang') || 'vi';
+
+const I18N = {
+  'Trang chủ':'Home',
+  'Sản phẩm':'Products',
+  'Dịch vụ':'Services',
+  'Liên hệ':'Contact',
+  '👤 Tài khoản':'👤 Account',
+  '🛒 Giỏ hàng':'🛒 Cart',
+  'Dự án điện tử':'Electronic Projects',
+  'Dự án điện tử':'Electronic Projects',
+  'Chuyên thiết kế sơ đồ nguyên lý, Layout PCB, lập trình vi điều khiển, nhúng Firmware và phát triển giải pháp IoT cho sinh viên, kỹ sư & doanh nghiệp.':'Professional schematic design, PCB layout, microcontroller programming, embedded firmware and IoT solutions for students, engineers and businesses.',
+  'Xem sản phẩm':'View Products',
+  'Đặt làm mạch':'Request a Project',
+  'Sản phẩm':'Products',
+  'Khách hàng':'Customers',
+  'Bảo hành':'Warranty',
+  'Sản phẩm & Dự án':'Products & Projects',
+  'Nhấn vào sản phẩm để chọn tài liệu / file bạn cần':'Select a project to choose the documents / files you need',
+  'Dịch vụ thiết kế mạch & Phần mềm nhúng':'Circuit Design & Embedded Software',
+  'Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ':'Custom circuit design — from prototypes to small-batch production',
+  'Chúng tôi cung cấp dịch vụ trọn gói từ phần cứng (Hardware) đến phần mềm (Embedded Software & App IoT): Thiết kế schematic, Layout PCB đa lớp, gia công hàn lắp ráp và viết Firmware':'We provide end-to-end services from hardware to embedded software and IoT apps: schematic design, multilayer PCB layout, assembly and firmware development.',
+  'Quy trình thực hiện':'Process',
+  'Gửi yêu cầu':'Send Request',
+  'Hoặc nhắn thẳng qua Zalo để được tư vấn nhanh hơn':'Or message us directly on Zalo for faster consultation',
+  'Thanh toán chuyển khoản':'Bank Transfer',
+  'Quét mã QR để hoàn tất thanh toán đơn hàng':'Scan the QR code to complete your order',
+  'Mở app ngân hàng hoặc ví điện tử':'Open your banking app or e-wallet',
+  'Quét mã QR bên trên':'Scan the QR code above',
+  'Nhập đúng số tiền và ghi chú mã đơn hàng':'Enter the exact amount and order code',
+  'Chụp màn hình xác nhận và gửi qua Zalo/Gmail':'Take a screenshot and send it via Zalo/Gmail',
+  'Gửi xác nhận qua Zalo / Gmail':'Send Confirmation via Zalo / Gmail',
+  'Liên hệ trực tiếp':'Contact Us',
+  'Tư vấn giải pháp phần cứng & phần mềm 24/7':'24/7 hardware & software consultation',
+  'Gmail':'Gmail',
+  'your@gmail.com':'your@gmail.com',
+  'Zalo':'Zalo',
+  'Chat trực tiếp ngay':'Chat with us now',
+  'Gửi tin nhắn':'Send Message',
+  'Tổng tiền đã chọn':'Selected Total',
+  'Thêm vào giỏ hàng':'Add to Cart',
+  'Đăng nhập':'Log In',
+  'Đăng ký tài khoản':'Create Account',
+  'Giỏ hàng':'Cart',
+  'trọn bộ 4 file':'4-file package',
+  'Xem & Chọn →':'View & Select →',
+  'Giỏ hàng trống':'Your cart is empty',
+  'Tạm tính':'Subtotal',
+  'Vận chuyển file':'File delivery',
+  'Miễn phí':'Free',
+  'Tổng cộng':'Total',
+  'Tiến hành thanh toán':'Proceed to Checkout',
+  'Tổng':'Total',
+  'Đã thêm vào giỏ hàng!':'Added to cart!',
+  'Mạch Schematic':'Schematic',
+  'Mạch PCB':'PCB',
+  'File .sch / .pdf sơ đồ nguyên lý':'Schematic .sch / .pdf files',
+  'File Gerber + .pcb':'Gerber + .pcb files',
+  'Firmware':'Firmware',
+  'File HEX / BIN':'HEX / BIN files',
+  'BOM linh kiện':'BOM',
+  'Danh sách linh kiện':'Component list',
+  'Dữ liệu 3D':'3D Data',
+  'File 3D / STEP':'3D / STEP files'
+};
+
+const PRODUCT_EN = {
+  1:{name:'Arduino Uno R3 Board',desc:'ATmega328 microcontroller, 14 I/O pins and USB-B. Suitable for beginners.'},
+  2:{name:'ESP32 Dev Board IoT',desc:'Wi-Fi + Bluetooth development board for IoT applications and embedded projects.'},
+  3:{name:'DHT22 Temperature & Humidity Sensor',desc:'Digital temperature and humidity sensor with good accuracy and easy MCU integration.'},
+  4:{name:'L298N Motor Driver Module',desc:'Dual H-bridge motor driver module for DC motors and small robotics projects.'},
+  5:{name:'0.96" I2C OLED',desc:'Compact OLED display with I2C interface, suitable for embedded projects.'},
+  6:{name:'LM317 Power Supply Kit',desc:'Adjustable linear power supply module based on LM317.'}
+};
+
+const OPTION_EN = {
+  schematic:{label:'Schematic',hint:'Schematic .sch / .pdf files'},
+  pcb:{label:'PCB',hint:'Gerber + .pcb files'},
+  firmware:{label:'Firmware',hint:'HEX / BIN files'},
+  bom:{label:'BOM',hint:'Component list'},
+  '3d':{label:'3D Data',hint:'3D / STEP files'}
+};
+
+function t(v){
+  if(currentLang === 'vi') return v;
+  return I18N[v] || v;
 }
 
-function translateLanguage(lang) {
+function translateStaticText(){
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const raw = node.nodeValue;
+    const key = raw.trim();
+    if(!key || key === 'VI' || key === 'EN') return;
+    if(!node._viText) node._viText = raw;
+    const original = node._viText.trim();
+    if(currentLang === 'vi') {
+      node.nodeValue = raw.replace(key, original);
+    } else if(I18N[original]) {
+      node.nodeValue = raw.replace(key, I18N[original]);
+    }
+  });
+}
+
+function translateLanguage(lang){
+  currentLang = lang;
+  localStorage.setItem('siteLang', lang);
+
   document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-  var select = document.querySelector('.goog-te-combo');
-  if (select) {
-    select.value = lang;
-    select.dispatchEvent(new Event('change'));
+  // Keep the existing page structure, but translate all visible UI locally.
+  translateStaticText();
+  renderProducts();
+  renderCart();
+
+  if(typeof modalProductId !== 'undefined' && modalProductId !== null &&
+     document.getElementById('product-modal')?.classList.contains('open')){
+    openModal(modalProductId);
   }
 }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
 const products = [
@@ -1142,35 +1246,38 @@ function showPage(name){
 function renderProducts(){
   const g = document.getElementById('product-grid');
   g.innerHTML = products.map(p => {
-    const total = p.options.reduce((a,o) => a+o.price, 0);
+    const total = p.options.reduce((a,o) => a + o.price, 0);
+    const pe = PRODUCT_EN[p.id] || {};
     return `
     <div class="product-card" onclick="openModal(${p.id})">
       <div class="product-img">${p.icon}</div>
       <div class="product-info">
-        <div class="product-name">${p.name}</div>
-        <div class="product-desc">${p.desc}</div>
+        <div class="product-name">${currentLang === 'en' ? (pe.name || p.name) : p.name}</div>
+        <div class="product-desc">${currentLang === 'en' ? (pe.desc || p.desc) : p.desc}</div>
         <div class="product-footer">
           <div>
             <span class="product-price">${fmt(total)}</span>
-            <span class="product-price-hint">trọn bộ 4 file</span>
+            <span class="product-price-hint">${currentLang === 'en' ? '4-file package' : 'trọn bộ 4 file'}</span>
           </div>
-          <button class="view-btn">Xem & Chọn →</button>
+          <button class="view-btn" onclick="event.stopPropagation();openModal(${p.id})">${currentLang === 'en' ? 'View & Select →' : 'Xem & Chọn →'}</button>
         </div>
       </div>
     </div>`;
   }).join('');
 }
-
 function openModal(id){
   const p = products.find(x=>x.id===id);
   modalProductId = id;
   modalSelected = new Set();
 
   document.getElementById('modal-icon').textContent = p.icon;
-  document.getElementById('modal-name').textContent = p.name;
-  document.getElementById('modal-desc').textContent = p.desc;
+  const pe = PRODUCT_EN[p.id] || {};
+  document.getElementById('modal-name').textContent = currentLang === 'en' ? (pe.name || p.name) : p.name;
+  document.getElementById('modal-desc').textContent = currentLang === 'en' ? (pe.desc || p.desc) : p.desc;
 
-  document.getElementById('modal-options').innerHTML = p.options.map(o => `
+  document.getElementById('modal-options').innerHTML = p.options.map(o => {
+    const oe = OPTION_EN[o.key] || {};
+    return `
     <div class="option-row" id="opt-${id}-${o.key}" onclick="toggleOption('${o.key}')">
       <div class="option-check">
         <div class="option-check-inner">
@@ -1178,11 +1285,12 @@ function openModal(id){
         </div>
       </div>
       <div class="option-label">
-        <div class="option-name">${o.label}</div>
-        <div class="option-hint">${o.hint}</div>
+        <div class="option-name">${currentLang === 'en' ? (oe.label || o.label) : o.label}</div>
+        <div class="option-hint">${currentLang === 'en' ? (oe.hint || o.hint) : o.hint}</div>
       </div>
       <div class="option-price">${fmt(o.price)}</div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   updateModalTotal();
   document.getElementById('product-modal').classList.add('open');
@@ -1242,7 +1350,7 @@ function renderCart(){
   const cf = document.getElementById('cart-footer');
 
   if(cart.length === 0){
-    ci.innerHTML = '<div class="empty-cart"><div style="font-size:2rem">🛒</div><p style="margin-top:1rem">Giỏ hàng trống</p></div>';
+    ci.innerHTML = '<div class="empty-cart"><div style="font-size:2rem">🛒</div><p style="margin-top:1rem">${currentLang === 'en' ? 'Your cart is empty' : 'Giỏ hàng trống'}</p></div>';
     cf.innerHTML = '';
     return;
   }
@@ -1265,11 +1373,11 @@ function renderCart(){
 
   cf.innerHTML = `
     <div class="cart-total">
-      <div class="cart-total-row"><span>Tạm tính</span><span>${fmt(total)}</span></div>
-      <div class="cart-total-row"><span>Vận chuyển file</span><span style="color:var(--accent2)">Miễn phí</span></div>
-      <div class="cart-total-main"><span>Tổng cộng</span><span style="color:var(--electric)">${fmt(total)}</span></div>
+      <div class="cart-total-row"><span>${currentLang === 'en' ? 'Subtotal' : 'Tạm tính'}</span><span>${fmt(total)}</span></div>
+      <div class="cart-total-row"><span>${currentLang === 'en' ? 'File delivery' : 'Vận chuyển file'}</span><span style="color:var(--accent2)">${currentLang === 'en' ? 'Free' : 'Miễn phí'}</span></div>
+      <div class="cart-total-main"><span>${currentLang === 'en' ? 'Total' : 'Tổng cộng'}</span><span style="color:var(--electric)">${fmt(total)}</span></div>
     </div>
-    <button class="checkout-cart-btn" onclick="checkout()">Tiến hành thanh toán</button>`;
+    <button class="checkout-cart-btn" onclick="checkout()">${currentLang === 'en' ? 'Proceed to Checkout' : 'Tiến hành thanh toán'}</button>`;
 }
 
 function changeQty(idx, d){
@@ -1317,6 +1425,8 @@ function showToast(msg){
 
 renderProducts();
 renderCart();
+translateStaticText();
+translateLanguage(currentLang);
 </script>
 </body>
 </html>
