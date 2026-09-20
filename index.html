@@ -14,7 +14,7 @@
   --white:#FFFFFF;--gray:#8899AA;
   --accent2:#00FF88;--red:#FF4466;
 }
-body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;top:0 !important}
 
 /* NAV */
 nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
@@ -25,10 +25,30 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
 .nav-right{display:flex;align-items:center;gap:1rem}
 
-/* LANG TOGGLE */
-.lang-switch{display:flex;background:var(--navy3);border:1px solid rgba(0,212,255,0.2);border-radius:8px;padding:2px;font-size:0.75rem;font-weight:600}
-.lang-btn{padding:4px 8px;border-radius:6px;cursor:pointer;color:var(--gray);transition:all .2s;user-select:none}
-.lang-btn.active{background:var(--electric);color:var(--navy)}
+/* TÙY CHỈNH GOOGLE TRANSLATE WIDGET */
+#google_translate_element {
+  display: flex;
+  align-items: center;
+}
+.goog-te-gadget {
+  font-family: 'Inter', sans-serif !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  background: var(--navy3) !important;
+  color: var(--white) !important;
+  border: 1px solid rgba(0,212,255,0.3) !important;
+  border-radius: 8px !important;
+  padding: 5px 8px !important;
+  font-size: 0.8rem !important;
+  outline: none !important;
+  cursor: pointer;
+}
+/* Ẩn banner mặc định của Google Translate khi dịch */
+.goog-te-banner-frame { display: none !important; }
+body { top: 0px !important; }
+.skiptranslate iframe { display: none !important; }
 
 /* ACCOUNT & CART BTN */
 .nav-btn{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--electric);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px;transition:background .2s}
@@ -206,26 +226,23 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <nav>
   <div class="logo"><span>Electro</span>VN</div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home" class="active" data-i18n="navHome">Trang chủ</a></li>
-    <li><a onclick="showPage('products')" id="nav-products" data-i18n="navProducts">Sản phẩm</a></li>
-    <li><a onclick="showPage('services')" id="nav-services" data-i18n="navServices">Dịch vụ</a></li>
-    <li><a onclick="showPage('contact')" id="nav-contact" data-i18n="navContact">Liên hệ</a></li>
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Trang chủ</a></li>
+    <li><a onclick="showPage('products')" id="nav-products">Sản phẩm</a></li>
+    <li><a onclick="showPage('services')" id="nav-services">Dịch vụ</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Liên hệ</a></li>
   </ul>
   <div class="nav-right">
-    <!-- CHUYỂN ĐỔI NGÔN NGỮ VI / EN -->
-    <div class="lang-switch">
-      <span class="lang-btn active" id="lang-vi" onclick="setLanguage('vi')">VI</span>
-      <span class="lang-btn" id="lang-en" onclick="setLanguage('en')">EN</span>
-    </div>
+    <!-- WIDGET DỊCH NGÔN NGỮ GOOGLE TRANSLATE -->
+    <div id="google_translate_element"></div>
 
     <!-- TÀI KHOẢN -->
     <button class="nav-btn" id="account-btn" onclick="handleAccountClick()">
-      👤 <span id="account-label" data-i18n="navAccount">Tài khoản</span>
+      👤 <span id="account-label">Tài khoản</span>
     </button>
 
     <!-- GIỎ HÀNG -->
     <button class="nav-btn" onclick="toggleCart()">
-      🛒 <span data-i18n="navCart">Giỏ hàng</span>
+      🛒 <span>Giỏ hàng</span>
       <span class="cart-count" id="cart-count">0</span>
     </button>
   </div>
@@ -235,17 +252,17 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <div class="page active" id="page-home">
   <div class="home-inner">
     <div>
-      <div class="hero-tag" data-i18n="heroTag">— Mạch điện tử chất lượng cao</div>
-      <h1 class="hero-title" id="hero-title-html">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
-      <p class="hero-desc" data-i18n="heroDesc">Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.</p>
+      <div class="hero-tag">— Mạch điện tử chất lượng cao</div>
+      <h1 class="hero-title">Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp</h1>
+      <p class="hero-desc">Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.</p>
       <div>
-        <button class="btn-primary" onclick="showPage('products')" data-i18n="btnViewProducts">Xem sản phẩm</button>
-        <button class="btn-ghost" onclick="showPage('services')" data-i18n="btnCustomPCB">Đặt làm mạch</button>
+        <button class="btn-primary" onclick="showPage('products')">Xem sản phẩm</button>
+        <button class="btn-ghost" onclick="showPage('services')">Đặt làm mạch</button>
       </div>
       <div class="stats-row">
-        <div class="stat"><span class="stat-num">50+</span><span class="stat-label" data-i18n="statProducts">Sản phẩm</span></div>
-        <div class="stat"><span class="stat-num">200+</span><span class="stat-label" data-i18n="statClients">Khách hàng</span></div>
-        <div class="stat"><span class="stat-num">100%</span><span class="stat-label" data-i18n="statWarranty">Bảo hành</span></div>
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Sản phẩm</span></div>
+        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Khách hàng</span></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Bảo hành</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -266,8 +283,8 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <div class="page" id="page-products">
   <div class="products-inner">
     <div class="section-head">
-      <h2 class="section-title" data-i18n="productsTitle">Sản phẩm</h2>
-      <p class="section-sub" data-i18n="productsSub">Nhấn vào sản phẩm để chọn tài liệu / file bạn cần</p>
+      <h2 class="section-title">Sản phẩm</h2>
+      <p class="section-sub">Nhấn vào sản phẩm để chọn tài liệu / file bạn cần</p>
     </div>
     <div class="product-grid" id="product-grid"></div>
   </div>
@@ -277,78 +294,78 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <div class="page" id="page-services">
   <div class="services-inner">
     <div class="section-head">
-      <h2 class="section-title" data-i18n="servicesTitle">Dịch vụ sản xuất mạch</h2>
-      <p class="section-sub" data-i18n="servicesSub">Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ</p>
+      <h2 class="section-title">Dịch vụ sản xuất mạch</h2>
+      <p class="section-sub">Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ</p>
     </div>
-    <p class="service-intro" data-i18n="servicesIntro">Chúng tôi cung cấp dịch vụ thiết kế và sản xuất mạch điện tử theo yêu cầu: từ vẽ schematic, layout PCB, đến hàn linh kiện và kiểm thử. Phù hợp cho sinh viên làm đồ án, kỹ sư cần prototype, hoặc doanh nghiệp cần số lượng nhỏ.</p>
+    <p class="service-intro">Chúng tôi cung cấp dịch vụ thiết kế và sản xuất mạch điện tử theo yêu cầu: từ vẽ schematic, layout PCB, đến hàn linh kiện và kiểm thử. Phù hợp cho sinh viên làm đồ án, kỹ sư cần prototype, hoặc doanh nghiệp cần số lượng nhỏ.</p>
 
     <div class="service-grid">
       <div class="service-card">
         <div class="service-icon">📐</div>
-        <div class="service-name" data-i18n="srv1Name">Thiết kế Schematic</div>
-        <div class="service-desc" data-i18n="srv1Desc">Vẽ sơ đồ nguyên lý theo yêu cầu, cung cấp file .sch hoặc .pdf. Hỗ trợ KiCad, Altium, Eagle.</div>
-        <div class="service-price-tag" data-i18n="srv1Price">Từ 150.000đ</div>
+        <div class="service-name">Thiết kế Schematic</div>
+        <div class="service-desc">Vẽ sơ đồ nguyên lý theo yêu cầu, cung cấp file .sch hoặc .pdf. Hỗ trợ KiCad, Altium, Eagle.</div>
+        <div class="service-price-tag">Từ 150.000đ</div>
       </div>
       <div class="service-card">
         <div class="service-icon">🟩</div>
-        <div class="service-name" data-i18n="srv2Name">Layout PCB</div>
-        <div class="service-desc" data-i18n="srv2Desc">Thiết kế board PCB 1–4 lớp, tối ưu layout, cung cấp Gerber để sản xuất.</div>
-        <div class="service-price-tag" data-i18n="srv2Price">Từ 250.000đ</div>
+        <div class="service-name">Layout PCB</div>
+        <div class="service-desc">Thiết kế board PCB 1–4 lớp, tối ưu layout, cung cấp Gerber để sản xuất.</div>
+        <div class="service-price-tag">Từ 250.000đ</div>
       </div>
       <div class="service-card">
         <div class="service-icon">🔧</div>
-        <div class="service-name" data-i18n="srv3Name">Sản xuất & Lắp ráp</div>
-        <div class="service-desc" data-i18n="srv3Desc">In board + hàn SMD/THT, kiểm thử, đóng gói. Hỗ trợ số lượng từ 1 đến 100 bản.</div>
-        <div class="service-price-tag" data-i18n="srv3Price">Báo giá theo yêu cầu</div>
+        <div class="service-name">Sản xuất & Lắp ráp</div>
+        <div class="service-desc">In board + hàn SMD/THT, kiểm thử, đóng gói. Hỗ trợ số lượng từ 1 đến 100 bản.</div>
+        <div class="service-price-tag">Báo giá theo yêu cầu</div>
       </div>
     </div>
 
     <div class="section-head" style="margin-bottom:1rem">
-      <h2 class="section-title" style="font-size:1.2rem" data-i18n="processTitle">Quy trình</h2>
+      <h2 class="section-title" style="font-size:1.2rem">Quy trình</h2>
     </div>
     <div class="process-steps">
-      <div class="step-card"><div class="step-num-badge">1</div><div class="step-card-name" data-i18n="step1Name">Gửi yêu cầu</div><div class="step-card-desc" data-i18n="step1Desc">Điền form bên dưới hoặc liên hệ Zalo/Gmail</div></div>
-      <div class="step-card"><div class="step-num-badge">2</div><div class="step-card-name" data-i18n="step2Name">Báo giá</div><div class="step-card-desc" data-i18n="step2Desc">Phản hồi trong 24h với bảng giá chi tiết</div></div>
-      <div class="step-card"><div class="step-num-badge">3</div><div class="step-card-name" data-i18n="step3Name">Đặt cọc & Thiết kế</div><div class="step-card-desc" data-i18n="step3Desc">Đặt cọc 50%, tiến hành thiết kế và gửi preview</div></div>
-      <div class="step-card"><div class="step-num-badge">4</div><div class="step-card-name" data-i18n="step4Name">Giao hàng</div><div class="step-card-desc" data-i18n="step4Desc">Thanh toán phần còn lại, giao file + board qua bưu điện</div></div>
+      <div class="step-card"><div class="step-num-badge">1</div><div class="step-card-name">Gửi yêu cầu</div><div class="step-card-desc">Điền form bên dưới hoặc liên hệ Zalo/Gmail</div></div>
+      <div class="step-card"><div class="step-num-badge">2</div><div class="step-card-name">Báo giá</div><div class="step-card-desc">Phản hồi trong 24h với bảng giá chi tiết</div></div>
+      <div class="step-card"><div class="step-num-badge">3</div><div class="step-card-name">Đặt cọc & Thiết kế</div><div class="step-card-desc">Đặt cọc 50%, tiến hành thiết kế và gửi preview</div></div>
+      <div class="step-card"><div class="step-num-badge">4</div><div class="step-card-name">Giao hàng</div><div class="step-card-desc">Thanh toán phần còn lại, giao file + board qua bưu điện</div></div>
     </div>
 
     <div class="order-form-wrap">
-      <div class="order-form-title" data-i18n="orderFormTitle">Gửi yêu cầu đặt làm mạch</div>
-      <div class="order-form-sub" data-i18n="orderFormSub">Điền thông tin bên dưới, chúng tôi sẽ báo giá trong vòng 24 giờ.</div>
+      <div class="order-form-title">Gửi yêu cầu đặt làm mạch</div>
+      <div class="order-form-sub">Điền thông tin bên dưới, chúng tôi sẽ báo giá trong vòng 24 giờ.</div>
       <div class="form-grid">
-        <div class="form-row"><label data-i18n="labelFullName">Họ tên</label><input type="text" placeholder="Nguyễn Văn A" id="input-name"></div>
-        <div class="form-row"><label data-i18n="labelContactInfo">Email / Zalo / SĐT</label><input type="text" placeholder="email@gmail.com hoặc SĐT" id="input-contact"></div>
+        <div class="form-row"><label>Họ tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
+        <div class="form-row"><label>Email / Zalo / SĐT</label><input type="text" placeholder="email@gmail.com hoặc SĐT"></div>
         <div class="form-row">
-          <label data-i18n="labelServiceType">Loại dịch vụ cần</label>
-          <select id="select-service">
-            <option data-i18n="optSelectService">Chọn dịch vụ...</option>
-            <option data-i18n="optSchematic">Thiết kế Schematic</option>
-            <option data-i18n="optPCB">Layout PCB</option>
-            <option data-i18n="optSchPCB">Schematic + PCB</option>
-            <option data-i18n="optAssembly">Sản xuất + Lắp ráp</option>
-            <option data-i18n="optFull">Trọn gói (Thiết kế + Sản xuất)</option>
+          <label>Loại dịch vụ cần</label>
+          <select>
+            <option>Chọn dịch vụ...</option>
+            <option>Thiết kế Schematic</option>
+            <option>Layout PCB</option>
+            <option>Schematic + PCB</option>
+            <option>Sản xuất + Lắp ráp</option>
+            <option>Trọn gói (Thiết kế + Sản xuất)</option>
           </select>
         </div>
-        <div class="form-row"><label data-i18n="labelQuantity">Số lượng board cần</label><input type="text" placeholder="Ví dụ: 5 bản" id="input-qty"></div>
+        <div class="form-row"><label>Số lượng board cần</label><input type="text" placeholder="Ví dụ: 5 bản"></div>
         <div class="form-row full">
-          <label data-i18n="labelInputDocs">Tài liệu đầu vào (bạn có sẵn gì?)</label>
+          <label>Tài liệu đầu vào (bạn có sẵn gì?)</label>
           <div class="checkbox-group">
-            <label class="cb-item"><input type="checkbox"> <span data-i18n="cbHandSketch">Sơ đồ tay / ý tưởng</span></label>
-            <label class="cb-item"><input type="checkbox"> <span data-i18n="cbSchematic">File Schematic (.sch)</span></label>
-            <label class="cb-item"><input type="checkbox"> <span data-i18n="cbPCB">File PCB (.pcb / .brd)</span></label>
-            <label class="cb-item"><input type="checkbox"> <span data-i18n="cbDatasheet">Datasheet linh kiện</span></label>
-            <label class="cb-item"><input type="checkbox"> <span data-i18n="cbNothing">Chưa có gì</span></label>
+            <label class="cb-item"><input type="checkbox"> Sơ đồ tay / ý tưởng</label>
+            <label class="cb-item"><input type="checkbox"> File Schematic (.sch)</label>
+            <label class="cb-item"><input type="checkbox"> File PCB (.pcb / .brd)</label>
+            <label class="cb-item"><input type="checkbox"> Datasheet linh kiện</label>
+            <label class="cb-item"><input type="checkbox"> Chưa có gì</label>
           </div>
         </div>
         <div class="form-row full">
-          <label data-i18n="labelDetailDesc">Mô tả yêu cầu chi tiết</label>
-          <textarea id="textarea-desc" placeholder="Mô tả chức năng mạch, linh kiện chính, kích thước yêu cầu, deadline..."></textarea>
+          <label>Mô tả yêu cầu chi tiết</label>
+          <textarea placeholder="Mô tả chức năng mạch, linh kiện chính, kích thước yêu cầu, deadline..."></textarea>
         </div>
       </div>
       <div class="submit-row">
-        <button class="submit-btn" onclick="submitServiceOrder()" data-i18n="btnSubmitOrder">Gửi yêu cầu</button>
-        <span class="submit-hint" data-i18n="submitHint">Hoặc nhắn thẳng qua Zalo để được tư vấn nhanh hơn</span>
+        <button class="submit-btn" onclick="showToast('Đã gửi yêu cầu! Sẽ phản hồi trong 24h.')">Gửi yêu cầu</button>
+        <span class="submit-hint">Hoặc nhắn thẳng qua Zalo để được tư vấn nhanh hơn</span>
       </div>
     </div>
   </div>
@@ -358,8 +375,8 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <div class="page" id="page-payment">
   <div class="payment-inner">
     <div class="section-head" style="text-align:center;margin-bottom:1.5rem">
-      <h2 class="section-title" data-i18n="paymentTitle">Thanh toán</h2>
-      <p class="section-sub" data-i18n="paymentSub">Quét mã QR để thanh toán</p>
+      <h2 class="section-title">Thanh toán</h2>
+      <p class="section-sub">Quét mã QR để thanh toán</p>
     </div>
     <div class="payment-box">
       <div id="order-summary" style="background:var(--navy3);border-radius:10px;padding:1rem;margin-bottom:0.5rem"></div>
@@ -393,20 +410,20 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
           <rect x="102" y="138" width="26" height="14" fill="#0A1628"/>
           <rect x="132" y="138" width="20" height="14" fill="#0A1628"/>
         </svg>
-        <div class="qr-label" data-i18n="qrLabel">QR Thanh toán</div>
+        <div class="qr-label">QR Thanh toán</div>
       </div>
-      <div class="payment-info" id="payment-info-html">
+      <div class="payment-info">
         <strong>Thay QR thật của bạn vào đây.</strong><br>
         Ngân hàng: <strong>MB Bank / Vietcombank</strong><br>
         Tên: <strong>Nguyễn Văn A</strong>
       </div>
       <div class="payment-step">
-        <div class="step-row"><span class="step-num">1</span><span data-i18n="pStep1">Mở app ngân hàng hoặc ví điện tử</span></div>
-        <div class="step-row"><span class="step-num">2</span><span data-i18n="pStep2">Quét mã QR bên trên</span></div>
-        <div class="step-row"><span class="step-num">3</span><span data-i18n="pStep3">Nhập đúng số tiền và ghi chú mã đơn hàng</span></div>
-        <div class="step-row"><span class="step-num">4</span><span data-i18n="pStep4">Chụp màn hình xác nhận và gửi qua Zalo/Gmail</span></div>
+        <div class="step-row"><span class="step-num">1</span><span>Mở app ngân hàng hoặc ví điện tử</span></div>
+        <div class="step-row"><span class="step-num">2</span><span>Quét mã QR bên trên</span></div>
+        <div class="step-row"><span class="step-num">3</span><span>Nhập đúng số tiền và ghi chú mã đơn hàng</span></div>
+        <div class="step-row"><span class="step-num">4</span><span>Chụp màn hình xác nhận và gửi qua Zalo/Gmail</span></div>
       </div>
-      <button class="checkout-btn" onclick="showPage('contact')" data-i18n="btnConfirmPayment">Gửi xác nhận qua Zalo / Gmail</button>
+      <button class="checkout-btn" onclick="showPage('contact')">Gửi xác nhận qua Zalo / Gmail</button>
     </div>
   </div>
 </div>
@@ -415,8 +432,8 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <div class="page" id="page-contact">
   <div class="contact-inner">
     <div class="section-head">
-      <h2 class="section-title" data-i18n="contactTitle">Liên hệ</h2>
-      <p class="section-sub" data-i18n="contactSub">Hỗ trợ tư vấn và đặt hàng</p>
+      <h2 class="section-title">Liên hệ</h2>
+      <p class="section-sub">Hỗ trợ tư vấn và đặt hàng</p>
     </div>
     <div class="contact-grid">
       <a class="contact-card" href="mailto:your@gmail.com">
@@ -425,15 +442,15 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
       </a>
       <a class="contact-card" href="https://zalo.me/your_number" target="_blank">
         <div class="contact-icon">💬</div>
-        <div class="contact-info"><h3>Zalo</h3><p data-i18n="zaloDirectChat">Chat trực tiếp ngay</p></div>
+        <div class="contact-info"><h3>Zalo</h3><p>Chat trực tiếp ngay</p></div>
       </a>
     </div>
     <div class="contact-form">
-      <div class="form-title" data-i18n="contactFormTitle">Gửi yêu cầu</div>
-      <div class="form-row"><label data-i18n="labelFullName">Họ tên</label><input type="text" placeholder="Nguyễn Văn A" id="contact-name"></div>
-      <div class="form-row"><label data-i18n="labelContactInfo">Email / SĐT</label><input type="text" placeholder="email@gmail.com" id="contact-info"></div>
-      <div class="form-row"><label data-i18n="labelMessage">Nội dung</label><textarea placeholder="Tôi muốn hỏi về sản phẩm..." id="contact-msg"></textarea></div>
-      <button class="send-btn" onclick="submitContactForm()" data-i18n="btnSendContact">Gửi</button>
+      <div class="form-title">Gửi yêu cầu</div>
+      <div class="form-row"><label>Họ tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
+      <div class="form-row"><label>Email / SĐT</label><input type="text" placeholder="email@gmail.com"></div>
+      <div class="form-row"><label>Nội dung</label><textarea placeholder="Tôi muốn hỏi về sản phẩm..."></textarea></div>
+      <button class="send-btn" onclick="showToast('Gửi thành công! Sẽ phản hồi trong 24h.')">Gửi</button>
     </div>
   </div>
 </div>
@@ -450,56 +467,56 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
       </div>
     </div>
     <div class="modal-body">
-      <div class="options-title" data-i18n="modalOptionsTitle">Chọn tài liệu / file cần mua</div>
+      <div class="options-title">Chọn tài liệu / file cần mua</div>
       <div id="modal-options"></div>
     </div>
     <div class="modal-footer">
       <div class="modal-total-row">
-        <span class="modal-total-label" data-i18n="modalTotalLabel">Tổng tiền đã chọn</span>
+        <span class="modal-total-label">Tổng tiền đã chọn</span>
         <div class="modal-total-val" id="modal-total">0đ</div>
       </div>
-      <button class="modal-add-btn" id="modal-add-btn" onclick="addModalToCart()" disabled data-i18n="btnAddToCart">Thêm vào giỏ hàng</button>
+      <button class="modal-add-btn" id="modal-add-btn" onclick="addModalToCart()" disabled>Thêm vào giỏ hàng</button>
     </div>
   </div>
 </div>
 
-<!-- ACCOUNT MODAL (ĐĂNG NHẬP / ĐĂNG KÝ) -->
+<!-- ACCOUNT MODAL -->
 <div class="modal-backdrop" id="account-modal" onclick="handleAccountModalBackdropClick(event)">
   <div class="modal" style="max-width: 400px; padding: 1.5rem;">
     <button class="modal-close" onclick="closeAccountModal()">✕</button>
     <div class="auth-tabs">
-      <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')" data-i18n="authLoginTab">Đăng nhập</div>
-      <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')" data-i18n="authRegisterTab">Đăng ký</div>
+      <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Đăng nhập</div>
+      <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Đăng ký</div>
     </div>
 
     <!-- FORM ĐĂNG NHẬP -->
     <div id="auth-login-form">
       <div class="form-row" style="margin-bottom:1rem">
-        <label data-i18n="authEmail">Email</label>
+        <label>Email</label>
         <input type="email" placeholder="email@gmail.com" id="login-email">
       </div>
       <div class="form-row" style="margin-bottom:1.5rem">
-        <label data-i18n="authPassword">Mật khẩu</label>
+        <label>Mật khẩu</label>
         <input type="password" placeholder="••••••••" id="login-password">
       </div>
-      <button class="modal-add-btn" onclick="login()" data-i18n="authLoginBtn">Đăng nhập</button>
+      <button class="modal-add-btn" onclick="login()">Đăng nhập</button>
     </div>
 
     <!-- FORM ĐĂNG KÝ -->
     <div id="auth-register-form" style="display:none">
       <div class="form-row" style="margin-bottom:1rem">
-        <label data-i18n="authFullName">Họ và tên</label>
+        <label>Họ và tên</label>
         <input type="text" placeholder="Nguyễn Văn A" id="reg-name">
       </div>
       <div class="form-row" style="margin-bottom:1rem">
-        <label data-i18n="authEmail">Email</label>
+        <label>Email</label>
         <input type="email" placeholder="email@gmail.com" id="reg-email">
       </div>
       <div class="form-row" style="margin-bottom:1.5rem">
-        <label data-i18n="authPassword">Mật khẩu</label>
+        <label>Mật khẩu</label>
         <input type="password" placeholder="••••••••" id="reg-password">
       </div>
-      <button class="modal-add-btn" onclick="register()" data-i18n="authRegisterBtn">Đăng ký tài khoản</button>
+      <button class="modal-add-btn" onclick="register()">Đăng ký tài khoản</button>
     </div>
   </div>
 </div>
@@ -508,7 +525,7 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 <div class="backdrop" id="backdrop" onclick="toggleCart()"></div>
 <div class="cart-overlay" id="cart">
   <div class="cart-header">
-    <h2 data-i18n="cartTitle">Giỏ hàng</h2>
+    <h2>Giỏ hàng</h2>
     <button class="close-btn" onclick="toggleCart()">✕</button>
   </div>
   <div id="cart-items"></div>
@@ -517,346 +534,72 @@ nav{background:var(--navy2);border-bottom:1px solid rgba(0,212,255,0.15);padding
 
 <div class="toast" id="toast"></div>
 
+<!-- GOOGLE TRANSLATE SCRIPT -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'vi',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <script>
-// DỮ LIỆU ĐA NGÔN NGỮ I18N
-const translations = {
-  vi: {
-    navHome: "Trang chủ",
-    navProducts: "Sản phẩm",
-    navServices: "Dịch vụ",
-    navContact: "Liên hệ",
-    navAccount: "Tài khoản",
-    navCart: "Giỏ hàng",
-    heroTag: "— Mạch điện tử chất lượng cao",
-    heroTitleHTML: 'Linh kiện &<br>Project <span class="accent">điện tử</span><br>chuyên nghiệp',
-    heroDesc: "Các sản phẩm mạch điện tử được thiết kế và lắp ráp thủ công, phù hợp cho sinh viên, kỹ sư và người đam mê DIY.",
-    btnViewProducts: "Xem sản phẩm",
-    btnCustomPCB: "Đặt làm mạch",
-    statProducts: "Sản phẩm",
-    statClients: "Khách hàng",
-    statWarranty: "Bảo hành",
-    productsTitle: "Sản phẩm",
-    productsSub: "Nhấn vào sản phẩm để chọn tài liệu / file bạn cần",
-    productsFullSet: "trọn bộ 4 file",
-    btnViewSelect: "Xem & Chọn →",
-    servicesTitle: "Dịch vụ sản xuất mạch",
-    servicesSub: "Nhận đặt làm mạch theo yêu cầu — từ prototype đến sản xuất nhỏ",
-    servicesIntro: "Chúng tôi cung cấp dịch vụ thiết kế và sản xuất mạch điện tử theo yêu cầu: từ vẽ schematic, layout PCB, đến hàn linh kiện và kiểm thử. Phù hợp cho sinh viên làm đồ án, kỹ sư cần prototype, hoặc doanh nghiệp cần số lượng nhỏ.",
-    srv1Name: "Thiết kế Schematic",
-    srv1Desc: "Vẽ sơ đồ nguyên lý theo yêu cầu, cung cấp file .sch hoặc .pdf. Hỗ trợ KiCad, Altium, Eagle.",
-    srv1Price: "Từ 150.000đ",
-    srv2Name: "Layout PCB",
-    srv2Desc: "Thiết kế board PCB 1–4 lớp, tối ưu layout, cung cấp Gerber để sản xuất.",
-    srv2Price: "Từ 250.000đ",
-    srv3Name: "Sản xuất & Lắp ráp",
-    srv3Desc: "In board + hàn SMD/THT, kiểm thử, đóng gói. Hỗ trợ số lượng từ 1 đến 100 bản.",
-    srv3Price: "Báo giá theo yêu cầu",
-    processTitle: "Quy trình",
-    step1Name: "Gửi yêu cầu",
-    step1Desc: "Điền form bên dưới hoặc liên hệ Zalo/Gmail",
-    step2Name: "Báo giá",
-    step2Desc: "Phản hồi trong 24h với bảng giá chi tiết",
-    step3Name: "Đặt cọc & Thiết kế",
-    step3Desc: "Đặt cọc 50%, tiến hành thiết kế và gửi preview",
-    step4Name: "Giao hàng",
-    step4Desc: "Thanh toán phần còn lại, giao file + board qua bưu điện",
-    orderFormTitle: "Gửi yêu cầu đặt làm mạch",
-    orderFormSub: "Điền thông tin bên dưới, chúng tôi sẽ báo giá trong vòng 24 giờ.",
-    labelFullName: "Họ tên",
-    labelContactInfo: "Email / Zalo / SĐT",
-    labelServiceType: "Loại dịch vụ cần",
-    optSelectService: "Chọn dịch vụ...",
-    optSchematic: "Thiết kế Schematic",
-    optPCB: "Layout PCB",
-    optSchPCB: "Schematic + PCB",
-    optAssembly: "Sản xuất + Lắp ráp",
-    optFull: "Trọn gói (Thiết kế + Sản xuất)",
-    labelQuantity: "Số lượng board cần",
-    labelInputDocs: "Tài liệu đầu vào (bạn có sẵn gì?)",
-    cbHandSketch: "Sơ đồ tay / ý tưởng",
-    cbSchematic: "File Schematic (.sch)",
-    cbPCB: "File PCB (.pcb / .brd)",
-    cbDatasheet: "Datasheet linh kiện",
-    cbNothing: "Chưa có gì",
-    labelDetailDesc: "Mô tả yêu cầu chi tiết",
-    placeholderDesc: "Mô tả chức năng mạch, linh kiện chính, kích thước yêu cầu, deadline...",
-    btnSubmitOrder: "Gửi yêu cầu",
-    submitHint: "Hoặc nhắn thẳng qua Zalo để được tư vấn nhanh hơn",
-    paymentTitle: "Thanh toán",
-    paymentSub: "Quét mã QR để thanh toán",
-    qrLabel: "QR Thanh toán",
-    paymentInfoHTML: '<strong>Thay QR thật của bạn vào đây.</strong><br>Ngân hàng: <strong>MB Bank / Vietcombank</strong><br>Tên: <strong>Nguyễn Văn A</strong>',
-    pStep1: "Mở app ngân hàng hoặc ví điện tử",
-    pStep2: "Quét mã QR bên trên",
-    pStep3: "Nhập đúng số tiền và ghi chú mã đơn hàng",
-    pStep4: "Chụp màn hình xác nhận và gửi qua Zalo/Gmail",
-    btnConfirmPayment: "Gửi xác nhận qua Zalo / Gmail",
-    contactTitle: "Liên hệ",
-    contactSub: "Hỗ trợ tư vấn và đặt hàng",
-    zaloDirectChat: "Chat trực tiếp ngay",
-    contactFormTitle: "Gửi yêu cầu",
-    labelMessage: "Nội dung",
-    placeholderContactMsg: "Tôi muốn hỏi về sản phẩm...",
-    btnSendContact: "Gửi",
-    modalOptionsTitle: "Chọn tài liệu / file cần mua",
-    modalTotalLabel: "Tổng tiền đã chọn",
-    btnAddToCart: "Thêm vào giỏ hàng",
-    authLoginTab: "Đăng nhập",
-    authRegisterTab: "Đăng ký",
-    authFullName: "Họ và tên",
-    authEmail: "Email",
-    authPassword: "Mật khẩu",
-    authLoginBtn: "Đăng nhập",
-    authRegisterBtn: "Đăng ký tài khoản",
-    cartTitle: "Giỏ hàng",
-    cartEmpty: "Giỏ hàng trống",
-    cartSubtotal: "Tạm tính",
-    cartShipping: "Vận chuyển file",
-    cartFree: "Miễn phí",
-    cartTotal: "Tổng cộng",
-    btnCheckout: "Tiến hành thanh toán",
-    toastAdded: "Đã thêm vào giỏ hàng!",
-    toastOrderSent: "Đã gửi yêu cầu! Sẽ phản hồi trong 24h.",
-    toastContactSent: "Gửi thành công! Sẽ phản hồi trong 24h.",
-    toastLoginSuccess: "Đăng nhập thành công!",
-    toastRegSuccess: "Đăng ký thành công! Đã tự động đăng nhập.",
-    toastLogoutSuccess: "Đã đăng xuất!",
-    logoutText: "Đăng xuất"
-  },
-  en: {
-    navHome: "Home",
-    navProducts: "Products",
-    navServices: "Services",
-    navContact: "Contact",
-    navAccount: "Account",
-    navCart: "Cart",
-    heroTag: "— High Quality Electronics",
-    heroTitleHTML: 'Professional <br>Electronics <span class="accent">Projects</span>',
-    heroDesc: "Handcrafted electronic circuits and projects designed for students, engineers, and DIY enthusiasts.",
-    btnViewProducts: "View Products",
-    btnCustomPCB: "Custom PCB",
-    statProducts: "Products",
-    statClients: "Clients",
-    statWarranty: "Warranty",
-    productsTitle: "Products",
-    productsSub: "Click on a product to choose documents/files you need",
-    productsFullSet: "full 4 files set",
-    btnViewSelect: "View & Select →",
-    servicesTitle: "PCB Manufacturing",
-    servicesSub: "On-demand circuit design & fabrication — from prototypes to small runs",
-    servicesIntro: "We provide end-to-end custom circuit design: schematic capture, PCB layout, component soldering, and testing. Perfect for student projects, engineer prototypes, or low-volume production.",
-    srv1Name: "Schematic Design",
-    srv1Desc: "Custom schematic design, export to .sch or .pdf. Supports KiCad, Altium, Eagle.",
-    srv1Price: "From 150,000đ",
-    srv2Name: "PCB Layout",
-    srv2Desc: "1–4 layer PCB layout optimization, Gerber file generation.",
-    srv2Price: "From 250,000đ",
-    srv3Name: "Fabrication & Assembly",
-    srv3Desc: "PCB printing + SMD/THT soldering, testing & packaging. Supports 1 to 100 units.",
-    srv3Price: "Quote on request",
-    processTitle: "Process",
-    step1Name: "Submit Request",
-    step1Desc: "Fill form below or contact via Zalo/Gmail",
-    step2Name: "Get Quote",
-    step2Desc: "Response within 24h with detailed pricing",
-    step3Name: "Deposit & Design",
-    step3Desc: "50% deposit, design execution & preview delivery",
-    step4Name: "Delivery",
-    step4Desc: "Final payment, receiving files & physical board via express",
-    orderFormTitle: "Submit Custom PCB Request",
-    orderFormSub: "Fill in the form below, we will respond with a quote within 24 hours.",
-    labelFullName: "Full Name",
-    labelContactInfo: "Email / Zalo / Phone",
-    labelServiceType: "Service Required",
-    optSelectService: "Select service...",
-    optSchematic: "Schematic Design",
-    optPCB: "PCB Layout",
-    optSchPCB: "Schematic + PCB",
-    optAssembly: "Fabrication + Assembly",
-    optFull: "Full Turnkey (Design + Fab)",
-    labelQuantity: "Board Quantity",
-    labelInputDocs: "Available Input Files",
-    cbHandSketch: "Hand sketch / Ideas",
-    cbSchematic: "Schematic file (.sch)",
-    cbPCB: "PCB File (.pcb / .brd)",
-    cbDatasheet: "Component Datasheet",
-    cbNothing: "None yet",
-    labelDetailDesc: "Detailed Description",
-    placeholderDesc: "Describe circuit features, key components, dimensions, deadline...",
-    btnSubmitOrder: "Submit Request",
-    submitHint: "Or text directly via Zalo for quicker support",
-    paymentTitle: "Payment",
-    paymentSub: "Scan QR code to complete payment",
-    qrLabel: "Payment QR",
-    paymentInfoHTML: '<strong>Replace with your actual QR code.</strong><br>Bank: <strong>MB Bank / Vietcombank</strong><br>Account Holder: <strong>Nguyen Van A</strong>',
-    pStep1: "Open banking app or e-wallet",
-    pStep2: "Scan the QR code above",
-    pStep3: "Enter correct amount and order note",
-    pStep4: "Take confirmation screenshot and send via Zalo/Gmail",
-    btnConfirmPayment: "Send Confirmation via Zalo / Gmail",
-    contactTitle: "Contact Us",
-    contactSub: "Support & Order inquiries",
-    zaloDirectChat: "Direct Chat Now",
-    contactFormTitle: "Send Inquiry",
-    labelMessage: "Message",
-    placeholderContactMsg: "I want to ask about product...",
-    btnSendContact: "Send Message",
-    modalOptionsTitle: "Choose required files / docs",
-    modalTotalLabel: "Selected Total",
-    btnAddToCart: "Add to Cart",
-    authLoginTab: "Login",
-    authRegisterTab: "Register",
-    authFullName: "Full Name",
-    authEmail: "Email",
-    authPassword: "Password",
-    authLoginBtn: "Login",
-    authRegisterBtn: "Create Account",
-    cartTitle: "Shopping Cart",
-    cartEmpty: "Cart is empty",
-    cartSubtotal: "Subtotal",
-    cartShipping: "File Delivery",
-    cartFree: "Free",
-    cartTotal: "Total",
-    btnCheckout: "Proceed to Checkout",
-    toastAdded: "Added to cart!",
-    toastOrderSent: "Request submitted! We will reply within 24h.",
-    toastContactSent: "Message sent! We will reply within 24h.",
-    toastLoginSuccess: "Logged in successfully!",
-    toastRegSuccess: "Registered successfully! Logged in automatically.",
-    toastLogoutSuccess: "Logged out!",
-    logoutText: "Logout"
-  }
-};
+const products = [
+  {id:1,name:'Mạch Arduino Uno R3',icon:'🤖',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:30000},
+    {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:40000},
+    {key:'source',label:'File Source Code',hint:'Code mẫu Arduino, thư viện',price:25000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
+  ]},
+  {id:2,name:'ESP32 Dev Board',icon:'📡',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:35000},
+    {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:50000},
+    {key:'source',label:'File Source Code',hint:'Code mẫu ESP-IDF / Arduino',price:30000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
+  ]},
+  {id:3,name:'Cảm biến DHT22',icon:'🌡️',desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ kết nối DHT22 với MCU',price:20000},
+    {key:'pcb',label:'Mạch PCB',hint:'Board tích hợp sẵn pull-up, LED',price:30000},
+    {key:'source',label:'File Source Code',hint:'Code đọc cảm biến, hiển thị LCD',price:20000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+  {id:4,name:'Module L298N',icon:'⚙️',desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ nguyên lý điều khiển motor',price:20000},
+    {key:'pcb',label:'Mạch PCB',hint:'Layout PCB L298N full components',price:30000},
+    {key:'source',label:'File Source Code',hint:'Code điều khiển tốc độ + chiều',price:18000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+  {id:5,name:'OLED 0.96" I2C',icon:'🖥️',desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ điện thấp.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ kết nối OLED + MCU',price:20000},
+    {key:'pcb',label:'Mạch PCB',hint:'Board mở rộng OLED header sẵn',price:28000},
+    {key:'source',label:'File Source Code',hint:'Thư viện + code hiển thị text/đồ thị',price:22000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+  {id:6,name:'Kit Nguồn LM317',icon:'🔋',desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',options:[
+    {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ nguồn LM317 có bảo vệ',price:25000},
+    {key:'pcb',label:'Mạch PCB',hint:'Layout PCB gọn, có chân mount',price:35000},
+    {key:'source',label:'File Source Code',hint:'Code đo điện áp output (ADC)',price:18000},
+    {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
+  ]},
+];
 
-let currentLang = 'vi';
-let currentUser = null; // Quản lý trạng thái tài khoản
-
-const productsData = {
-  vi: [
-    {id:1,name:'Mạch Arduino Uno R3',icon:'🤖',desc:'Vi điều khiển ATmega328, 14 chân I/O, USB-B. Phù hợp cho người mới bắt đầu.',options:[
-      {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:30000},
-      {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:40000},
-      {key:'source',label:'File Source Code',hint:'Code mẫu Arduino, thư viện',price:25000},
-      {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
-    ]},
-    {id:2,name:'ESP32 Dev Board',icon:'📡',desc:'WiFi + Bluetooth tích hợp, dual-core 240MHz, 38 chân GPIO.',options:[
-      {key:'schematic',label:'Mạch Schematic',hint:'File .sch / .pdf sơ đồ nguyên lý',price:35000},
-      {key:'pcb',label:'Mạch PCB',hint:'File Gerber + .pcb layout board',price:50000},
-      {key:'source',label:'File Source Code',hint:'Code mẫu ESP-IDF / Arduino',price:30000},
-      {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:20000},
-    ]},
-    {id:3,name:'Cảm biến DHT22',icon:'🌡️',desc:'Đo nhiệt độ -40~80°C và độ ẩm 0–100%, giao tiếp 1-Wire.',options:[
-      {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ kết nối DHT22 với MCU',price:20000},
-      {key:'pcb',label:'Mạch PCB',hint:'Board tích hợp sẵn pull-up, LED',price:30000},
-      {key:'source',label:'File Source Code',hint:'Code đọc cảm biến, hiển thị LCD',price:20000},
-      {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
-    ]},
-    {id:4,name:'Module L298N',icon:'⚙️',desc:'Mạch điều khiển động cơ DC, hỗ trợ 2 motor, dòng tối đa 2A.',options:[
-      {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ nguyên lý điều khiển motor',price:20000},
-      {key:'pcb',label:'Mạch PCB',hint:'Layout PCB L298N full components',price:30000},
-      {key:'source',label:'File Source Code',hint:'Code điều khiển tốc độ + chiều',price:18000},
-      {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
-    ]},
-    {id:5,name:'OLED 0.96" I2C',icon:'🖥️',desc:'Màn hình 128x64 pixel, giao tiếp I2C, tiêu thụ điện thấp.',options:[
-      {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ kết nối OLED + MCU',price:20000},
-      {key:'pcb',label:'Mạch PCB',hint:'Board mở rộng OLED header sẵn',price:28000},
-      {key:'source',label:'File Source Code',hint:'Thư viện + code hiển thị text/đồ thị',price:22000},
-      {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
-    ]},
-    {id:6,name:'Kit Nguồn LM317',icon:'🔋',desc:'Mạch nguồn điều chỉnh 1.25V–37V, dòng 1.5A, kèm tản nhiệt.',options:[
-      {key:'schematic',label:'Mạch Schematic',hint:'Sơ đồ nguồn LM317 có bảo vệ',price:25000},
-      {key:'pcb',label:'Mạch PCB',hint:'Layout PCB gọn, có chân mount',price:35000},
-      {key:'source',label:'File Source Code',hint:'Code đo điện áp output (ADC)',price:18000},
-      {key:'report',label:'File Báo cáo',hint:'Tài liệu Word/PDF mô tả dự án',price:15000},
-    ]},
-  ],
-  en: [
-    {id:1,name:'Arduino Uno R3 Board',icon:'🤖',desc:'ATmega328 MCU, 14 I/O pins, USB-B. Perfect for beginners.',options:[
-      {key:'schematic',label:'Schematic Diagram',hint:'.sch / .pdf schematic files',price:30000},
-      {key:'pcb',label:'PCB Design',hint:'Gerber + .pcb board layout files',price:40000},
-      {key:'source',label:'Source Code File',hint:'Arduino example code & libs',price:25000},
-      {key:'report',label:'Project Report',hint:'Word/PDF project documentation',price:20000},
-    ]},
-    {id:2,name:'ESP32 Dev Board',icon:'📡',desc:'Integrated WiFi + Bluetooth, dual-core 240MHz, 38 GPIOs.',options:[
-      {key:'schematic',label:'Schematic Diagram',hint:'.sch / .pdf schematic files',price:35000},
-      {key:'pcb',label:'PCB Design',hint:'Gerber + .pcb board layout files',price:50000},
-      {key:'source',label:'Source Code File',hint:'ESP-IDF / Arduino code sample',price:30000},
-      {key:'report',label:'Project Report',hint:'Word/PDF project documentation',price:20000},
-    ]},
-    {id:3,name:'DHT22 Sensor',icon:'🌡️',desc:'Measures temp -40~80°C & humidity 0–100%, 1-Wire interface.',options:[
-      {key:'schematic',label:'Schematic Diagram',hint:'DHT22 to MCU connection circuit',price:20000},
-      {key:'pcb',label:'PCB Design',hint:'Board with built-in pull-up & LED',price:30000},
-      {key:'source',label:'Source Code File',hint:'Sensor reading code + LCD display',price:20000},
-      {key:'report',label:'Project Report',hint:'Word/PDF project documentation',price:15000},
-    ]},
-    {id:4,name:'L298N Module',icon:'⚙️',desc:'DC Motor Driver, supports 2 motors, max current 2A.',options:[
-      {key:'schematic',label:'Schematic Diagram',hint:'Motor driver schematic circuit',price:20000},
-      {key:'pcb',label:'PCB Design',hint:'Layout PCB L298N full components',price:30000},
-      {key:'source',label:'Source Code File',hint:'Motor speed & direction control code',price:18000},
-      {key:'report',label:'Project Report',hint:'Word/PDF project documentation',price:15000},
-    ]},
-    {id:5,name:'OLED 0.96" I2C',icon:'🖥️',desc:'128x64 pixels display, I2C interface, low power consumption.',options:[
-      {key:'schematic',label:'Schematic Diagram',hint:'OLED + MCU wiring diagram',price:20000},
-      {key:'pcb',label:'PCB Design',hint:'Breakout board with pre-soldered header',price:28000},
-      {key:'source',label:'Source Code File',hint:'Libraries + text/graph drawing code',price:22000},
-      {key:'report',label:'Project Report',hint:'Word/PDF project documentation',price:15000},
-    ]},
-    {id:6,name:'LM317 Power Kit',icon:'🔋',desc:'Adjustable power supply 1.25V–37V, 1.5A, with heatsink.',options:[
-      {key:'schematic',label:'Schematic Diagram',hint:'Protected LM317 power schematic',price:25000},
-      {key:'pcb',label:'PCB Design',hint:'Compact layout PCB with mounting holes',price:35000},
-      {key:'source',label:'Source Code File',hint:'Output voltage reading code (ADC)',price:18000},
-      {key:'report',label:'Project Report',hint:'Word/PDF project documentation',price:15000},
-    ]},
-  ]
-};
-
+let currentUser = null;
 let cart = [];
 let modalProductId = null;
 let modalSelected = new Set();
 let cartOpen = false;
 
-function fmt(n){
-  return n.toLocaleString('vi-VN') + 'đ';
-}
-
-// ---- CHUYỂN ĐỔI NGÔN NGỮ ----
-function setLanguage(lang) {
-  currentLang = lang;
-  document.getElementById('lang-vi').classList.toggle('active', lang === 'vi');
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-
-  const t = translations[lang];
-
-  // Cập nhật tất cả phần tử có thuộc tính data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
-  });
-
-  // Cập nhật các nội dung có HTML
-  document.getElementById('hero-title-html').innerHTML = t.heroTitleHTML;
-  document.getElementById('payment-info-html').innerHTML = t.paymentInfoHTML;
-
-  // Placeholder
-  document.getElementById('textarea-desc').placeholder = t.placeholderDesc;
-  document.getElementById('contact-msg').placeholder = t.placeholderContactMsg;
-
-  // Update Account Label nếu chưa đăng nhập
-  if (!currentUser) {
-    document.getElementById('account-label').textContent = t.navAccount;
-  }
-
-  renderProducts();
-  renderCart();
-}
+function fmt(n){return n.toLocaleString('vi-VN')+'đ'}
 
 // ---- TÀI KHOẢN ----
 function handleAccountClick() {
   if (currentUser) {
-    if (confirm(currentLang === 'vi' ? 'Bạn có muốn đăng xuất?' : 'Do you want to log out?')) {
+    if (confirm('Bạn có muốn đăng xuất?')) {
       currentUser = null;
-      document.getElementById('account-label').textContent = translations[currentLang].navAccount;
-      showToast(translations[currentLang].toastLogoutSuccess);
+      document.getElementById('account-label').textContent = 'Tài khoản';
+      showToast('Đã đăng xuất!');
     }
   } else {
     document.getElementById('account-modal').classList.add('open');
@@ -886,7 +629,7 @@ function login() {
   currentUser = { email, name: email.split('@')[0] };
   document.getElementById('account-label').textContent = currentUser.name;
   closeAccountModal();
-  showToast(translations[currentLang].toastLoginSuccess);
+  showToast('Đăng nhập thành công!');
 }
 
 function register() {
@@ -896,7 +639,7 @@ function register() {
   currentUser = { name, email };
   document.getElementById('account-label').textContent = currentUser.name;
   closeAccountModal();
-  showToast(translations[currentLang].toastRegSuccess);
+  showToast('Đăng ký thành công!');
 }
 
 // ---- NAVIGATION ----
@@ -919,9 +662,6 @@ function showPage(name){
 // ---- PRODUCTS ----
 function renderProducts(){
   const g = document.getElementById('product-grid');
-  const products = productsData[currentLang];
-  const t = translations[currentLang];
-
   g.innerHTML = products.map(p => {
     const total = p.options.reduce((a,o) => a+o.price, 0);
     return `
@@ -933,9 +673,9 @@ function renderProducts(){
         <div class="product-footer">
           <div>
             <span class="product-price">${fmt(total)}</span>
-            <span class="product-price-hint">${t.productsFullSet}</span>
+            <span class="product-price-hint">trọn bộ 4 file</span>
           </div>
-          <button class="view-btn">${t.btnViewSelect}</button>
+          <button class="view-btn">Xem & Chọn →</button>
         </div>
       </div>
     </div>`;
@@ -944,7 +684,6 @@ function renderProducts(){
 
 // ---- MODAL SẢN PHẨM ----
 function openModal(id){
-  const products = productsData[currentLang];
   const p = products.find(x=>x.id===id);
   modalProductId = id;
   modalSelected = new Set();
@@ -990,7 +729,6 @@ function toggleOption(key){
 }
 
 function updateModalTotal(){
-  const products = productsData[currentLang];
   const p = products.find(x=>x.id===modalProductId);
   const total = [...modalSelected].reduce((a,key)=>{
     const o = p.options.find(x=>x.key===key);
@@ -1001,7 +739,6 @@ function updateModalTotal(){
 }
 
 function addModalToCart(){
-  const products = productsData[currentLang];
   const p = products.find(x=>x.id===modalProductId);
   const selected = p.options.filter(o => modalSelected.has(o.key));
   const unitPrice = selected.reduce((a,o)=>a+o.price,0);
@@ -1015,12 +752,11 @@ function addModalToCart(){
 
   renderCart();
   closeModal();
-  showToast(translations[currentLang].toastAdded);
+  showToast('Đã thêm vào giỏ hàng!');
 }
 
 // ---- CART ----
 function renderCart(){
-  const t = translations[currentLang];
   const total = cart.reduce((a,item)=>a+item.unitPrice*item.qty, 0);
   const count = cart.reduce((a,item)=>a+item.qty, 0);
   document.getElementById('cart-count').textContent = count;
@@ -1029,7 +765,7 @@ function renderCart(){
   const cf = document.getElementById('cart-footer');
 
   if(cart.length === 0){
-    ci.innerHTML = `<div class="empty-cart"><div style="font-size:2rem">🛒</div><p style="margin-top:1rem">${t.cartEmpty}</p></div>`;
+    ci.innerHTML = '<div class="empty-cart"><div style="font-size:2rem">🛒</div><p style="margin-top:1rem">Giỏ hàng trống</p></div>';
     cf.innerHTML = '';
     return;
   }
@@ -1052,11 +788,11 @@ function renderCart(){
 
   cf.innerHTML = `
     <div class="cart-total">
-      <div class="cart-total-row"><span>${t.cartSubtotal}</span><span>${fmt(total)}</span></div>
-      <div class="cart-total-row"><span>${t.cartShipping}</span><span style="color:var(--accent2)">${t.cartFree}</span></div>
-      <div class="cart-total-main"><span>${t.cartTotal}</span><span style="color:var(--electric)">${fmt(total)}</span></div>
+      <div class="cart-total-row"><span>Tạm tính</span><span>${fmt(total)}</span></div>
+      <div class="cart-total-row"><span>Vận chuyển file</span><span style="color:var(--accent2)">Miễn phí</span></div>
+      <div class="cart-total-main"><span>Tổng cộng</span><span style="color:var(--electric)">${fmt(total)}</span></div>
     </div>
-    <button class="checkout-cart-btn" onclick="checkout()">${t.btnCheckout}</button>`;
+    <button class="checkout-cart-btn" onclick="checkout()">Tiến hành thanh toán</button>`;
 }
 
 function changeQty(idx, d){
@@ -1081,7 +817,7 @@ function checkout(){
   ).join('');
   document.getElementById('order-summary').innerHTML = rows +
     `<div style="display:flex;justify-content:space-between;font-family:'Space Grotesk';font-weight:700;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1);margin-top:8px">
-      <span>${translations[currentLang].cartTotal}</span><span style="color:var(--electric)">${fmt(total)}</span>
+      <span>Tổng</span><span style="color:var(--electric)">${fmt(total)}</span>
     </div>`;
   toggleCart();
   showPage('payment');
@@ -1093,14 +829,6 @@ function toggleCart(){
   document.getElementById('backdrop').classList.toggle('open', cartOpen);
 }
 
-function submitServiceOrder() {
-  showToast(translations[currentLang].toastOrderSent);
-}
-
-function submitContactForm() {
-  showToast(translations[currentLang].toastContactSent);
-}
-
 let toastTimer;
 function showToast(msg){
   const t = document.getElementById('toast');
@@ -1110,7 +838,6 @@ function showToast(msg){
   toastTimer = setTimeout(()=>t.classList.remove('show'), 2500);
 }
 
-// Khởi tạo
 renderProducts();
 renderCart();
 </script>
